@@ -1,0 +1,37 @@
+<ul id="sites">
+
+</ul>
+
+
+
+  <form id="add-site">
+    <label for="name">Namn</label>
+    <input name="name" type="text">
+
+    <input name="add" type="submit">
+  </form>
+
+  <script>
+    $(document).ready(function() {
+      var gui = require('nw.gui');
+      var Datastore = require('nedb');
+      var db = new Datastore({
+        filename : gui.App.dataPath + '/sites.db',
+        autoload: true
+      });
+
+      db.find({}, function(error, sites) {
+        for (var key in sites) {
+          $('#sites').append('<li>' + sites[key].name + '</li>');
+        }
+      });
+
+      $('#add-site').submit(function(event) {
+        event.preventDefault();
+
+        db.insert({
+          name: $(this).find('input[name="name"]').val(),
+        });
+      });
+    });
+  </script>
