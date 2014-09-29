@@ -6,7 +6,8 @@
 
   <form id="add-site">
     <label for="name">Namn</label>
-    <input name="name" type="text">
+    <input name="name" type="text" />
+    <input name="path" type="file" nwdirectory />
 
     <input name="add" type="submit">
   </form>
@@ -22,7 +23,7 @@
 
       db.find({}, function(error, sites) {
         for (var key in sites) {
-          $('#sites').append('<li>' + sites[key].name + '</li>');
+          $('#sites').append('<li>' + sites[key].name + ' - ' + sites[key].path + '</li>');
         }
       });
 
@@ -31,6 +32,7 @@
 
         db.insert({
           name: $(this).find('input[name="name"]').val(),
+          path: $(this).find('input[name="path"]').val(),
         });
       });
     });
