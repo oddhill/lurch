@@ -1,9 +1,11 @@
-// Get sites and insert in menu
-module.exports.getProjects = function(menu, sitesMenu, db, localStorage, lurch, gui, callback) {
+/**
+ * Get projects and insert them in the menu
+ */
+module.exports.getProjects = function(lurch, callback) {
   db.sites.find({}, function(error, sites) {
     for (var key in sites) {
       if (sites[key]._id == localStorage.currentSite) {
-        lurch.currentSite = sites[key];
+        lurch.current = sites[key];
       }
 
       sitesMenu.append(new gui.MenuItem({
@@ -12,9 +14,7 @@ module.exports.getProjects = function(menu, sitesMenu, db, localStorage, lurch, 
         click: function() {
           for (var key2 in sites) {
             if (sites[key2].name == this.label) {
-              //lurch.current = sites[key2];
-              //localStorage.currentSite = sites[key2]._id;
-              module.exports.changeCurrent(menu, lurch, localStorage, sites[key2], sites[key2]._id);
+              changeCurrent(lurch, sites[key2], key2);
               break;
             }
           }
@@ -27,9 +27,23 @@ module.exports.getProjects = function(menu, sitesMenu, db, localStorage, lurch, 
   });
 }
 
-// Change current project
-module.exports.changeCurrent = function(menu, lurch, localStorage, project, projectId) {
+/**
+ * Change current project
+ */
+var changeCurrent = function(lurch, project, clicked) {
+  // Update lurch API
   lurch.current = project;
-  localStorage.currentSite = projectId;
+  // Update localStorage
+  localStorage.currentSite = project._id;
+  // Update menu
   menu.items[0].label = "Current project: " + project.name;
+
+  // Remove 'checked' from sites menu
+  var items = sitesMenu.items;
+  for (var key in items) {
+    // Do not remove checked from clicked menu item
+    if (key !== clicked) {
+      sitesMenu.items[key].checked = false;
+    }
+  }
 }

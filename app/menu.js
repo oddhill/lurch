@@ -1,8 +1,11 @@
-module.exports.init = function(menu, sitesMenu, pluginsMenu, gui, window, currentSiteName, $) {
+/**
+ * Function to populate the menu
+ */
+module.exports.populate = function() {
   // Current site in menu
   menu.append(new gui.MenuItem({
     type: 'normal',
-    label: 'Current site: ' + currentSiteName,
+    label: 'Current site: ' + lurch.current.name,
     enabled: false
   }));
 

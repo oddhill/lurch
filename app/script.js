@@ -1,7 +1,6 @@
 (function() {
 
 var gui = require('nw.gui');
-var walk = require('walkdir');
 var notification = require('osx-notifier');
 var Datastore = require('nedb');
 var exec = require('child_process').exec;
@@ -32,36 +31,36 @@ db.settings = new Datastore({
   autoload: true
 });
 
-// Menu
+// Set global variables
+global.menu = menu;
+global.sitesMenu = sitesMenu;
+global.pluginsMenu = pluginsMenu;
+global.$ = $;
+global.db = db;
+global.gui = gui;
+global.window = window;
+global.localStorage = localStorage;
+global.notification = notification;
+global.lurch = lurch;
+
+// Menu functions
 var lurchMenu = require('./menu.js');
 
-// Projects
+// Project functions
 var projects = require('./projects.js');
 
+// Plugin functions
+var plugins = require('./plugins.js');
+
 // Append sites to menu
-projects.getProjects(menu, sitesMenu, db, localStorage, lurch, gui, function() {
+projects.getProjects(lurch, function() {
 
-  lurchMenu.init(menu, sitesMenu, pluginsMenu, gui, window, lurch.currentSite.name, jQuery);
+  // Insert menu items to main menu
+  lurchMenu.populate();
 
-  var findPlugins = walk(gui.App.dataPath + '/Plugins', {no_recurse: true}).on('directory', function(path, stat) {
-    var pluginInfo = require(path + '/package.json');
+  // Get plugins and insert them into pluginsMenu
+  plugins.getPlugins();
 
-    pluginsMenu.append(new gui.MenuItem({
-      type: 'normal',
-      label: pluginInfo.name,
-      click: function() {
-        var plugin = require(path + '/' + pluginInfo.main);
-        plugin.run(lurch, function(response) {
-          notification({
-            type: response.success ? 'pass' : 'fail',
-            title: pluginInfo.name,
-            message: response.message,
-            group: 'Lurch'
-          });
-        });
-      }
-    }));
-  });
 });
 
 })();
