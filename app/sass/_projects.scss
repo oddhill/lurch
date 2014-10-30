@@ -1,0 +1,67 @@
+a.add-project {
+  display: block;
+  padding: 20px;
+  background: #4FC253;
+  color: #fff;
+  font-size: 14px;
+}
+
+#projects {
+  padding: 0px;
+  margin: 0px;
+
+  li {
+    background: #eee;
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .name {
+    display: block;
+  }
+
+  .path {
+    font-style: italic;
+    color: #aaa;
+  }
+
+  a {
+    color: #888;
+  }
+}
+
+#project {
+
+  .input {
+    width: 100%;
+    display: block;
+    outline: 0px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+    background: #fff;
+    font-size: 14px;
+    text-transform: uppercase;
+  }
+
+  input[type="text"] {
+    background: #fff;
+    border: 0px;
+    outline: 0px;
+  }
+
+  input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    display: block;
+    background: #4FC253;
+    color: #fff;
+    border: 0px;
+    text-align: left;
+    font-size: 14px;
+    cursor: pointer;
+  }
+}

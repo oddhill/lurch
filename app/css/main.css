@@ -1,0 +1,119 @@
+html,
+body {
+  padding: 0px;
+  margin: 0px;
+  font-family: "Open Sans";
+  background: #eee; }
+
+ul {
+  list-style-type: none;
+  padding: 0px;
+  margin: 0px; }
+
+h1,
+h2 {
+  background: #fff;
+  padding: 10px;
+  margin: 0px;
+  font-size: 16px;
+  border-bottom: 1px solid #aaa; }
+
+.main-nav {
+  width: 100%;
+  height: 60px;
+  background: #3B4046; }
+  .main-nav ul {
+    display: block;
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px; }
+  .main-nav li {
+    width: 50%;
+    float: left; }
+  .main-nav a {
+    display: block;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 60px;
+    transition: background .1s ease-in-out; }
+    .main-nav a:hover, .main-nav a.active {
+      background: #24272a; }
+
+a.add-plugin {
+  display: block;
+  padding: 20px;
+  background: #4FC253;
+  color: #fff;
+  font-size: 14px; }
+
+#plugins {
+  padding: 0px;
+  margin: 0px; }
+  #plugins li {
+    background: #eee;
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+    padding: 10px;
+    border-bottom: 1px solid #ddd; }
+
+#project-plugins {
+  background: #fff; }
+  #project-plugins li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd; }
+  #project-plugins input[type="checkbox"] {
+    float: right; }
+
+a.add-project {
+  display: block;
+  padding: 20px;
+  background: #4FC253;
+  color: #fff;
+  font-size: 14px; }
+
+#projects {
+  padding: 0px;
+  margin: 0px; }
+  #projects li {
+    background: #eee;
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+    padding: 10px;
+    border-bottom: 1px solid #ddd; }
+  #projects .name {
+    display: block; }
+  #projects .path {
+    font-style: italic;
+    color: #aaa; }
+  #projects a {
+    color: #888; }
+
+#project .input {
+  width: 100%;
+  display: block;
+  outline: 0px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+  background: #fff;
+  font-size: 14px;
+  text-transform: uppercase; }
+#project input[type="text"] {
+  background: #fff;
+  border: 0px;
+  outline: 0px; }
+#project input[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  display: block;
+  background: #4FC253;
+  color: #fff;
+  border: 0px;
+  text-align: left;
+  font-size: 14px;
+  cursor: pointer; }

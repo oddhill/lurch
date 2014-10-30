@@ -1,0 +1,34 @@
+a.add-plugin {
+  display: block;
+  padding: 20px;
+  background: #4FC253;
+  color: #fff;
+  font-size: 14px;
+}
+
+#plugins {
+  padding: 0px;
+  margin: 0px;
+
+  li {
+    background: #eee;
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+}
+
+#project-plugins {
+  background: #fff;
+
+  li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  input[type="checkbox"] {
+    float: right;
+  }
+}
