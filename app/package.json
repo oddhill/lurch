@@ -3,11 +3,19 @@
   "main": "index.html",
   "window": {
     "show": false,
-    "toolbar": false
+    "toolbar": false,
+    "frame": true,
+    "width": 400,
+    "height": 500
   },
   "dependencies": {
     "nedb": "^0.11.0",
     "osx-notifier": "^0.2.1",
     "walkdir": "0.0.7"
+  },
+  "devDependencies": {
+    "grunt": "latest",
+    "grunt-contrib-sass": "latest",
+    "grunt-contrib-watch": "latest"
   }
 }
