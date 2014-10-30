@@ -31,10 +31,10 @@ module.exports.populate = function() {
   // Manage sites
   menu.append(new gui.MenuItem({
     type: 'normal',
-    label: 'Manage sites',
+    label: 'Manage projects',
     click: function() {
       window.show();
-      $('#app').load('manage_sites.html');
+      $('#app').load('views/manage_projects.html');
     }
   }));
 
