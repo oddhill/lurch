@@ -43,6 +43,9 @@ global.localStorage = localStorage;
 global.notification = notification;
 global.lurch = lurch;
 
+// Set other global variables
+global.projectEditId = null;
+
 // Menu functions
 var lurchMenu = require('./menu.js');
 
