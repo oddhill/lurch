@@ -1,0 +1,24 @@
+<a href="#" class="add-plugin">Add plugin</a>
+
+<ul id="plugins">
+
+</ul>
+
+<script>
+  var gui = require('nw.gui');
+  var Datastore = require('nedb');
+  var db = new Datastore({
+    filename : gui.App.dataPath + '/plugins.db',
+    autoload: true
+  });
+
+  db.find({}, function(error, plugins) {
+    for (var key in plugins) {
+      $('#plugins').append('<li>' + plugins[key].name + '</li>');
+    }
+  });
+
+  $('a.add-plugin').click(function() {
+    $('#app').load('views/add_plugin.html');
+  });
+</script>

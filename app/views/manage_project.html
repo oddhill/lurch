@@ -1,0 +1,96 @@
+<h1>Project settings</h1>
+
+<div id="project">
+  <form id="change-project">
+    <div class="input">
+      <label>Name:</label>
+      <input type="text" name="name" />
+    </div>
+    <div class="input">
+      <label>Path:</label>
+      <span class="path"></span>
+      <input type="file" name="path" nwdirectory />
+    </div>
+
+    <input type="submit" value="Save" />
+    <input type="button" class="delete-project" value="Delete" />
+  </form>
+</div>
+
+<h2>Plugins</h2>
+<div id="project-plugins">
+  <ul>
+
+  </ul>
+</div>
+
+<script>
+  var gui = require('nw.gui');
+  var Datastore = require('nedb');
+  var db = new Datastore({
+    filename : gui.App.dataPath + '/sites.db',
+    autoload: true
+  });
+
+  var dbPlugins = new Datastore({
+    filename : gui.App.dataPath + '/plugins.db',
+    autoload: true
+  });
+
+  var projectPath = null;
+  var projectPlugins = null;
+
+  db.find({ _id: projectEditId }, function(error, project) {
+    $('#change-project').find('input[name="name"]').val(project[0].name);
+    $('.path').text(project[0].path);
+    projectPath = project[0].path;
+    projectPlugins = project[0].plugins;
+
+  var checked = null;
+  dbPlugins.find({}, function(error, plugins) {
+    for (var key in plugins) {
+      if ($.inArray(plugins[key]._id, projectPlugins) > -1) {
+        checked = 'checked';
+      }
+      $('#project-plugins ul').append('<li>' + plugins[key].name + '<span class="checkbox"><input type="checkbox" data-id="' + plugins[key]._id + '"' + checked + ' /></span></li>');
+    }
+
+    $('#project-plugins input[type="checkbox"]').on('change', function() {
+      var add = $(this).prop('checked');
+      var id = $(this).attr('data-id');
+      var update = { $pull: { plugins: id } };
+      if (add) {
+        update = { $push: { plugins: id } };
+      }
+
+      db.update({ _id: projectEditId }, update);
+
+    });
+  });
+
+  });
+
+  $('#change-project').submit(function(event) {
+    event.preventDefault();
+
+    if ($('#change-project').find('input[name="path"]').val()) {
+      projectPath = $('#change-project').find('input[name="path"]').val();
+    }
+
+    db.update({ _id: projectEditId }, {
+      name: $(this).find('input[name="name"]').val(),
+      path: projectPath,
+      plugins: ['eHkK0rnJdZSfK8k8'],
+    }, function() {
+      $('#app').load('views/manage_projects.html');
+    });
+  });
+
+  $('.delete-project').click(function(event) {
+    event.preventDefault();
+
+    db.remove({ _id:projectEditId }, {}, function() {
+      $('#app').load('views/manage_projects.html');
+    });
+  });
+</script>

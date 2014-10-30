@@ -1,0 +1,29 @@
+<h1>Add plugin</h1>
+<form id="add-plugin">
+  <input name="path" type="file" nwdirectory />
+  <input name="add" type="submit" />
+</form>
+
+<script>
+  $(document).ready(function() {
+    var gui = require('nw.gui');
+    var Datastore = require('nedb');
+
+    var db = new Datastore({
+      filename : gui.App.dataPath + '/plugins.db',
+      autoload: true
+    });
+
+    $('#add-plugin').submit(function(event) {
+      event.preventDefault();
+
+      var pluginPath = $(this).find('input[name="path"]').val();
+      var pluginInfo = pluginPath + '/package.json';
+      var pluginName = require(pluginInfo).name;
+
+      db.insert({
+        name: pluginName
+      });
+    });
+  });
+</script>

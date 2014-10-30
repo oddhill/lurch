@@ -1,10 +1,4 @@
-<ul id="sites">
-
-</ul>
-
-
-
-  <form id="add-site">
+<form id="add-site">
     <label for="name">Namn</label>
     <input name="name" type="text" />
     <input name="path" type="file" nwdirectory />
@@ -12,9 +6,8 @@
     <input name="add" type="submit">
   </form>
 
-  <script>
-    $(document).ready(function() {
-      var gui = require('nw.gui');
+<script>
+var gui = require('nw.gui');
       var Datastore = require('nedb');
       var db = new Datastore({
         filename : gui.App.dataPath + '/sites.db',
@@ -23,7 +16,7 @@
 
       db.find({}, function(error, sites) {
         for (var key in sites) {
-          $('#sites').append('<li>' + sites[key].name + ' - ' + sites[key].path + '</li>');
+          $('#projects').append('<li><span class="name">' + sites[key].name + '</span><span class="path">' + sites[key].path + '</span></li>');
         }
       });
 
@@ -35,5 +28,4 @@
           path: $(this).find('input[name="path"]').val(),
         });
       });
-    });
-  </script>
+</script>

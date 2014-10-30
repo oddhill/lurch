@@ -1,0 +1,29 @@
+<a href="#" class="add-project">Add project</a>
+<ul id="projects">
+</ul>
+
+  <script>
+    $(document).ready(function() {
+      var gui = require('nw.gui');
+      var Datastore = require('nedb');
+      var db = new Datastore({
+        filename : gui.App.dataPath + '/sites.db',
+        autoload: true
+      });
+
+      db.find({}, function(error, sites) {
+        for (var key in sites) {
+          $('#projects').append('<li><span class="name"><a href="#" data-id="' + sites[key]._id + '">' + sites[key].name + '</a></span><span class="path">' + sites[key].path + '</span></li>');
+        }
+
+        $('#projects .name a').click(function() {
+          projectEditId = $(this).attr('data-id');
+          $('#app').load('views/manage_project.html');
+        });
+      });
+
+      $('a.add-project').click(function() {
+        $('#app').load('views/add_project.html');
+      });
+    });
+  </script>
