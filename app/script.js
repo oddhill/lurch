@@ -22,12 +22,17 @@ var tray = new gui.Tray({
 var db = {};
 
 db.sites = new Datastore({
-  filename : gui.App.dataPath + '/sites.db',
+  filename: gui.App.dataPath + '/sites.db',
+  autoload: true
+});
+
+db.plugins = new Datastore({
+  filename: gui.App.dataPath + '/plugins.db',
   autoload: true
 });
 
 db.settings = new Datastore({
-  filename : gui.App.dataPath + '/settings.db',
+  filename: gui.App.dataPath + '/settings.db',
   autoload: true
 });
 
@@ -56,13 +61,13 @@ var projects = require('./projects.js');
 var plugins = require('./plugins.js');
 
 // Append sites to menu
-projects.getProjects(lurch, function() {
+projects.buildMenu(lurch, function() {
 
   // Insert menu items to main menu
   lurchMenu.populate();
 
   // Get plugins and insert them into pluginsMenu
-  plugins.getPlugins();
+  plugins.buildMenu();
 
 });
 

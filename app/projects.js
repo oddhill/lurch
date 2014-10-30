@@ -1,7 +1,7 @@
 /**
  * Get projects and insert them in the menu
  */
-module.exports.getProjects = function(lurch, callback) {
+module.exports.buildMenu = function(lurch, callback) {
   db.sites.find({}, function(error, sites) {
     for (var key in sites) {
       if (sites[key]._id == localStorage.currentSite) {
@@ -23,6 +23,49 @@ module.exports.getProjects = function(lurch, callback) {
       }));
     }
 
+    callback();
+  });
+}
+
+/**
+ * Get projects
+ */
+module.exports.getProjects = function(callback) {
+  db.sites.find({}, function(error, projects) {
+    callback(projects);
+  });
+}
+
+/**
+ * Get project
+ */
+module.exports.get = function(id, callback) {
+  db.sites.find({ _id:id }, function(error, project) {
+    callback(project);
+  });
+}
+
+/**
+ * Update project enabled plugins
+ */
+module.exports.updatePlugins = function(update) {
+  db.sites.update({ _id: projectEditId }, update);
+}
+
+/**
+ * Update a project
+ */
+module.exports.update = function(id, query, callback) {
+  db.sites.update({ _id: id }, query, function() {
+    callback();
+  });
+}
+
+/**
+ * Remove project
+ */
+module.exports.remove = function(id, callback) {
+  db.sites.remove({ _id: id }, function() {
     callback();
   });
 }

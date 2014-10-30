@@ -5,19 +5,15 @@
 </ul>
 
 <script>
-  var gui = require('nw.gui');
-  var Datastore = require('nedb');
-  var db = new Datastore({
-    filename : gui.App.dataPath + '/plugins.db',
-    autoload: true
-  });
+  var plugins = require('./plugins.js');
 
-  db.find({}, function(error, plugins) {
+  plugins.getPlugins(function(plugins) {
     for (var key in plugins) {
       $('#plugins').append('<li>' + plugins[key].name + '</li>');
     }
   });
 
+  // Add-plugin
   $('a.add-plugin').click(function() {
     $('#app').load('views/add_plugin.html');
   });

@@ -25,45 +25,42 @@
 </div>
 
 <script>
-  var gui = require('nw.gui');
-  var Datastore = require('nedb');
-  var db = new Datastore({
-    filename : gui.App.dataPath + '/sites.db',
-    autoload: true
-  });
-
-  var dbPlugins = new Datastore({
-    filename : gui.App.dataPath + '/plugins.db',
-    autoload: true
-  });
-
   var projectPath = null;
   var projectPlugins = null;
 
-  db.find({ _id: projectEditId }, function(error, project) {
+  // Get specific project
+  projects.get(projectEditId, function(project) {
+    // Load data
     $('#change-project').find('input[name="name"]').val(project[0].name);
     $('.path').text(project[0].path);
     projectPath = project[0].path;
     projectPlugins = project[0].plugins;
 
-  var checked = null;
-  dbPlugins.find({}, function(error, plugins) {
-    for (var key in plugins) {
-      if ($.inArray(plugins[key]._id, projectPlugins) > -1) {
-        checked = 'checked';
-      }
-      $('#project-plugins ul').append('<li>' + plugins[key].name + '<span class="checkbox"><input type="checkbox" data-id="' + plugins[key]._id + '"' + checked + ' /></span></li>');
-    }
+    // Get plugins
+    var checked = null;
+    plugins.getPlugins(function(plugins) {
 
-    $('#project-plugins input[type="checkbox"]').on('change', function() {
-      var add = $(this).prop('checked');
-      var id = $(this).attr('data-id');
-      var update = { $pull: { plugins: id } };
-      if (add) {
-        update = { $push: { plugins: id } };
+      // Append plugins
+      for (var key in plugins) {
+        // Check if plugin in enabled on current project
+        if ($.inArray(plugins[key]._id, projectPlugins) > -1) {
+          checked = 'checked';
+        }
+
+        $('#project-plugins ul').append('<li>' + plugins[key].name + '<span class="checkbox"><input type="checkbox" data-id="' + plugins[key]._id + '"' + checked + ' /></span></li>');
       }
 
-      db.update({ _id: projectEditId }, update);
+      // Edit db on change
+      $('#project-plugins input[type="checkbox"]').on('change', function() {
+        var add = $(this).prop('checked');
+        var id = $(this).attr('data-id');
+        var update = { $pull: { plugins: id } };
+
+        if (add) {
+          update = { $push: { plugins: id } };
+        }
+
+        projects.updatePlugins(update);
 
     });
   });
@@ -77,11 +74,13 @@
       projectPath = $('#change-project').find('input[name="path"]').val();
     }
 
-    db.update({ _id: projectEditId }, {
+    var query = {
       name: $(this).find('input[name="name"]').val(),
       path: projectPath,
       plugins: ['eHkK0rnJdZSfK8k8'],
-    }, function() {
+    };
+
+    projects.update(projectEditId, query, function() {
       $('#app').load('views/manage_projects.html');
     });
   });
@@ -89,7 +88,7 @@
   $('.delete-project').click(function(event) {
     event.preventDefault();
 
-    db.remove({ _id:projectEditId }, {}, function() {
+    projects.remove(projectEditId, function() {
       $('#app').load('views/manage_projects.html');
     });
   });
