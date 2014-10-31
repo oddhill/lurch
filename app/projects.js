@@ -100,3 +100,12 @@ module.exports.loadCurrent = function(callback) {
     callback(project);
   });
 }
+
+/**
+ * Add new project
+ */
+module.exports.add = function(data, callback) {
+  db.sites.insert(data, function() {
+    callback();
+  });
+}

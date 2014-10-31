@@ -7,25 +7,18 @@
   </form>
 
 <script>
-var gui = require('nw.gui');
-      var Datastore = require('nedb');
-      var db = new Datastore({
-        filename : gui.App.dataPath + '/sites.db',
-        autoload: true
-      });
+  var projects = require('./projects.js');
 
-      db.find({}, function(error, sites) {
-        for (var key in sites) {
-          $('#projects').append('<li><span class="name">' + sites[key].name + '</span><span class="path">' + sites[key].path + '</span></li>');
-        }
-      });
+  $('#add-site').submit(function(event) {
+    event.preventDefault();
 
-      $('#add-site').submit(function(event) {
-        event.preventDefault();
+    var data = {
+      name: $(this).find('input[name="name"]').val(),
+      path: $(this).find('input[name="path"]').val()
+    };
 
-        db.insert({
-          name: $(this).find('input[name="name"]').val(),
-          path: $(this).find('input[name="path"]').val(),
-        });
-      });
+    projects.add(data, function() {
+      $('#app').load('views/manage_projects.html');
+    });
+  });
 </script>
