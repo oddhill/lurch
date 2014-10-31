@@ -9,6 +9,7 @@
     var gui = require('nw.gui');
     var Datastore = require('nedb');
     var plugins = require('./plugins.js');
+    var mv = require('mv');
 
     var db = new Datastore({
       filename : gui.App.dataPath + '/plugins.db',
@@ -22,12 +23,16 @@
       var pluginInfo = pluginPath + '/package.json';
       var pluginName = require(pluginInfo).name;
 
+      var folderName = pluginPath.match(/([^\/]*)\/*$/)[1];
+      var dest = gui.App.dataPath + '/plugins' + '/' + folderName;
+
       db.insert({
         name: pluginName,
-        path: pluginPath
+        path: dest
       }, function(error, newDoc) {
         if (!error) {
           plugins.buildMenu(newDoc);
+          mv(pluginPath, dest);
         }
       });
     });
