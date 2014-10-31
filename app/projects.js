@@ -90,3 +90,13 @@ var changeCurrent = function(lurch, project, clicked) {
     }
   }
 }
+
+/**
+ * Load current project
+ */
+module.exports.loadCurrent = function(callback) {
+  var id = localStorage.currentSite;
+  db.sites.find({ _id: id }, function(error, project) {
+    callback(project);
+  });
+}

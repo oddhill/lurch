@@ -5,10 +5,6 @@ var notification = require('osx-notifier');
 var Datastore = require('nedb');
 var exec = require('child_process').exec;
 var window = gui.Window.get();
-var lurch = {
-  execute: exec,
-  current: ''
-};
 
 var menu = new gui.Menu();
 var sitesMenu = new gui.Menu();
@@ -46,7 +42,7 @@ global.gui = gui;
 global.window = window;
 global.localStorage = localStorage;
 global.notification = notification;
-global.lurch = lurch;
+//global.lurch = lurch;
 
 // Set other global variables
 global.projectEditId = null;
@@ -59,6 +55,17 @@ var projects = require('./projects.js');
 
 // Plugin functions
 var plugins = require('./plugins.js');
+
+var lurch = {
+  execute: exec,
+  current: ''
+};
+
+// Load current
+projects.loadCurrent(function(project) {
+  lurch.current = project;
+});
+global.lurch = lurch;
 
 // Append sites to menu
 projects.buildMenu(lurch, function() {
