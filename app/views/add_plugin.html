@@ -7,14 +7,8 @@
 <script>
   $(document).ready(function() {
     var gui = require('nw.gui');
-    var Datastore = require('nedb');
     var plugins = require('./plugins.js');
     var mv = require('mv');
-
-    var db = new Datastore({
-      filename : gui.App.dataPath + '/plugins.db',
-      autoload: true
-    });
 
     $('#add-plugin').submit(function(event) {
       event.preventDefault();
@@ -26,16 +20,12 @@
       var folderName = pluginPath.match(/([^\/]*)\/*$/)[1];
       var dest = gui.App.dataPath + '/plugins' + '/' + folderName;
 
-      db.insert({
-        name: pluginName,
-        path: dest
-      }, function(error, newDoc) {
-        if (!error) {
-          plugins.buildMenu(newDoc);
-          mv(pluginPath, dest, function(err) {
-            console.log(err);
-          });
-        }
+      plugins.add(pluginName, dest, function(newDoc) {
+        plugins.buildMenu(newDoc);
+        /*mv(pluginPath, dest, function(err) {
+          console.log(err);
+        });*/
+        $('#app').load('views/manage_plugins.html');
       });
     });
   });

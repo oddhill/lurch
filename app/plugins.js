@@ -83,3 +83,17 @@ module.exports.remove = function(id, callback) {
 
   });
 }
+
+/**
+ * Add plugin
+ */
+module.exports.add = function(name, dest, callback) {
+  db.plugins.insert({
+    name: name,
+    path: dest
+  }, function(error, newDoc) {
+    if (!error) {
+      callback(newDoc);
+    }
+  });
+}
