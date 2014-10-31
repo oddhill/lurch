@@ -51,3 +51,35 @@ var runPlugin = function(path, pluginInfo) {
 
 // Export the function
 module.exports.runPlugin = runPlugin;
+
+/**
+ * Remove plugin
+ */
+module.exports.remove = function(id, callback) {
+  db.plugins.remove({ _id: id }, function() {
+
+    db.sites.find({ plugins: { $in: [id] }}, function(err, projects) {
+
+      for (var key in projects) {
+
+        var projectPlugins = projects[key].plugins;
+
+        for (var pluginKey in projectPlugins) {
+
+          if (projectPlugins[pluginKey] == id) {
+            var popKey = parseInt(pluginKey);
+            popKey++;
+            db.sites.update({ _id: projects[key]._id }, { $pop: { plugins: popKey } }, {}, function(err) {
+              callback();
+            });
+
+          }
+
+        }
+
+      }
+
+    });
+
+  });
+}

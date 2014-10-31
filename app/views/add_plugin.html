@@ -32,7 +32,9 @@
       }, function(error, newDoc) {
         if (!error) {
           plugins.buildMenu(newDoc);
-          mv(pluginPath, dest);
+          mv(pluginPath, dest, function(err) {
+            console.log(err);
+          });
         }
       });
     });

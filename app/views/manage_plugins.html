@@ -7,10 +7,20 @@
 <script>
   var plugins = require('./plugins.js');
 
-  plugins.getPlugins(function(plugins) {
-    for (var key in plugins) {
-      $('#plugins').append('<li>' + plugins[key].name + '</li>');
+  plugins.getPlugins(function(_plugins) {
+    for (var key in _plugins) {
+      $('#plugins').append('<li>' + _plugins[key].name + '<a class="remove" href="#" data-id="' + _plugins[key]._id + '">Remove</a></li>');
     }
+
+    // Remove plugin
+    $('a.remove').click(function(event) {
+      event.preventDefault();
+      var id = $(this).attr('data-id');
+
+      plugins.remove(id, function() {
+        $('#app').load('views/manage_plugins.html');
+      });
+    });
   });
 
   // Add-plugin
