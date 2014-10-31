@@ -52,7 +52,7 @@ For executing terminal commands you should use the `execute` method.
 
 Example:
 ```js
-lurch.execute('cd ' + lurch.current.path + ' && drush fra -y’, function(error, stdout, stderr) {
+lurch.execute('cd ' + lurch.current.path + ' && drush fra -y', function(error, stdout, stderr) {
 // Handle response here.
 });
 ```
