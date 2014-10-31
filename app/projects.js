@@ -48,8 +48,10 @@ module.exports.get = function(id, callback) {
 /**
  * Update project enabled plugins
  */
-module.exports.updatePlugins = function(update) {
-  db.sites.update({ _id: projectEditId }, update);
+module.exports.updatePlugins = function(id, update) {
+  db.sites.update({ _id: id }, update, function(err) {
+    console.log(err);
+  });
 }
 
 /**

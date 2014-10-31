@@ -63,7 +63,7 @@
           update = { $push: { plugins: id } };
         }
 
-        projects.updatePlugins(update);
+        projects.updatePlugins(projectEditId, update);
 
     });
   });
