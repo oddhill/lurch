@@ -29,7 +29,7 @@ module.exports.getPlugins = function(callback) {
 /**
  * Function for running a plugin
  */
-var runPlugin = function(path, pluginInfo, callback) {
+var runPlugin = function(path, pluginInfo) {
   var plugin = require(path + '/' + pluginInfo.main);
   plugin.run(lurch, function(response) {
     notification({
@@ -38,8 +38,6 @@ var runPlugin = function(path, pluginInfo, callback) {
       message: response.message,
       group: 'Lurch'
     });
-
-    callback();
   });
 }
 
