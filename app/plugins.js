@@ -4,16 +4,17 @@ var walk = require('walkdir');
  * Function to get plugins and pass them to the menu
  */
 module.exports.buildMenu = function() {
-  var findPlugins = walk(gui.App.dataPath + '/Plugins', {no_recurse: true}).on('directory', function(path, stat) {
-    var pluginInfo = require(path + '/package.json');
-
-    pluginsMenu.append(new gui.MenuItem({
-      type: 'normal',
-      label: pluginInfo.name,
-      click: function() {
-        runPlugin(path, pluginInfo);
-      }
-    }));
+  db.plugins.find({}, function(error, plugins) {
+    for (var key in plugins) {
+      var pluginInfo = require(plugins[key].path + '/package.json');
+      pluginsMenu.append(new gui.MenuItem({
+        type: 'normal',
+        label: pluginInfo.name,
+        click: function() {
+          runPlugin(plugins[key].path, pluginInfo);
+        }
+      }));
+    }
   });
 }
 
