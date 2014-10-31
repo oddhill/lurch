@@ -50,7 +50,7 @@ module.exports.get = function(id, callback) {
  */
 module.exports.updatePlugins = function(id, update) {
   db.sites.update({ _id: id }, update, function(err) {
-    console.log(err);
+
   });
 }
 
