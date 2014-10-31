@@ -21,10 +21,8 @@
       var dest = gui.App.dataPath + '/plugins' + '/' + folderName;
 
       plugins.add(pluginName, dest, function(newDoc) {
-        plugins.buildMenu(newDoc);
-        /*mv(pluginPath, dest, function(err) {
-          console.log(err);
-        });*/
+        plugins.buildMenu();
+
         $('#app').load('views/manage_plugins.html');
       });
     });
