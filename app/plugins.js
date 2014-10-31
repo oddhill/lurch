@@ -3,8 +3,15 @@ var walk = require('walkdir');
 /**
  * Function to get plugins and pass them to the menu
  */
-module.exports.buildMenu = function() {
+module.exports.buildMenu = function(newPlugin) {
   db.plugins.find({}, function(error, plugins) {
+
+    // Add newly added plugin to plugins array.
+    if (newPlugin) {
+      plugins.push(newPlugin);
+    }
+
+    // Loop att plugins and build plugins menu.
     for (var key in plugins) {
       var pluginInfo = require(plugins[key].path + '/package.json');
       pluginsMenu.append(new gui.MenuItem({
