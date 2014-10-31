@@ -56,6 +56,12 @@ lurch.execute('cd ' + lurch.current.path + ' && drush fra -y’, function(error,
 // Handle response here.
 });
 ```
+
+###Example plugins
+
+[lurch-Clear-all-cache](https://github.com/ErikJohansson93/lurch-Clear-all-cache)   
+[lurch-toggle-hidden-files](https://github.com/olofjohansson/lurch-toggle-hidden-files)   
+
 ###License
 
 Lurch's code in this repo uses the GNU V2 license.
