@@ -11,10 +11,10 @@ Lurch is an node-webkit based helper tool for web developers.
 
 ###Lurch uses a number of open source projects.
 
-[node-webkit](https://github.com/rogerwang/node-webkit)   
-[nedb](https://github.com/louischatriot/nedb)   
-[osx-notifier](https://github.com/chbrown/osx-notifier)   
-[walkdir](https://github.com/soldair/node-walkdir)   
+[node-webkit](https://github.com/rogerwang/node-webkit)     
+[nedb](https://github.com/louischatriot/nedb)       
+[osx-notifier](https://github.com/chbrown/osx-notifier)     
+[walkdir](https://github.com/soldair/node-walkdir)      
 
 
 ###How to create an plugin
@@ -59,8 +59,9 @@ lurch.execute('cd ' + lurch.current.path + ' && drush fra -y', function(error, s
 
 ###Example plugins
 
-[lurch-Clear-all-cache](https://github.com/ErikJohansson93/lurch-Clear-all-cache)   
-[lurch-toggle-hidden-files](https://github.com/olofjohansson/lurch-toggle-hidden-files)   
+[lurch-Clear-all-cache](https://github.com/ErikJohansson93/lurch-Clear-all-cache)     
+[lurch-toggle-hidden-files](https://github.com/olofjohansson/lurch-toggle-hidden-files)     
+[lurch-revert-all-features](https://github.com/ErikJohansson93/lurch-revert-all-features)       
 
 ###License
 
