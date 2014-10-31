@@ -11,7 +11,7 @@ module.exports.buildMenu = function(newPlugin) {
       plugins.push(newPlugin);
     }
 
-    // Loop att plugins and build plugins menu.
+    // Loop all plugins and build the plugins menu.
     for (var key in plugins) {
       var pluginInfo = require(plugins[key].path + '/package.json');
       pluginsMenu.append(new gui.MenuItem({
@@ -26,7 +26,7 @@ module.exports.buildMenu = function(newPlugin) {
 }
 
 /**
- * Get plugins
+ * Get plugins.
  */
 module.exports.getPlugins = function(callback) {
   db.plugins.find({}, function(error, plugins) {
@@ -35,7 +35,7 @@ module.exports.getPlugins = function(callback) {
 }
 
 /**
- * Function for running a plugin
+ * Function for running a plugin.
  */
 var runPlugin = function(path, pluginInfo) {
   var plugin = require(path + '/' + pluginInfo.main);
