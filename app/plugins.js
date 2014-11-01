@@ -1,4 +1,3 @@
-var walk = require('walkdir');
 var ncp = require('ncp').ncp;
 var rimraf = require('rimraf');
 

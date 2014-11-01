@@ -11,10 +11,9 @@ Lurch is an node-webkit based helper tool for web developers.
 
 ###Lurch uses a number of open source projects.
 
-[node-webkit](https://github.com/rogerwang/node-webkit)     
-[nedb](https://github.com/louischatriot/nedb)       
-[osx-notifier](https://github.com/chbrown/osx-notifier)     
-[walkdir](https://github.com/soldair/node-walkdir)      
+[node-webkit](https://github.com/rogerwang/node-webkit)
+[nedb](https://github.com/louischatriot/nedb)
+[osx-notifier](https://github.com/chbrown/osx-notifier)
 
 
 ###How to create an plugin
