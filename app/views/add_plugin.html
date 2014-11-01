@@ -20,7 +20,8 @@
       var folderName = pluginPath.match(/([^\/]*)\/*$/)[1];
       var dest = gui.App.dataPath + '/plugins' + '/' + folderName;
 
-      plugins.add(pluginName, dest, function(newDoc) {
+      plugins.add(pluginName, pluginPath, dest, function(newDoc) {
+        // Rebuild plugins menu
         plugins.rebuildMenu();
         $('#app').load('views/manage_plugins.html');
       });

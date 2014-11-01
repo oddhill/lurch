@@ -1,4 +1,6 @@
 var walk = require('walkdir');
+var ncp = require('ncp').ncp;
+var rimraf = require('rimraf');
 
 /**
  * Function to get plugins and pass them to the menu
@@ -84,49 +86,62 @@ module.exports.runPlugin = runPlugin;
 /**
  * Remove plugin
  */
-module.exports.remove = function(id, callback) {
-  db.plugins.remove({ _id: id }, function() {
+module.exports.remove = function(id, path, callback) {
+  // Remove from data path
+  rimraf(path, function(err) {
+    if (!err) {
 
-    db.sites.find({ plugins: { $in: [id] }}, function(err, projects) {
+      // Remove from db
+      db.plugins.remove({ _id: id }, function() {
 
-      if (projects.length < 1) {
-        callback();
-      }
+        db.sites.find({ plugins: { $in: [id] }}, function(err, projects) {
 
-      for (var key in projects) {
+          if (projects.length < 1) {
+            callback();
+          }
 
-        var projectPlugins = projects[key].plugins;
+          for (var key in projects) {
 
-        for (var pluginKey in projectPlugins) {
+            var projectPlugins = projects[key].plugins;
 
-          if (projectPlugins[pluginKey] == id) {
-            var popKey = parseInt(pluginKey);
-            popKey++;
-            db.sites.update({ _id: projects[key]._id }, { $pop: { plugins: popKey } }, {}, function(err) {
-              callback();
-            });
+            for (var pluginKey in projectPlugins) {
+
+              if (projectPlugins[pluginKey] == id) {
+                var popKey = parseInt(pluginKey);
+                popKey++;
+                db.sites.update({ _id: projects[key]._id }, { $pop: { plugins: popKey } }, {}, function(err) {
+                  callback();
+                });
+
+              }
+
+            }
 
           }
 
-        }
+        });
 
-      }
+      });
 
-    });
-
+    }
   });
 }
 
 /**
  * Add plugin
  */
-module.exports.add = function(name, dest, callback) {
+module.exports.add = function(name, path, dest, callback) {
   db.plugins.insert({
     name: name,
     path: dest
   }, function(error, newDoc) {
     if (!error) {
-      callback(newDoc);
+      // Move plugin folder to data path
+      ncp(path, dest, function(err) {
+        if (!err) {
+          callback(newDoc);
+        }
+      });
     }
   });
 }

@@ -9,15 +9,16 @@
 
   plugins.getPlugins(function(_plugins) {
     for (var key in _plugins) {
-      $('#plugins').append('<li>' + _plugins[key].name + '<a class="remove" href="#" data-id="' + _plugins[key]._id + '">Remove</a></li>');
+      $('#plugins').append('<li>' + _plugins[key].name + '<a class="remove" href="#" data-id="' + _plugins[key]._id + '" data-path="' + _plugins[key].path + '">Remove</a></li>');
     }
 
     // Remove plugin
     $('a.remove').click(function(event) {
       event.preventDefault();
       var id = $(this).attr('data-id');
+      var path = $(this).attr('data-path');
 
-      plugins.remove(id, function() {
+      plugins.remove(id, path, function() {
         plugins.rebuildMenu();
         $('#app').load('views/manage_plugins.html');
       });

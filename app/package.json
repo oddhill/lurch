@@ -9,9 +9,10 @@
     "height": 500
   },
   "dependencies": {
-    "mv": "^2.0.3",
+    "ncp": "^1.0.1",
     "nedb": "^0.11.0",
     "osx-notifier": "^0.2.1",
+    "rimraf": "^2.2.8",
     "walkdir": "0.0.7"
   },
   "devDependencies": {
