@@ -48,9 +48,9 @@ module.exports.get = function(id, callback) {
 /**
  * Update project enabled plugins
  */
-module.exports.updatePlugins = function(id, update) {
+module.exports.updatePlugins = function(id, update, callback) {
   db.sites.update({ _id: id }, update, function(err) {
-
+    callback();
   });
 }
 

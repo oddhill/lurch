@@ -14,7 +14,8 @@
 
     var data = {
       name: $(this).find('input[name="name"]').val(),
-      path: $(this).find('input[name="path"]').val()
+      path: $(this).find('input[name="path"]').val(),
+      plugins: []
     };
 
     projects.add(data, function() {

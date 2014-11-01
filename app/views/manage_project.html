@@ -41,16 +41,16 @@
 
     // Get plugins
     var checked = null;
-    plugins.getPlugins(function(plugins) {
+    plugins.getPlugins(function(_plugins) {
 
       // Append plugins
-      for (var key in plugins) {
+      for (var key in _plugins) {
         // Check if plugin in enabled on current project
-        if ($.inArray(plugins[key]._id, projectPlugins) > -1) {
+        if ($.inArray(_plugins[key]._id, projectPlugins) > -1) {
           checked = 'checked';
         }
 
-        $('#project-plugins ul').append('<li>' + plugins[key].name + '<span class="checkbox"><input type="checkbox" data-id="' + plugins[key]._id + '"' + checked + ' /></span></li>');
+        $('#project-plugins ul').append('<li>' + _plugins[key].name + '<span class="checkbox"><input type="checkbox" data-id="' + _plugins[key]._id + '"' + checked + ' /></span></li>');
       }
 
       // Edit db on change
@@ -63,7 +63,9 @@
           update = { $push: { plugins: id } };
         }
 
-        projects.updatePlugins(projectEditId, update);
+        projects.updatePlugins(projectEditId, update, function() {
+          plugins.rebuildMenu();
+        });
 
     });
   });

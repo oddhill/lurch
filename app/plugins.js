@@ -5,6 +5,9 @@ var rimraf = require('rimraf');
  * Function to get plugins and pass them to the menu
  */
 module.exports.buildMenu = function(newPlugin) {
+  var currentId = localStorage.currentSite;
+  db.sites.find({ _id: currentId }, function(err, project) {
+    var projectEnabledPlugins = project[0].plugins;
 
   db.plugins.find({}, function(error, plugins) {
 
@@ -28,8 +31,11 @@ module.exports.buildMenu = function(newPlugin) {
         }
       });
 
-      pluginsMenu.append(item);
+      if (projectEnabledPlugins.indexOf(plugins[key]._id) > -1) {
+        pluginsMenu.append(item);
+      }
     }
+  });
   });
 }
 
