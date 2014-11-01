@@ -18,6 +18,7 @@
       var id = $(this).attr('data-id');
 
       plugins.remove(id, function() {
+        plugins.rebuildMenu();
         $('#app').load('views/manage_plugins.html');
       });
     });

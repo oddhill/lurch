@@ -4,6 +4,7 @@ var walk = require('walkdir');
  * Function to get plugins and pass them to the menu
  */
 module.exports.buildMenu = function(newPlugin) {
+
   db.plugins.find({}, function(error, plugins) {
 
     // Add newly added plugin to plugins array.
@@ -13,16 +14,43 @@ module.exports.buildMenu = function(newPlugin) {
 
     // Loop all plugins and build the plugins menu.
     for (var key in plugins) {
-      var pluginInfo = require(plugins[key].path + '/package.json');
-      pluginsMenu.append(new gui.MenuItem({
+      var item = new gui.MenuItem({
         type: 'normal',
-        label: pluginInfo.name,
-        click: function() {
-          runPlugin(plugins[key].path, pluginInfo);
+        label: plugins[key].name
+      });
+
+      item.on('click', function() {
+        for (var id in pluginsMenu.items) {
+          if (pluginsMenu.items[id] == this) {
+            runPlugin(plugins[id].path);
+          }
         }
-      }));
+      });
+
+      pluginsMenu.append(item);
     }
   });
+}
+
+/**
+ * Function for rebuild menu
+ */
+module.exports.rebuildMenu = function() {
+  // Rebuild menu
+  // Remove current items
+  var max = pluginsMenu.items.length;
+  if (max == 0) {
+    module.exports.buildMenu();
+  } else {
+    for (var i = 0; i < max; i++) {
+      pluginsMenu.removeAt(0);
+
+      if ((i+1) == max) {
+        // Build menu items again
+        module.exports.buildMenu();
+      }
+    }
+  }
 }
 
 /**
@@ -37,7 +65,8 @@ module.exports.getPlugins = function(callback) {
 /**
  * Function for running a plugin.
  */
-var runPlugin = function(path, pluginInfo) {
+var runPlugin = function(path) {
+  var pluginInfo = require(path + '/package.json');
   var plugin = require(path + '/' + pluginInfo.main);
   plugin.run(lurch, function(response) {
     notification({
@@ -59,6 +88,10 @@ module.exports.remove = function(id, callback) {
   db.plugins.remove({ _id: id }, function() {
 
     db.sites.find({ plugins: { $in: [id] }}, function(err, projects) {
+
+      if (projects.length < 1) {
+        callback();
+      }
 
       for (var key in projects) {
 
