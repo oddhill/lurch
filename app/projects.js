@@ -1,13 +1,11 @@
+var plugins = require('./plugins.js');
+
 /**
  * Get projects and insert them in the menu
  */
-module.exports.buildMenu = function(lurch, callback) {
+module.exports.buildMenu = function(callback) {
   db.sites.find({}, function(error, sites) {
     for (var key in sites) {
-      if (sites[key]._id == localStorage.currentSite) {
-        lurch.current = sites[key];
-      }
-
       sitesMenu.append(new gui.MenuItem({
         type: 'checkbox',
         label: sites[key].name,
@@ -25,6 +23,27 @@ module.exports.buildMenu = function(lurch, callback) {
 
     callback();
   });
+}
+
+/**
+ * Rebuild menu
+ */
+module.exports.rebuildMenu = function() {
+  // Rebuild menu
+  // Remove current items
+  var max = sitesMenu.items.length;
+  if (max == 0) {
+    module.exports.buildMenu(function(){});
+  } else {
+    for (var i = 0; i < max; i++) {
+      sitesMenu.removeAt(0);
+
+      if ((i+1) == max) {
+        // Build menu items again
+        module.exports.buildMenu(function(){});
+      }
+    }
+  }
 }
 
 /**
@@ -91,6 +110,9 @@ var changeCurrent = function(lurch, project, clicked) {
       sitesMenu.items[key].checked = false;
     }
   }
+
+  // Rebuild plugins menu
+  plugins.rebuildMenu();
 }
 
 /**
@@ -99,7 +121,7 @@ var changeCurrent = function(lurch, project, clicked) {
 module.exports.loadCurrent = function(callback) {
   var id = localStorage.currentSite;
   db.sites.find({ _id: id }, function(error, project) {
-    callback(project);
+    callback(project[0]);
   });
 }
 

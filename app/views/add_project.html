@@ -27,6 +27,7 @@
     };
 
     projects.add(data, function() {
+      projects.rebuildMenu();
       $('#app').load('views/manage_projects.html');
     });
   });

@@ -68,7 +68,7 @@ projects.loadCurrent(function(project) {
 global.lurch = lurch;
 
 // Append sites to menu
-projects.buildMenu(lurch, function() {
+projects.buildMenu(function() {
 
   // Insert menu items to main menu
   lurchMenu.populate();

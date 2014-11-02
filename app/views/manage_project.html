@@ -95,6 +95,7 @@
     event.preventDefault();
 
     projects.remove(projectEditId, function() {
+      projects.rebuildMenu();
       $('#app').load('views/manage_projects.html');
     });
   });
