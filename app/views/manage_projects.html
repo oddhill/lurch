@@ -1,17 +1,17 @@
-<a href="#" class="add-project">Add project</a>
 <ul id="projects">
 </ul>
+<a href="#" class="add-project">Add project</a>
 
   <script>
     $(document).ready(function() {
       var projects = require('./projects.js');
       projects.getProjects(function(projects) {
         for (var key in projects) {
-          $('#projects').append('<li><span class="name"><a href="#" data-id="' + projects[key]._id + '">' + projects[key].name + '</a></span><span class="path">' + projects[key].path + '</span></li>');
+          $('#projects').append('<li><span class="name">' + projects[key].name + '</span><span class="path">' + projects[key].path + '</span><a href="#" class="edit" data-id="' + projects[key]._id + '">Manage</a></li>');
         }
 
         // Edit project
-        $('#projects .name a').click(function() {
+        $('#projects a.edit').click(function() {
           projectEditId = $(this).attr('data-id');
           $('#app').load('views/manage_project.html');
         });

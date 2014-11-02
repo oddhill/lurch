@@ -1,10 +1,18 @@
-<form id="add-site">
-    <label for="name">Namn</label>
-    <input name="name" type="text" />
-    <input name="path" type="file" nwdirectory />
+<h1>Add project</h1>
+<div id="project">
+  <form id="add-site">
+    <div class="input">
+      <label for="name">Namn</label>
+      <input name="name" type="text" />
+    </div>
+    <div class="input">
+      <label>Path</label>
+      <input name="path" type="file" nwdirectory />
+    </div>
 
     <input name="add" type="submit">
   </form>
+</div>
 
 <script>
   var projects = require('./projects.js');

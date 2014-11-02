@@ -2,8 +2,9 @@ html,
 body {
   padding: 0px;
   margin: 0px;
-  font-family: "Open Sans";
-  background: #eee; }
+  font-family: 'Source Sans Pro', sans-serif;
+  background: #eee;
+  padding-bottom: 50px; }
 
 ul {
   list-style-type: none;
@@ -12,16 +13,16 @@ ul {
 
 h1,
 h2 {
+  display: block;
   background: #fff;
   padding: 10px;
   margin: 0px;
-  font-size: 16px;
-  border-bottom: 1px solid #aaa; }
+  font-size: 16px; }
 
 .main-nav {
   width: 100%;
   height: 60px;
-  background: #3B4046; }
+  background: #fff; }
   .main-nav ul {
     display: block;
     list-style-type: none;
@@ -32,33 +33,60 @@ h2 {
     float: left; }
   .main-nav a {
     display: block;
-    color: #fff;
+    color: #888;
     text-align: center;
     text-decoration: none;
     text-transform: uppercase;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 60px;
-    transition: background .1s ease-in-out; }
+    transition: background .1s ease-in-out;
+    border-bottom: 1px solid #eee; }
     .main-nav a:hover, .main-nav a.active {
-      background: #24272a; }
+      border-bottom: 1px solid #1D83CE;
+      color: #1D83CE; }
+    .main-nav a span {
+      padding: 1px 8px 1px 8px;
+      background: #ddd;
+      color: #888;
+      border-radius: 10px;
+      margin-left: 5px; }
 
 a.add-plugin {
   display: block;
+  width: 100%;
   padding: 20px;
-  background: #4FC253;
+  background: #62AE47;
   color: #fff;
-  font-size: 14px; }
+  font-size: 12px;
+  text-decoration: none;
+  position: fixed;
+  bottom: 0px; }
+
+a.remove {
+  color: #ce3636;
+  font-size: 12px;
+  border: 2px solid #ce3636;
+  padding: 3px;
+  border-radius: 3px;
+  text-decoration: none;
+  float: right;
+  text-transform: uppercase;
+  transition: all .1s ease-in-out; }
+  a.remove:hover {
+    box-shadow: 0px 1px 2px #ccc; }
 
 #plugins {
   padding: 0px;
   margin: 0px; }
   #plugins li {
-    background: #eee;
+    background: #fff;
     list-style-type: none;
     padding: 0px;
     margin: 0px;
     padding: 10px;
-    border-bottom: 1px solid #ddd; }
+    border-bottom: 1px solid #ddd;
+    color: #000;
+    font-size: 14px; }
 
 #project-plugins {
   background: #fff; }
@@ -70,29 +98,58 @@ a.add-plugin {
 
 a.add-project {
   display: block;
+  width: 100%;
   padding: 20px;
-  background: #4FC253;
+  background: #62AE47;
   color: #fff;
-  font-size: 14px; }
+  font-size: 12px;
+  text-decoration: none;
+  position: fixed;
+  bottom: 0px; }
 
 #projects {
   padding: 0px;
   margin: 0px; }
   #projects li {
-    background: #eee;
+    background: #fff;
     list-style-type: none;
     padding: 0px;
     margin: 0px;
     padding: 10px;
     border-bottom: 1px solid #ddd; }
   #projects .name {
-    display: block; }
+    display: block;
+    margin-bottom: 5px; }
   #projects .path {
     font-style: italic;
     color: #aaa; }
-  #projects a {
-    color: #888; }
+  #projects a.edit {
+    color: #356D7E;
+    font-size: 12px;
+    border-radius: 5px;
+    border: 2px solid #356D7E;
+    padding: 5px;
+    text-decoration: none;
+    text-transform: uppercase;
+    float: right;
+    margin-top: -15px;
+    transition: all .1s ease-in-out; }
+    #projects a.edit:hover {
+      box-shadow: 0px 1px 2px #ccc; }
 
+.title-name {
+  color: #356D7E;
+  font-style: italic; }
+
+#project label {
+  display: inline-block;
+  padding: 5px;
+  text-transform: uppercase;
+  background: #eee;
+  color: #888;
+  border-radius: 5px;
+  font-size: 12px;
+  margin-right: 5px; }
 #project .input {
   width: 100%;
   display: block;
@@ -101,19 +158,31 @@ a.add-project {
   border-bottom: 1px solid #ddd;
   padding: 10px;
   background: #fff;
-  font-size: 14px;
-  text-transform: uppercase; }
+  font-size: 14px; }
 #project input[type="text"] {
   background: #fff;
   border: 0px;
-  outline: 0px; }
+  outline: 0px;
+  font-size: 12px; }
 #project input[type="submit"] {
-  width: 100%;
   padding: 10px;
-  display: block;
-  background: #4FC253;
+  display: inline-block;
+  background: #ACCE44;
   color: #fff;
   border: 0px;
   text-align: left;
   font-size: 14px;
-  cursor: pointer; }
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 10px; }
+#project .delete-project {
+  padding: 10px;
+  display: inline-block;
+  background: #ddd;
+  color: #888;
+  border: 0px;
+  text-align: left;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 10px 10px 10px 0px; }
