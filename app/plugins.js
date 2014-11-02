@@ -1,5 +1,6 @@
 var ncp = require('ncp').ncp;
 var rimraf = require('rimraf');
+var fs = require('fs');
 
 /**
  * Function to get plugins and pass them to the menu
@@ -141,11 +142,20 @@ module.exports.add = function(name, path, dest, callback) {
     path: dest
   }, function(error, newDoc) {
     if (!error) {
-      // Move plugin folder to data path
-      ncp(path, dest, function(err) {
-        if (!err) {
-          callback(newDoc);
+      // Create plugins folder if it does not exist
+      var pluginsFolder = gui.App.dataPath + '/plugins';
+      fs.exists(pluginsFolder, function(exists) {
+        if (!exists) {
+          //Create plugins folder
+          fs.mkdirSync(pluginsFolder);
         }
+
+        // Move plugin folder to data path
+        ncp(path, dest, function(err) {
+          if (!err) {
+            callback(newDoc);
+          }
+        });
       });
     }
   });
