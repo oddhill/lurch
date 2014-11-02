@@ -3,6 +3,13 @@ module.exports = function(grunt) {
   grunt.registerTask('watch', [ 'watch' ]);
 
   grunt.initConfig({
+    nodewebkit: {
+      options: {
+        platforms: ['osx'],
+        buildDir: '../builds',
+      },
+      src: ['./**/*'],
+    },
     sass: {
       options: {
         sourcemap: "none",
@@ -35,4 +42,5 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-node-webkit-builder');
 };

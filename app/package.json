@@ -17,6 +17,7 @@
   "devDependencies": {
     "grunt": "latest",
     "grunt-contrib-sass": "latest",
-    "grunt-contrib-watch": "latest"
+    "grunt-contrib-watch": "latest",
+    "grunt-node-webkit-builder": "^0.2.3"
   }
 }
