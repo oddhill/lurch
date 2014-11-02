@@ -1,12 +1,15 @@
 {
   "name": "Lurch",
   "main": "index.html",
+  "node-main": "node-main.js",
   "window": {
     "show": false,
     "toolbar": false,
     "frame": true,
     "width": 400,
-    "height": 500
+    "height": 500,
+    "resizable": false,
+    "show_in_taskbar": false
   },
   "dependencies": {
     "ncp": "^1.0.1",
