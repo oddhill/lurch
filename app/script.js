@@ -4,7 +4,7 @@ var gui = require('nw.gui');
 var notification = require('osx-notifier');
 var Datastore = require('nedb');
 var exec = require('child_process').exec;
-var window = gui.Window.get();
+var nwWindow = gui.Window.get();
 
 var menu = new gui.Menu();
 var sitesMenu = new gui.Menu();
@@ -39,7 +39,7 @@ global.pluginsMenu = pluginsMenu;
 global.$ = $;
 global.db = db;
 global.gui = gui;
-global.window = window;
+global.nwWindow = nwWindow;
 global.localStorage = localStorage;
 global.notification = notification;
 //global.lurch = lurch;

@@ -33,7 +33,7 @@ module.exports.populate = function() {
     type: 'normal',
     label: 'Manage projects',
     click: function() {
-      window.show();
+      nwWindow.show();
       $('#app').load('views/manage_projects.html');
     }
   }));
