@@ -4,6 +4,14 @@ var plugins = require('./plugins.js');
  * Get projects and insert them in the menu
  */
 module.exports.buildMenu = function(callback) {
+  // Get current
+  var current_id = null;
+  db.sites.find({ current: true }, function(error, project) {
+    if (project.length !== 0) {
+      current_id = project._id;
+    }
+  });
+
   db.sites.find({}, function(error, sites) {
     for (var key in sites) {
       sitesMenu.append(new gui.MenuItem({
@@ -17,7 +25,7 @@ module.exports.buildMenu = function(callback) {
             }
           }
         },
-        checked: sites[key]._id == localStorage.currentSite
+        checked: sites[key]._id == current_id
       }));
     }
 
@@ -97,8 +105,8 @@ module.exports.remove = function(id, callback) {
 var changeCurrent = function(lurch, project, clicked) {
   // Update lurch API
   lurch.current = project;
-  // Update localStorage
-  localStorage.currentSite = project._id;
+  // Update current in db
+  db.sites.update({ _id: project._id }, { $set: { current: true } }, {});
   // Update menu
   menu.items[0].label = "Current project: " + project.name;
 
@@ -119,8 +127,7 @@ var changeCurrent = function(lurch, project, clicked) {
  * Load current project
  */
 module.exports.loadCurrent = function(callback) {
-  var id = localStorage.currentSite;
-  db.sites.find({ _id: id }, function(error, project) {
+  db.sites.find({ current: true }, function(error, project) {
     callback(project[0]);
   });
 }

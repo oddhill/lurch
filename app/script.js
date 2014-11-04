@@ -27,11 +27,6 @@ db.plugins = new Datastore({
   autoload: true
 });
 
-db.settings = new Datastore({
-  filename: gui.App.dataPath + '/settings.db',
-  autoload: true
-});
-
 // Set global variables
 global.menu = menu;
 global.sitesMenu = sitesMenu;
@@ -40,9 +35,7 @@ global.$ = $;
 global.db = db;
 global.gui = gui;
 global.nwWindow = nwWindow;
-global.localStorage = localStorage;
 global.notification = notification;
-//global.lurch = lurch;
 
 // Set other global variables
 global.projectEditId = null;
@@ -63,7 +56,11 @@ var lurch = {
 
 // Load current
 projects.loadCurrent(function(project) {
-  lurch.current = project;
+  if (project) {
+    lurch.current = project;
+  } else {
+    lurch.current = { name: 'None selected' };
+  }
 });
 global.lurch = lurch;
 

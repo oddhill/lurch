@@ -6,9 +6,11 @@ var fs = require('fs');
  * Function to get plugins and pass them to the menu
  */
 module.exports.buildMenu = function(newPlugin) {
-  var currentId = localStorage.currentSite;
-  db.sites.find({ _id: currentId }, function(err, project) {
-    var projectEnabledPlugins = project[0].plugins;
+  db.sites.find({ current: true }, function(err, project) {
+    var projectEnabledPlugins = null;
+    if (project.length !== 0) {
+      var projectEnabledPlugins = project[0].plugins;
+    }
 
   db.plugins.find({}, function(error, plugins) {
 
