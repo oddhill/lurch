@@ -41,13 +41,13 @@ global.notification = notification;
 global.projectEditId = null;
 
 // Menu functions
-var lurchMenu = require('./menu.js');
+var lurchMenu = require('./lib/menu.js');
 
 // Project functions
-var projects = require('./projects.js');
+var projects = require('./lib/projects.js');
 
 // Plugin functions
-var plugins = require('./plugins.js');
+var plugins = require('./lib/plugins.js');
 
 var lurch = {
   execute: exec,
