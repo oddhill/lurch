@@ -75,4 +75,9 @@ projects.buildMenu(function() {
 
 });
 
+// Hide window on close
+nwWindow.on('close', function() {
+  this.hide();
+});
+
 })();
