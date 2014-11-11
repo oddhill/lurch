@@ -98,39 +98,26 @@ module.exports.remove = function(id, path, callback) {
   // Remove from data path
   rimraf(path, function(err) {
     if (!err) {
-
       // Remove from db
       db.plugins.remove({ _id: id }, function() {
-
         db.sites.find({ plugins: { $in: [id] }}, function(err, projects) {
-
           if (projects.length < 1) {
             callback();
           }
-
           for (var key in projects) {
-
             var projectPlugins = projects[key].plugins;
-
             for (var pluginKey in projectPlugins) {
-
               if (projectPlugins[pluginKey] == id) {
                 var popKey = parseInt(pluginKey);
                 popKey++;
                 db.sites.update({ _id: projects[key]._id }, { $pop: { plugins: popKey } }, {}, function(err) {
                   callback();
                 });
-
               }
-
             }
-
           }
-
         });
-
       });
-
     }
   });
 }
