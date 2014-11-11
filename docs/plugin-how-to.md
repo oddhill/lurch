@@ -1,5 +1,6 @@
 ###How to create an plugin
 
+####Package.json
 First we need to create an package.json.
 package.json should include a object that have the following properties, `name` and `main`.
 
@@ -17,6 +18,8 @@ Create `package.json`:
 
 When you have a `package.json` file done you can proceed to creating the plugin.
 In this example our file will be named `main.js`.
+
+####Main.js
 
 When creating your plugin you should create a new function named `run()` with the parameters `lurch` and `callback`.
 
@@ -36,4 +39,17 @@ Example:
 lurch.execute('cd ' + lurch.current.path + ' && drush fra -y', function(error, stdout, stderr) {
   // Handle response here.
 });
+```
+
+####Callback to Lurch
+The callback to lurch should contain an object with the following items:
+
+`success` A boolean wether the plugin run successfully or not.
+
+`message` A string containing notification message.
+
+Example:
+```javascript
+var status = { success: true, message: 'Success!' };
+callback(status);
 ```
