@@ -11,56 +11,25 @@ Lurch is an node-webkit based helper tool for web developers.
 
 ###Lurch uses a number of open source projects.
 
-[node-webkit](https://github.com/rogerwang/node-webkit)
-[nedb](https://github.com/louischatriot/nedb)
-[osx-notifier](https://github.com/chbrown/osx-notifier)
+[node-webkit](https://github.com/rogerwang/node-webkit)     
+[nedb](https://github.com/louischatriot/nedb)     
+[osx-notifier](https://github.com/chbrown/osx-notifier)     
 
 
-###How to create an plugin
+###Docs & How to's
 
-First we need to create an package.json.
-package.json should include a object that have the following properties, `name` and `main`.
-
-The `name` property should contain the name of your plugin. For example ”Revert all features”.
-The `main` property should tell lurch the name of the file which contains the plugin’s functionality.
-
-Create `package.json`:
-
-```json
-{
-"name": "Revert all features",
-"main": "main.js"
-}
-```
-
-When you have a `package.json` file done you can proceed to creating the plugin.
-In this example our file will be named `main.js`.
-
-When creating your plugin you should create a new function with the parameters `lurch` and `callback`.
-
-Example:
-
-```js
-module.exports.run = function(lurch, callback) {
-// Put code here.
-};
-```
-You have the lurch object available in your plugin. This object contains methods and values usable for your plugin.
-
-For executing terminal commands you should use the `execute` method.
-
-Example:
-```js
-lurch.execute('cd ' + lurch.current.path + ' && drush fra -y', function(error, stdout, stderr) {
-// Handle response here.
-});
-```
+[Plugin how to](https://github.com/oddhill/lurch/blob/master/docs/plugin-how-to.md)     
+[Plugin Docs](https://github.com/oddhill/lurch/blob/master/docs/plugin-API.md)     
+[Example plugin](https://github.com/oddhill/lurch/blob/master/docs/examples/example-1.js)     
 
 ###Example plugins
 
 [lurch-Clear-all-cache](https://github.com/ErikJohansson93/lurch-Clear-all-cache)     
 [lurch-toggle-hidden-files](https://github.com/olofjohansson/lurch-toggle-hidden-files)     
 [lurch-revert-all-features](https://github.com/ErikJohansson93/lurch-revert-all-features)       
+
+###Downloads
+Lurch is still in development.
 
 ###License
 
