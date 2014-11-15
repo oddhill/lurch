@@ -7,8 +7,8 @@ module.exports.buildMenu = function(callback) {
   // Get current
   var current_id = null;
   db.sites.find({ current: true }, function(error, project) {
-    if (project.length !== 0) {
-      current_id = project._id;
+    if (project.length >= 0) {
+      current_id = project[0]._id;
     }
   });
 
@@ -106,6 +106,7 @@ var changeCurrent = function(lurch, project, clicked) {
   // Update lurch API
   lurch.current = project;
   // Update current in db
+  db.sites.update({}, { $set: { current: false } }, {});
   db.sites.update({ _id: project._id }, { $set: { current: true } }, {});
   // Update menu
   menu.items[0].label = "Current project: " + project.name;
@@ -122,6 +123,8 @@ var changeCurrent = function(lurch, project, clicked) {
   // Rebuild plugins menu
   plugins.rebuildMenu();
 }
+
+module.exports.changeCurrent = changeCurrent;
 
 /**
  * Load current project
