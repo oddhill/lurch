@@ -52,3 +52,18 @@ module.exports.populate = function() {
     }
   }));
 }
+
+/**
+ * Destory menu
+ */
+module.exports.destroy = function(callback) {
+  // Destory
+  var length = menu.items.length;
+  for (var i = 0; i < length; i++) {
+    menu.removeAt(0);
+
+    if (i == (length-1)) {
+      callback();
+    }
+  }
+}

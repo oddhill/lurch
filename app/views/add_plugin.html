@@ -8,6 +8,7 @@
   $(document).ready(function() {
     var gui = require('nw.gui');
     var plugins = require('./lib/plugins.js');
+    var mainMenu = require('./lib/menu.js');
     var mv = require('mv');
 
     $('#add-plugin').submit(function(event) {
@@ -21,8 +22,12 @@
       var dest = gui.App.dataPath + '/plugins' + '/' + folderName;
 
       plugins.add(pluginName, pluginPath, dest, function(newDoc) {
-        // Rebuild plugins menu
-        plugins.rebuildMenu();
+        // Rebuild menu
+        mainMenu.destroy(function() {
+          mainMenu.populate();
+          plugins.buildMostUsedMenu();
+          plugins.rebuildMenu();
+        });
         $('#app').load('views/manage_plugins.html');
       });
     });

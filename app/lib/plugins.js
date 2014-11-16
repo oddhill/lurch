@@ -3,13 +3,56 @@ var rimraf = require('rimraf');
 var fs = require('fs');
 
 /**
+ * Get most used plugins and pass them to the menu
+ */
+module.exports.buildMostUsedMenu = function() {
+
+  // Add separator
+  menu.insert(new gui.MenuItem({
+    type: 'separator'
+  }), 0);
+
+  db.sites.findOne({ current: true }, function(err, docs) {
+    if (docs) {
+      docs.plugins.sort(function(a, b) {
+        if (a.used < b.used)
+          return 1;
+        if (a.used > b.used)
+          return -1;
+        return 0;
+      });
+
+      for (var key in docs.plugins) {
+
+        if (parseInt(key) > 2) {
+          break;
+        }
+
+        db.plugins.findOne({ _id: docs.plugins[key].id }, function(error, plugin) {
+          menu.insert(new gui.MenuItem({
+            type: 'normal',
+            label: plugin.name,
+            click: function() {
+              runPlugin(plugin.path);
+            }
+          }), 0);
+
+        });
+      }
+    }
+  });
+}
+
+/**
  * Function to get plugins and pass them to the menu
  */
 module.exports.buildMenu = function(newPlugin) {
   db.sites.find({ current: true }, function(err, project) {
-    var projectEnabledPlugins = null;
+    var projectEnabledPlugins = [];
     if (project.length !== 0) {
-      var projectEnabledPlugins = project[0].plugins;
+      for (var key in project[0].plugins) {
+        projectEnabledPlugins.push(project[0].plugins[key].id);
+      }
     }
 
   db.plugins.find({}, function(error, plugins) {
@@ -34,7 +77,7 @@ module.exports.buildMenu = function(newPlugin) {
         }
       });
 
-      if (projectEnabledPlugins.indexOf(plugins[key]._id) > -1) {
+      if (projectEnabledPlugins !== null && projectEnabledPlugins.indexOf(plugins[key]._id) > -1) {
         pluginsMenu.append(item);
       }
     }
@@ -76,6 +119,24 @@ module.exports.getPlugins = function(callback) {
  * Function for running a plugin.
  */
 var runPlugin = function(path) {
+  // Alter clicked number
+  var pluginId = null;
+  var usedUpdate = null;
+  db.plugins.find({ path: path }, function(error, plugin) {
+    pluginId = plugin[0]._id;
+    db.sites.findOne({ current: true }, function(error, plugin2) {
+      usedUpdate = plugin2.plugins;
+      for (var key in plugin2.plugins) {
+        if (plugin2.plugins[key].id == pluginId) {
+          usedUpdate[key].used++;
+          break;
+        }
+      }
+      db.sites.update({ current: true }, { $set: { plugins: usedUpdate } }, {});
+    });
+  });
+
+  // Run plugin
   var pluginInfo = require(path + '/package.json');
   var plugin = require(path + '/' + pluginInfo.main);
   plugin.run(lurch, function(response) {
@@ -100,23 +161,8 @@ module.exports.remove = function(id, path, callback) {
     if (!err) {
       // Remove from db
       db.plugins.remove({ _id: id }, function() {
-        db.sites.find({ plugins: { $in: [id] }}, function(err, projects) {
-          if (projects.length < 1) {
-            callback();
-          }
-          for (var key in projects) {
-            var projectPlugins = projects[key].plugins;
-            for (var pluginKey in projectPlugins) {
-              if (projectPlugins[pluginKey] == id) {
-                var popKey = parseInt(pluginKey);
-                popKey++;
-                db.sites.update({ _id: projects[key]._id }, { $pop: { plugins: popKey } }, {}, function(err) {
-                  callback();
-                });
-              }
-            }
-          }
-        });
+        db.sites.update({}, { $pull: { plugins: { id: id } } }, { multi: true });
+        callback();
       });
     }
   });

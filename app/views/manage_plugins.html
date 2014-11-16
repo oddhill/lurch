@@ -6,6 +6,7 @@
 
 <script>
   var plugins = require('./lib/plugins.js');
+  var mainMenu = require('./lib/menu.js');
 
   plugins.getPlugins(function(_plugins) {
     for (var key in _plugins) {
@@ -19,7 +20,12 @@
       var path = $(this).attr('data-path');
 
       plugins.remove(id, path, function() {
-        plugins.rebuildMenu();
+        // Rebuild menu
+        mainMenu.destroy(function() {
+          mainMenu.populate();
+          plugins.buildMostUsedMenu();
+          plugins.rebuildMenu();
+        });
         $('#app').load('views/manage_plugins.html');
       });
     });

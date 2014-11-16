@@ -16,6 +16,8 @@
 
 <script>
   var projects = require('./lib/projects.js');
+  var plugins = require('./lib/plugins.js');
+  var mainMenu = require('./lib/menu.js');
 
   $('#add-site').submit(function(event) {
     event.preventDefault();
@@ -28,7 +30,13 @@
     };
 
     projects.add(data, function() {
-      projects.rebuildMenu();
+      // Rebuild menu
+      mainMenu.destroy(function() {
+        mainMenu.populate();
+        plugins.buildMostUsedMenu();
+        plugins.rebuildMenu();
+        projects.rebuildMenu();
+      });
       $('#app').load('views/manage_projects.html');
     });
   });

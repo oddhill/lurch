@@ -1,4 +1,5 @@
 var plugins = require('./plugins.js');
+var mainMenu = require('./menu.js');
 
 /**
  * Get projects and insert them in the menu
@@ -7,7 +8,7 @@ module.exports.buildMenu = function(callback) {
   // Get current
   var current_id = null;
   db.sites.find({ current: true }, function(error, project) {
-    if (project.length >= 0) {
+    if (project.length > 0) {
       current_id = project[0]._id;
     }
   });
@@ -108,8 +109,6 @@ var changeCurrent = function(lurch, project, clicked) {
   // Update current in db
   db.sites.update({}, { $set: { current: false } }, {});
   db.sites.update({ _id: project._id }, { $set: { current: true } }, {});
-  // Update menu
-  menu.items[0].label = "Current project: " + project.name;
 
   // Remove 'checked' from sites menu
   var items = sitesMenu.items;
@@ -120,8 +119,12 @@ var changeCurrent = function(lurch, project, clicked) {
     }
   }
 
-  // Rebuild plugins menu
-  plugins.rebuildMenu();
+  // Rebuild menu
+  mainMenu.destroy(function() {
+    mainMenu.populate();
+    plugins.buildMostUsedMenu();
+    plugins.rebuildMenu();
+  });
 }
 
 module.exports.changeCurrent = changeCurrent;

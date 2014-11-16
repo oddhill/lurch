@@ -27,6 +27,7 @@
 <script>
   var projects = require('./lib/projects.js');
   var plugins = require('./lib/plugins.js');
+  var mainMenu = require('./lib/menu.js');
 
   var projectPath = null;
   var projectPlugins = null;
@@ -38,7 +39,10 @@
     $('.title-name').text(project[0].name);
     $('.path').text(project[0].path);
     projectPath = project[0].path;
-    projectPlugins = project[0].plugins;
+    var projectPlugins = [];
+    for (var key in project[0].plugins) {
+      projectPlugins.push(project[0].plugins[key].id);
+    }
 
     // Get plugins
     var checked = null;
@@ -47,6 +51,7 @@
       // Append plugins
       for (var key in _plugins) {
         // Check if plugin in enabled on current project
+        checked = null;
         if ($.inArray(_plugins[key]._id, projectPlugins) > -1) {
           checked = 'checked';
         }
@@ -58,14 +63,22 @@
       $('#project-plugins input[type="checkbox"]').on('change', function() {
         var add = $(this).prop('checked');
         var id = $(this).attr('data-id');
-        var update = { $pull: { plugins: id } };
+
+        var pluginAddData = { id: id, used: 0 };
+
+        var update = { $pull: { plugins: { id: id } } };
 
         if (add) {
-          update = { $push: { plugins: id } };
+          update = { $push: { plugins: pluginAddData } };
         }
 
         projects.updatePlugins(projectEditId, update, function() {
-          plugins.rebuildMenu();
+          // Rebuild menu
+          mainMenu.destroy(function() {
+            mainMenu.populate();
+            plugins.buildMostUsedMenu();
+            plugins.rebuildMenu();
+          });
         });
 
     });

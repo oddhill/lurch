@@ -67,6 +67,9 @@ global.lurch = lurch;
 // Append sites to menu
 projects.buildMenu(function() {
 
+  // Insert most used plugins
+  plugins.buildMostUsedMenu();
+
   // Insert menu items to main menu
   lurchMenu.populate();
 
