@@ -36,6 +36,7 @@ global.db = db;
 global.gui = gui;
 global.nwWindow = nwWindow;
 global.notification = notification;
+global.localStorage = localStorage;
 
 // Set other global variables
 global.projectEditId = null;
@@ -77,6 +78,9 @@ projects.buildMenu(function() {
   plugins.buildMenu();
 
 });
+
+// Set REST token if not set
+require('./rest/rest-api.js').setToken();
 
 // Hide window on close
 nwWindow.on('close', function() {
