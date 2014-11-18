@@ -22,23 +22,14 @@ module.exports.init = function() {
       bodyParser = require('body-parser');
 
   // Basic auth
-  var auth = require('basic-auth');
+  var auth = require('http-auth');
+  var basic = auth.basic({ realm: 'Lurch REST' }, function(username, password, callback) {
+    callback(username === 'lurch' && password === localStorage.restToken);
+  });
+  app.use(auth.connect(basic));
 
   // parse application/json
   app.use(bodyParser.json());
-
-  // Basic auth
-  app.use(function(req, res, next) {
-    var user = auth(req);
-    console.log(user);
-    if (!user || user.name !== 'lurch' || user.pass !== localStorage.restToken) {
-      // Call Columbo
-      res.end('Just one more thing...');
-    } else {
-      // Just continue no Lt. needed.
-      next();
-    }
-  });
 
   // GET
 
