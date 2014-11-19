@@ -29,7 +29,8 @@ Lurch is an node-webkit based helper tool for web developers.
 [lurch-revert-all-features](https://github.com/ErikJohansson93/lurch-revert-all-features)       
 
 ###Downloads
-Lurch is still in development.
+Pre-releases
+[v1.0.0-alpha.0](http://icepick.xn--q9jyb4c/lurch/latest/build)
 
 ###License
 
