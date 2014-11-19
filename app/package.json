@@ -1,5 +1,6 @@
 {
   "name": "Lurch",
+  "version": "1.0.0-alpha.0",
   "main": "index.html",
   "node-main": "node-main.js",
   "window": {
