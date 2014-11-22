@@ -40,8 +40,40 @@ module.exports.init = function() {
 
   // Get current project
   app.get('/project/current', function(req, res) {
-    db.sites.find({ current: true }, function(error, project) {
-      res.json(project[0]);
+    db.sites.findOne({ current: true }, function(error, project) {
+      res.json(project);
+      res.end();
+    });
+  });
+
+  // Get project
+  app.get('/project/get/:id', function(req, res) {
+    db.sites.findOne({ _id: req.param('id') }, function(error, project) {
+      res.json(project);
+      res.end();
+    });
+  });
+
+  // Get all projects
+  app.get('/projects/get', function(req, res) {
+    db.sites.find({}, function(error, projects) {
+      res.json(projects);
+      res.end();
+    });
+  });
+
+  // Get plugin
+  app.get('/plugin/get/:id', function(req, res) {
+    db.plugins.findOne({ _id: req.param('id') }, function(error, plugin) {
+      res.json(plugin);
+      res.end();
+    });
+  });
+
+  // Get all plugins
+  app.get('/plugins/get', function(req, res) {
+    db.plugins.find({}, function(error, plugins) {
+      res.json(plugins);
       res.end();
     });
   });
