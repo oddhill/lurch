@@ -22,13 +22,16 @@ module.exports.buildMostUsedMenu = function() {
         return 0;
       });
 
-      for (var key in docs.plugins) {
+      var mostUsed = null;
+      mostUsed = docs.plugins.slice(0, 3).reverse();
+
+      for (var key in mostUsed) {
 
         if (parseInt(key) > 2) {
           break;
         }
 
-        db.plugins.findOne({ _id: docs.plugins[key].id }, function(error, plugin) {
+        db.plugins.findOne({ _id: mostUsed[key].id }, function(error, plugin) {
           menu.insert(new gui.MenuItem({
             type: 'normal',
             label: plugin.name,
