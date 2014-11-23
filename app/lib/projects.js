@@ -124,6 +124,7 @@ var changeCurrent = function(lurch, project, clicked) {
     mainMenu.populate();
     plugins.buildMostUsedMenu();
     plugins.rebuildMenu();
+    module.exports.rebuildMenu();
   });
 }
 
