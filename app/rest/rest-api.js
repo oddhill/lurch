@@ -98,5 +98,23 @@ module.exports.init = function() {
     });
   });
 
+  // DELETE
+
+  // Delete a project
+  app.delete('/project/delete/:id', function(req, res) {
+    db.sites.remove({ _id: req.param('id') }, {}, function() {
+      res.json({"success": true});
+      res.end();
+    });
+  });
+
+  // Delete a plugin
+  app.delete('/plugin/delete/:id', function(req, res) {
+    db.plugins.remove({ _id: req.param('id') }, {}, function() {
+      res.json({"success": true});
+      res.end();
+    });
+  });
+
   app.listen(1994);
 }
