@@ -1,0 +1,146 @@
+#tutorial {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 100000;
+  background: #eee;
+  background: url('../graphics/bg.png');
+  background-size: contain;
+  overflow: hidden;
+}
+
+#tutorial-slide {
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  font-family: 'Lato';
+  font-weight: 100;
+
+  .owl-wrapper-outer,
+  .owl-wrapper {
+    height: 100%;
+  }
+
+  .owl-item {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+  }
+
+  .step {
+    width: 100%;
+    text-align: center;
+
+    .num {
+      display: block;
+      width: 70px;
+      height: 70px;
+      border-radius: 70px;
+      border: 2px solid #fda1fe;
+      margin: 0 auto;
+      text-align: center;
+      color: #fff;
+      line-height: 65px;
+      font-size: 30px;
+      opacity: 0.8;
+    }
+
+    .continue {
+      display: block;
+      width: 150px;
+      height: 40px;
+      border: 2px solid #a498f9;
+      border-radius: 20px;
+      margin: 0 auto;
+      margin-top: 30px;
+      margin-bottom: 10px;
+      color: #fff;
+      line-height: 35px;
+      cursor: pointer;
+    }
+  }
+
+  h1,
+  h2 {
+    background: none;
+    font-size: 30px;
+    color: #fff;
+    font-weight: 100;
+  }
+
+  p {
+    color: #fff;
+    padding: 0px 50px 0px 50px;
+    line-height: 25px;
+  }
+
+  .skip {
+    color: #fff;
+    font-size: 14px;
+    text-decoration: none;
+  }
+}
+
+// Step home
+.step.home {
+  text-align: center;
+
+  .get-started {
+    width: 150px;
+    height: 40px;
+    border: 2px solid #fff;
+    border-radius: 20px;
+    margin: 0 auto;
+    margin-top: 50px;
+    color: #fff;
+    line-height: 35px;
+    cursor: pointer;
+  }
+}
+
+// Step one
+.step.first {
+
+}
+
+// Step.second
+// Step.third
+// Upload
+.step.second,
+.step.third {
+
+  .upload-area {
+    width: 105px;
+    height: 108px;
+    background: url('../graphics/upload-area.svg') no-repeat;
+    margin: 0 auto;
+
+    .status {
+      display: block;
+      width: 30px;
+      height: 38px;
+      background: url('../graphics/upload-status.svg') bottom right no-repeat;
+      margin: 0 auto;
+      padding-top: 30px;
+      padding-right: 7px;
+    }
+  }
+}
+
+.lurch-success {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  bottom: 0px;
+  background: url('../graphics/lurch.gif') center center;
+  background-size: cover;
+  opacity: 0.1;
+
+  &.on {
+    display: block;
+  }
+}
