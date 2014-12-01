@@ -92,9 +92,18 @@ module.exports.init = function() {
   // Run plugin
   app.post('/plugin/run/:id', function(req, res) {
     db.plugins.find({ _id: req.param('id') }, function(error, plugin) {
-      plugins.runPlugin(plugin[0].path);
-      res.json({"success": true});
-      res.end();
+      db.sites.findOne({ current: true }, function(error, project) {
+        for (var p in project.plugins) {
+          if (project.plugins[p].id == req.param('id')) {
+            plugins.runPlugin(plugin[0].path);
+            res.json({"success": true});
+            res.end();
+            return;
+          }
+        }
+        res.json({"success": false});
+        res.end();
+      });
     });
   });
 
