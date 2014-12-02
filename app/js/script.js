@@ -5,14 +5,18 @@ var notification = require('osx-notifier');
 var Datastore = require('nedb');
 var exec = require('child_process').exec;
 var nwWindow = gui.Window.get();
+nwWindow.setShowInTaskbar(false);
 
 var menu = new gui.Menu();
 var sitesMenu = new gui.Menu();
 var pluginsMenu = new gui.Menu();
 var tray = new gui.Tray({
-  title: 'Lurch',
+  icon: 'graphics/menu-icon@2x.png',
   menu: menu
 });
+var mb = new gui.Menu({type:'menubar'});
+mb.createMacBuiltin('Lurch');
+gui.Window.get().menu = mb;
 
 // NEdb init
 var db = {};
@@ -84,6 +88,7 @@ require('./rest/rest-api.js').setToken();
 
 // Hide window on close
 nwWindow.on('close', function() {
+  this.setShowInTaskbar(false);
   this.hide();
 });
 

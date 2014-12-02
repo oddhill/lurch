@@ -33,6 +33,7 @@ module.exports.populate = function() {
     type: 'normal',
     label: 'Manage projects',
     click: function() {
+      nwWindow.setShowInTaskbar(true);
       nwWindow.show();
       $('#app').load('views/manage_projects.html');
     }
