@@ -82,9 +82,9 @@ module.exports.init = function() {
 
   // Change current project
   app.post('/project/change/:id', function(req, res) {
-    db.sites.find({ _id: req.param('id') }, function(error, project) {
-      projects.changeCurrent(lurch, project[0]);
-      res.json({"success": true});
+    db.sites.findOne({ _id: req.param('id') }, function(error, project) {
+      projects.changeCurrent(lurch, project);
+      res.json(project);
       res.end();
     });
   });
