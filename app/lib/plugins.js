@@ -1,6 +1,7 @@
 var ncp = require('ncp').ncp;
 var rimraf = require('rimraf');
 var fs = require('fs');
+var request = require('request');
 
 /**
  * Get most used plugins and pass them to the menu
@@ -143,12 +144,19 @@ var runPlugin = function(path) {
   var pluginInfo = require(path + '/package.json');
   var plugin = require(path + '/' + pluginInfo.main);
   plugin.run(lurch, function(response) {
+    // Notify the user of response status
     notification({
       type: response.success ? 'pass' : 'fail',
       title: pluginInfo.name,
       message: response.message,
       group: 'Lurch'
     });
+
+    // Send request to callback URL
+    var callbackURL = localStorage.pluginCallback;
+    if (callbackURL.length > 0) {
+      request.post(callbackURL, response.success);
+    }
   });
 }
 
