@@ -5,30 +5,29 @@
 </ul>
 
 <script>
-  var plugins = require('./lib/plugins.js');
-  var mainMenu = require('./lib/menu.js');
+  var Plugin = require('./lib/Plugin/Plugin.js');
 
-  plugins.getPlugins(function(_plugins) {
-    for (var key in _plugins) {
-      $('#plugins').append('<li>' + _plugins[key].name + '<a class="remove" href="#" data-id="' + _plugins[key]._id + '" data-path="' + _plugins[key].path + '">Remove</a></li>');
-    }
+  Plugin.findAll(function(err, plugins) {
+    if (!err) {
+      for (var key in plugins) {
+        $('#plugins').append('<li>' + plugins[key].name + '<a class="remove" href="#" data-id="' + plugins[key]._id + '">Remove</a></li>');
+      }
 
-    // Remove plugin
-    $('a.remove').click(function(event) {
-      event.preventDefault();
-      var id = $(this).attr('data-id');
-      var path = $(this).attr('data-path');
+      // Remove plugin
+      $('a.remove').click(function(event) {
+        event.preventDefault();
+        var id = $(this).attr('data-id');
 
-      plugins.remove(id, path, function() {
-        // Rebuild menu
-        mainMenu.destroy(function() {
-          mainMenu.populate();
-          plugins.buildMostUsedMenu();
-          plugins.rebuildMenu();
+        Plugin.findById(id, function(err, plugin) {
+          plugin.remove(function(err) {
+            if (!err) {
+              // Rebuild menu and reload plugins view
+              $('#app').load('views/manage_plugins.html');
+            }
+          });
         });
-        $('#app').load('views/manage_plugins.html');
       });
-    });
+    }
   });
 
   // Add-plugin

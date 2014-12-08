@@ -6,28 +6,29 @@
 
 <script>
   $(document).ready(function() {
-    var gui = require('nw.gui');
-    var plugins = require('./lib/plugins.js');
-    var mainMenu = require('./lib/menu.js');
+    var Plugin = require('./lib/Plugin/Plugin.js');
 
     $('#add-plugin').submit(function(event) {
       event.preventDefault();
 
+      // Get plugin path from input
       var pluginPath = $(this).find('input[name="path"]').val();
-      var pluginInfo = pluginPath + '/package.json';
-      var pluginName = require(pluginInfo).name;
+      // Create a new plugin object
+      var newPlugin = new Plugin(null, pluginPath);
+      // Get the plugins manifest name
+      newPlugin.manifestName(function(name) {
+        // Set the plugins name
+        newPlugin.setName(name);
+        // Move plugin folder to data path
+        newPlugin.moveToDataPath(function(err) {
+          if (!err) {
+            // If there is no error, well. Save it to db!
+            newPlugin.save(function(err, result) {
+              // Rebuild menu and load plugins view HERE UNDER
 
-      var folderName = pluginPath.match(/([^\/]*)\/*$/)[1];
-      var dest = gui.App.dataPath + '/plugins' + '/' + folderName;
-
-      plugins.add(pluginName, pluginPath, dest, function(newDoc) {
-        // Rebuild menu
-        mainMenu.destroy(function() {
-          mainMenu.populate();
-          plugins.buildMostUsedMenu();
-          plugins.rebuildMenu();
+            });
+          }
         });
-        $('#app').load('views/manage_plugins.html');
       });
     });
   });

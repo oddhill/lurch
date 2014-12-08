@@ -25,91 +25,77 @@
 </div>
 
 <script>
-  var projects = require('./lib/projects.js');
-  var plugins = require('./lib/plugins.js');
-  var mainMenu = require('./lib/menu.js');
+  var Project = require('./lib/Project/Project.js');
+  var Plugin = require('./lib/Plugin/Plugin.js');
 
   var projectPath = null;
   var projectPlugins = null;
 
   // Get specific project
-  projects.get(projectEditId, function(project) {
+  Project.findById(projectEditId, function(err, project) {
     // Load data
-    $('#change-project').find('input[name="name"]').val(project[0].name);
-    $('.title-name').text(project[0].name);
-    $('.path').text(project[0].path);
-    projectPath = project[0].path;
-    var projectPlugins = [];
-    for (var key in project[0].plugins) {
-      projectPlugins.push(project[0].plugins[key].id);
-    }
+    $('#change-project').find('input[name="name"]').val(project.name);
+    $('.title-name').text(project.name);
+    $('.path').text(project.path);
+
+    var projectPlugins = null;
+    project.getPlugins(function(_projectPlugins) {
+      projectPlugins = _projectPlugins;
+    });
 
     // Get plugins
     var checked = null;
-    plugins.getPlugins(function(_plugins) {
-
+    Plugin.findAll(function(err, plugins) {
       // Append plugins
-      for (var key in _plugins) {
+      for (var key in plugins) {
         // Check if plugin in enabled on current project
         checked = null;
-        if ($.inArray(_plugins[key]._id, projectPlugins) > -1) {
-          checked = 'checked';
+        for (var key2 in projectPlugins) {
+          if (plugins[key]._id == projectPlugins[key2].id) {
+            checked = 'checked';
+          }
         }
 
-        $('#project-plugins ul').append('<li>' + _plugins[key].name + '<span class="checkbox"><input type="checkbox" data-id="' + _plugins[key]._id + '"' + checked + ' /></span></li>');
+        $('#project-plugins ul').append('<li>' + plugins[key].name + '<span class="checkbox"><input type="checkbox" data-id="' + plugins[key]._id + '"' + checked + ' /></span></li>');
       }
 
       // Edit db on change
       $('#project-plugins input[type="checkbox"]').on('change', function() {
+
         var add = $(this).prop('checked');
         var id = $(this).attr('data-id');
 
-        var pluginAddData = { id: id, used: 0 };
-
-        var update = { $pull: { plugins: { id: id } } };
-
+        // Remove or add plugin from project
         if (add) {
-          update = { $push: { plugins: pluginAddData } };
+          projectPlugins.push({ id: id, used: 0 });
+          project.setPlugins(projectPlugins);
+        } else {
+          for (var i = 0; i < projectPlugins.length; i++) {
+            if (projectPlugins[i].id === id) {
+              projectPlugins.splice(i, 1);
+              project.setPlugins(projectPlugins);
+              break;
+            }
+          }
         }
 
-        projects.updatePlugins(projectEditId, update, function() {
-          // Rebuild menu
-          mainMenu.destroy(function() {
-            mainMenu.populate();
-            plugins.buildMostUsedMenu();
-            plugins.rebuildMenu();
-          });
+        // Save to db
+        project.save(function() {
+          // Rebuild menu (:
         });
-
+      });
     });
-  });
-
   });
 
   $('#change-project').submit(function(event) {
     event.preventDefault();
 
-    if ($('#change-project').find('input[name="path"]').val()) {
-      projectPath = $('#change-project').find('input[name="path"]').val();
-    }
-
-    var query = {
-      name: $(this).find('input[name="name"]').val(),
-      path: projectPath,
-      plugins: ['eHkK0rnJdZSfK8k8'],
-    };
-
-    projects.update(projectEditId, query, function() {
-      $('#app').load('views/manage_projects.html');
-    });
+    // Update project
   });
 
   $('.delete-project').click(function(event) {
     event.preventDefault();
 
-    projects.remove(projectEditId, function() {
-      projects.rebuildMenu();
-      $('#app').load('views/manage_projects.html');
-    });
+    // Remove project
   });
 </script>

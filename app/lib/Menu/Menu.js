@@ -1,7 +1,36 @@
+var projectsMenu = require('./inc/projects.js');
+var pluginsMenu = require('./inc/plugins.js');
+
+function Menu() {
+  this.menu = new gui.Menu();
+  this.subMenus = {};
+  this.subMenus.projects = new gui.Menu();
+  this.subMenus.plugins = new gui.Menu();
+}
+
+// Menu init
+Menu.prototype.addToTray = function() {
+  var menu = this.menu;
+
+  // Add to tray
+  var tray = new gui.Tray({
+    icon: 'graphics/menu-icon@2x.png',
+    menu: menu
+  });
+
+  // Add window menus
+  var mb = new gui.Menu({type:'menubar'});
+  mb.createMacBuiltin('Lurch');
+  gui.Window.get().menu = mb;
+};
+
 /**
  * Function to populate the menu
  */
-module.exports.populate = function() {
+Menu.prototype.populate = function() {
+  var menu = this.menu;
+  var subMenus = this.subMenus;
+
   // Current site in menu
   menu.append(new gui.MenuItem({
     type: 'normal',
@@ -14,18 +43,18 @@ module.exports.populate = function() {
     type: 'separator'
   }));
 
-  // Sites sub-menu
+  // Projects sub-menu
   menu.append(new gui.MenuItem({
     type: 'normal',
     label: 'Change site',
-    submenu: sitesMenu
+    submenu: subMenus.projects
   }));
 
   // Plugins sub-menu
   menu.append(new gui.MenuItem({
     type: 'normal',
     label: 'Run plugin',
-    submenu: pluginsMenu
+    submenu: subMenus.plugins
   }));
 
   // Manage sites
@@ -52,13 +81,19 @@ module.exports.populate = function() {
       gui.App.quit();
     }
   }));
+
+  // Populate projects menu
+  projectsMenu.build(subMenus, function() {});
+
+  // Populate plugins menu
+  pluginsMenu.build(subMenus, function() {});
 }
 
 /**
- * Destory menu
+ * Destroy menu
  */
 module.exports.destroy = function(callback) {
-  // Destory
+  // Destroy
   var length = menu.items.length;
   for (var i = 0; i < length; i++) {
     menu.removeAt(0);
@@ -68,3 +103,5 @@ module.exports.destroy = function(callback) {
     }
   }
 }
+
+module.exports = Menu;
