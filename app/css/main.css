@@ -232,14 +232,22 @@ a.add-project {
       display: block;
       width: 150px;
       height: 40px;
-      border: 2px solid #a498f9;
+      border: 1px solid #a498f9;
       border-radius: 20px;
       margin: 0 auto;
       margin-top: 30px;
       margin-bottom: 10px;
       color: #fff;
-      line-height: 35px;
-      cursor: pointer; }
+      line-height: 38px;
+      cursor: pointer;
+      transition: all .2s ease-in-out; }
+      #tutorial-slide .step .continue:hover {
+        background: #fff;
+        color: #9b47a8;
+        border: 1px solid transparent; }
+      #tutorial-slide .step .continue.finish:hover {
+        background: #3bb41d;
+        color: #fff; }
   #tutorial-slide h1,
   #tutorial-slide h2 {
     background: none;
@@ -283,6 +291,9 @@ a.add-project {
     margin: 0 auto;
     padding-top: 30px;
     padding-right: 7px; }
+  .step.second .upload-area.active .status,
+  .step.third .upload-area.active .status {
+    background: green; }
 
 .lurch-success {
   display: none;

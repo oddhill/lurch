@@ -29,6 +29,12 @@ $('document').ready(function() {
       $('#tutorial').remove();
     });
 
+    // Drag and drop
+    var projectHolder = document.getElementById('tutorial-drag-drop-project');
+    var pluginHolder = document.getElementById('tutorial-drag-drop-plugin');
+    dragndrop(projectHolder);
+    dragndrop(pluginHolder);
+
   });
 
 });
