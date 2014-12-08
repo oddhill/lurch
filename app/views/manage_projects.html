@@ -4,8 +4,8 @@
 
   <script>
     $(document).ready(function() {
-      var projects = require('./lib/projects.js');
-      projects.getProjects(function(projects) {
+      var Project = require('./lib/Project/Project.js');
+      Project.findAll(function(err, projects) {
         for (var key in projects) {
           $('#projects').append('<li><span class="name">' + projects[key].name + '</span><span class="path">' + projects[key].path + '</span><a href="#" class="edit" data-id="' + projects[key]._id + '">Manage</a></li>');
         }

@@ -15,28 +15,23 @@
 </div>
 
 <script>
-  var projects = require('./lib/projects.js');
-  var plugins = require('./lib/plugins.js');
-  var mainMenu = require('./lib/menu.js');
+  var Project = require('./lib/Project/Project.js');
 
   $('#add-site').submit(function(event) {
     event.preventDefault();
 
-    var data = {
-      name: $(this).find('input[name="name"]').val(),
-      path: $(this).find('input[name="path"]').val(),
-      plugins: [],
-      current: false,
-    };
+    var name = $(this).find('input[name="name"]').val();
+    var path = $(this).find('input[name="path"]').val();
 
-    projects.add(data, function() {
+    var newProject = new Project(name, path, [], false, null);
+    newProject.save(function(err) {
       // Rebuild menu
-      mainMenu.destroy(function() {
-        mainMenu.populate();
-        plugins.buildMostUsedMenu();
-        plugins.rebuildMenu();
-        projects.rebuildMenu();
-      });
+      //mainMenu.destroy(function() {
+      //  mainMenu.populate();
+      //  plugins.buildMostUsedMenu();
+      //  plugins.rebuildMenu();
+      //  projects.rebuildMenu();
+      //});
       $('#app').load('views/manage_projects.html');
     });
   });
