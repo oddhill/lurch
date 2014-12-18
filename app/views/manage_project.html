@@ -31,10 +31,16 @@
   var projectPath = null;
   var projectPlugins = null;
 
+  var _project = null;
+
+  // Form element
+  var $name = $('#change-project').find('input[name="name"]');
+
   // Get specific project
   Project.findById(projectEditId, function(err, project) {
+    _project = project;
     // Load data
-    $('#change-project').find('input[name="name"]').val(project.name);
+    $name.val(project.name);
     $('.title-name').text(project.name);
     $('.path').text(project.path);
 
@@ -81,7 +87,8 @@
 
         // Save to db
         project.save(function() {
-          // Rebuild menu (:
+          // Rebuild menu
+          nwMenu.rebuild();
         });
       });
     });
@@ -91,11 +98,24 @@
     event.preventDefault();
 
     // Update project
+    _project.setName($name.val());
+    _project.save(function(err) {
+      if (!err) {
+        // Rebuild menu
+        nwMenu.rebuild();
+      }
+    });
   });
 
   $('.delete-project').click(function(event) {
     event.preventDefault();
 
     // Remove project
+    _project.remove(function(err) {
+      if (!err) {
+        // Rebuild menu
+        nwMenu.rebuild();
+      }
+    });
   });
 </script>
