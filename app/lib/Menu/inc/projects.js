@@ -36,19 +36,19 @@ module.exports.build = function(subMenus, callback) {
 /**
  * Rebuild menu
  */
-module.exports.rebuild = function() {
+module.exports.rebuild = function(subMenus) {
   // Rebuild menu
   // Remove current items
-  var max = sitesMenu.items.length;
+  var max = subMenus.projects.items.length;
   if (max == 0) {
-    module.exports.build(function(){});
+    module.exports.build(subMenus, function(){});
   } else {
     for (var i = 0; i < max; i++) {
-      sitesMenu.removeAt(0);
+      subMenus.projects.removeAt(0);
 
       if ((i+1) == max) {
         // Build menu items again
-        module.exports.build(function(){});
+        module.exports.build(subMenus, function() {});
       }
     }
   }

@@ -1,3 +1,9 @@
+// Menu var, needs to be added here as we use this
+// in other places
+var Menu = require('./lib/Menu/Menu.js');
+var nwMenu = null;
+
+// Lurch doing its thing.
 (function() {
 
 var gui = require('nw.gui');
@@ -8,7 +14,6 @@ var nwWindow = gui.Window.get();
 nwWindow.setShowInTaskbar(false);
 
 var Project = require('./lib/Project/Project.js');
-var Menu = require('./lib/Menu/Menu.js');
 
 // NEdb init
 var db = {};
@@ -49,9 +54,9 @@ Project.findCurrent(function(err, project) {
 global.lurch = lurch;
 
 // Create a new menu
-var menu = new Menu();
-menu.addToTray();
-menu.populate();
+nwMenu = new Menu();
+nwMenu.addToTray();
+nwMenu.populate();
 
 // Set REST token if not set
 require('./rest/rest-api.js').setToken();

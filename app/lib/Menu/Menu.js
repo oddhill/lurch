@@ -83,16 +83,17 @@ Menu.prototype.populate = function() {
   }));
 
   // Populate projects menu
-  projectsMenu.build(subMenus, function() {});
+  projectsMenu.rebuild(subMenus);
 
   // Populate plugins menu
-  pluginsMenu.build(subMenus, function() {});
+  pluginsMenu.rebuild(subMenus);
 }
 
 /**
  * Destroy menu
  */
-module.exports.destroy = function(callback) {
+Menu.prototype.destroy = function(callback) {
+  var menu = this.menu;
   // Destroy
   var length = menu.items.length;
   for (var i = 0; i < length; i++) {
@@ -102,6 +103,18 @@ module.exports.destroy = function(callback) {
       callback();
     }
   }
+}
+
+/**
+ * Rebuild the menu
+ */
+Menu.prototype.rebuild = function() {
+  var self = this;
+
+  // Rebuild the whole menu
+  self.destroy(function() {
+    self.populate();
+  });
 }
 
 module.exports = Menu;

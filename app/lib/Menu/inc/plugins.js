@@ -85,19 +85,19 @@ module.exports.build = function(subMenus) {
 /**
  * Function for rebuild menu
  */
-module.exports.rebuild = function() {
+module.exports.rebuild = function(subMenus) {
   // Rebuild menu
   // Remove current items
-  var max = pluginsMenu.items.length;
+  var max = subMenus.plugins.items.length;
   if (max == 0) {
-    module.exports.build();
+    module.exports.build(subMenus);
   } else {
     for (var i = 0; i < max; i++) {
-      pluginsMenu.removeAt(0);
+      subMenus.plugins.removeAt(0);
 
       if ((i+1) == max) {
         // Build menu items again
-        module.exports.build();
+        module.exports.build(subMenus);
       }
     }
   }
