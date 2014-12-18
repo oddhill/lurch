@@ -6,6 +6,22 @@ function Project(name, path, plugins, current, id) {
   this.id = id;
 }
 
+Project.prototype.getName = function(callback) {
+  callback(this.name);
+};
+
+Project.prototype.setName = function(name) {
+  this.name = name;
+};
+
+Project.prototype.getPath = function(callback) {
+  callback(this.path);
+};
+
+Project.prototype.setPath = function(path) {
+  this.path = path;
+};
+
 Project.prototype.getPlugins = function(callback) {
   callback(this.plugins);
 };
@@ -20,8 +36,8 @@ Project.prototype.save = function(callback) {
   });
 };
 
-Project.prototype.remove = function(id, callback) {
-  db.projects.remove({ _id: id }, function(err) {
+Project.prototype.remove = function(callback) {
+  db.projects.remove({ _id: this.id }, function(err) {
     callback(err);
   });
 };
