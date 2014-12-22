@@ -26,12 +26,7 @@
     var newProject = new Project(name, path, [], false, null);
     newProject.save(function(err) {
       // Rebuild menu
-      //mainMenu.destroy(function() {
-      //  mainMenu.populate();
-      //  plugins.buildMostUsedMenu();
-      //  plugins.rebuildMenu();
-      //  projects.rebuildMenu();
-      //});
+      nwMenu.rebuild();
       $('#app').load('views/manage_projects.html');
     });
   });

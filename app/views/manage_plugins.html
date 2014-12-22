@@ -22,6 +22,7 @@
           plugin.remove(function(err) {
             if (!err) {
               // Rebuild menu and reload plugins view
+              nwMenu.rebuild();
               $('#app').load('views/manage_plugins.html');
             }
           });

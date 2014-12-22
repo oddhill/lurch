@@ -24,8 +24,9 @@
           if (!err) {
             // If there is no error, well. Save it to db!
             newPlugin.save(function(err, result) {
-              // Rebuild menu and load plugins view HERE UNDER
-
+              // Rebuild menu and load plugins view
+              nwMenu.rebuild();
+              $('#app').load('views/manage_plugins.html');
             });
           }
         });
