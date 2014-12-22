@@ -50,13 +50,13 @@ Project.findCurrent(function(err, project) {
   } else {
     lurch.current = { name: 'None selected' };
   }
+
+  // Create a new menu
+  nwMenu = new Menu();
+  nwMenu.addToTray();
+  nwMenu.populate();
 });
 global.lurch = lurch;
-
-// Create a new menu
-nwMenu = new Menu();
-nwMenu.addToTray();
-nwMenu.populate();
 
 // Set REST token if not set
 require('./rest/rest-api.js').setToken();
