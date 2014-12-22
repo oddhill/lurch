@@ -42,9 +42,9 @@ Project.prototype.remove = function(callback) {
   });
 };
 
-Project.prototype.changeToCurrent = function(menuItem) {
+Project.changeCurrent = function(id, callback) {
   db.projects.update({}, { $set: { current: false } }, {});
-  db.projects.update({ _id: this._id }, { $set: { current: true } }, function(err) {
+  db.projects.update({ _id: id }, { $set: { current: true } }, function(err) {
     callback(err);
   });
 };

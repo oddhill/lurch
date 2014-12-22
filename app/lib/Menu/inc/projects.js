@@ -20,7 +20,7 @@ module.exports.build = function(subMenus, callback) {
         click: function() {
           for (var key2 in docs) {
             if (docs[key2].name == this.label) {
-              project.changeToCurrent(docs[key2], key2);
+              Project.changeCurrent(docs[key2]._id, function(err) {});
               break;
             }
           }
