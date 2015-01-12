@@ -4,14 +4,14 @@ var Plugin = require('../../Plugin/Plugin.js');
 /**
  * Get most used plugins and pass them to the menu
  */
-module.exports.buildMostUsedMenu = function() {
+module.exports.buildMostUsedMenu = function(menu) {
 
   // Add separator
   menu.insert(new gui.MenuItem({
     type: 'separator'
   }), 0);
 
-  db.sites.findOne({ current: true }, function(err, docs) {
+  Project.findCurrent(function(err, docs) {
     if (docs) {
       docs.plugins.sort(function(a, b) {
         if (a.used < b.used)
@@ -30,12 +30,12 @@ module.exports.buildMostUsedMenu = function() {
           break;
         }
 
-        db.plugins.findOne({ _id: mostUsed[key].id }, function(error, plugin) {
+        Plugin.findById(mostUsed[key].id, function(error, plugin) {
           menu.insert(new gui.MenuItem({
             type: 'normal',
             label: plugin.name,
             click: function() {
-              runPlugin(plugin.path);
+              plugin.run();
             }
           }), 0);
 
@@ -67,9 +67,13 @@ module.exports.build = function(subMenus) {
         });
 
         item.on('click', function() {
-          for (var id in pluginsMenu.items) {
-            if (pluginsMenu.items[id] == this) {
-              runPlugin(plugins[id].path);
+          for (var id in subMenus.plugins.items) {
+            if (subMenus.plugins.items[id] == this) {
+              Plugin.findById(plugins[id]._id, function(err, plugin) {
+                if (!err) {
+                  plugin.run();
+                }
+              });
             }
           }
         });

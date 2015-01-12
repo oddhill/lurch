@@ -87,6 +87,9 @@ Menu.prototype.populate = function() {
 
   // Populate plugins menu
   pluginsMenu.rebuild(subMenus);
+
+  // Build the most used plugins
+  pluginsMenu.buildMostUsedMenu(menu);
 }
 
 /**
