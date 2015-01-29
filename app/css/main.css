@@ -3,8 +3,9 @@ body {
   padding: 0px;
   margin: 0px;
   font-family: 'Source Sans Pro', sans-serif;
-  background: #eee;
-  padding-bottom: 50px; }
+  background: transparent;
+  padding-bottom: 50px;
+  height: 100%; }
 
 ul {
   list-style-type: none;
@@ -18,6 +19,47 @@ h2 {
   padding: 10px;
   margin: 0px;
   font-size: 16px; }
+
+.frame {
+  position: absolute;
+  background: #fff;
+  width: auto;
+  height: auto;
+  border-radius: 5px;
+  box-shadow: 0px 3px 3px black;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  padding: 10px; }
+
+.frame-top {
+  width: 100%;
+  height: 30px;
+  -webkit-user-select: none;
+  -webkit-app-region: drag; }
+  .frame-top .actions {
+    position: absolute;
+    top: 0px; }
+    .frame-top .actions button {
+      display: inline-block;
+      width: 10px;
+      height: 12px;
+      border-radius: 20px;
+      -webkit-appearance: none;
+      border: 0px;
+      outline: 0px; }
+    .frame-top .actions .close {
+      background: red; }
+    .frame-top .actions .minimize {
+      background: yellow; }
+  .frame-top h1 {
+    font-size: 11px;
+    color: #ddd;
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+    text-align: center; }
 
 .main-nav {
   width: 100%;

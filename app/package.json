@@ -6,11 +6,12 @@
   "window": {
     "show": false,
     "toolbar": false,
-    "frame": true,
+    "frame": false,
     "width": 400,
     "height": 500,
     "resizable": false,
-    "show_in_taskbar": true
+    "show_in_taskbar": true,
+    "transparent": true
   },
   "dependencies": {
     "body-parser": "^1.9.3",
