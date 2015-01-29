@@ -16,9 +16,7 @@ module.exports = function(grunt) {
       },
       style: {
         files: {
-          "css/main.css": "sass/main.scss",
-          "css/print.css": "sass/print.scss",
-          "css/normalize.css": "sass/normalize.scss"
+          "css/main.css": "sass/main.scss"
         }
       }
     },
