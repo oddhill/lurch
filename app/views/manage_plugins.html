@@ -1,5 +1,3 @@
-<a href="#" class="add-plugin">Add plugin</a>
-
 <ul id="plugins">
 
 </ul>
@@ -10,7 +8,7 @@
   Plugin.findAll(function(err, plugins) {
     if (!err) {
       for (var key in plugins) {
-        $('#plugins').append('<li>' + plugins[key].name + '<a class="remove" href="#" data-id="' + plugins[key]._id + '">Remove</a></li>');
+        $('#plugins').append('<li>' + plugins[key].name + '<a class="remove" href="#" data-id="' + plugins[key]._id + '">x</a></li>');
       }
 
       // Remove plugin
