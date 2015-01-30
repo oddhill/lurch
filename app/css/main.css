@@ -47,21 +47,25 @@ h2 {
   border-radius: 5px 5px 0px 0px; }
   .frame-top .actions {
     position: absolute;
-    top: 2px;
+    top: 5px;
     left: 7px; }
     .frame-top .actions button {
       display: inline-block;
-      width: 10px;
+      width: 12px;
       height: 12px;
-      border-radius: 20px;
+      border-radius: 12px;
       -webkit-appearance: none;
       border: 0px;
-      outline: 0px; }
+      outline: 0px;
+      padding: 0px;
+      margin: 0px; }
     .frame-top .actions .close {
       background: #ff5f57;
+      border: 1px solid #e2463f;
       margin-right: 3px; }
     .frame-top .actions .minimize {
-      background: #ffbd2e; }
+      background: #ffbd2e;
+      border: 1px solid #e1a116; }
   .frame-top h1 {
     font-size: 11px;
     color: #999;
@@ -127,16 +131,23 @@ a.add-plugin {
     background: #ddd; }
 
 a.remove {
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
   background: #ce3636;
-  padding: 3px;
-  border-radius: 16px;
+  border-radius: 20px;
   float: right;
   transition: all .1s ease-in-out;
   color: #fff;
   text-decoration: none;
   text-align: center; }
+  a.remove:after {
+    display: block;
+    content: " ";
+    width: 10px;
+    height: 16px;
+    background: url("../graphics/remove.svg") no-repeat;
+    background-size: contain;
+    margin: 3px 0px 0px 5px; }
   a.remove:hover {
     background: #a42e2e; }
 
@@ -144,6 +155,7 @@ a.remove {
   padding: 0px;
   margin: 0px; }
   #plugins li {
+    height: 20px;
     background: #fff;
     list-style-type: none;
     padding: 0px;
@@ -151,7 +163,7 @@ a.remove {
     padding: 10px;
     border-bottom: 1px solid #ddd;
     color: #555;
-    font-size: 14px; }
+    font-size: 15px; }
 
 #project-plugins {
   background: #fff; }

@@ -52,26 +52,30 @@ h2 {
 
   .actions {
     position: absolute;
-    top: 2px;
+    top: 5px;
     left: 7px;
 
     button {
       display: inline-block;
-      width: 10px;
+      width: 12px;
       height: 12px;
-      border-radius: 20px;
+      border-radius: 12px;
       -webkit-appearance: none;
       border: 0px;
       outline: 0px;
+      padding: 0px;
+      margin: 0px;
     }
 
     .close {
       background: #ff5f57;
+      border: 1px solid #e2463f;
       margin-right: 3px;
     }
 
     .minimize {
       background: #ffbd2e;
+      border: 1px solid #e1a116;
     }
   }
 

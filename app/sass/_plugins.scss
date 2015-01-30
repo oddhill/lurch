@@ -16,16 +16,25 @@ a.add-plugin {
 }
 
 a.remove {
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
   background: #ce3636;
-  padding: 3px;
-  border-radius: 16px;
+  border-radius: 20px;
   float: right;
   transition: all .1s ease-in-out;
   color: #fff;
   text-decoration: none;
   text-align: center;
+
+  &:after {
+    display: block;
+    content: " ";
+    width: 10px;
+    height: 16px;
+    background: url('../graphics/remove.svg') no-repeat;
+    background-size: contain;
+    margin: 3px 0px 0px 5px;
+  }
 
   &:hover {
     background: #a42e2e;
@@ -37,6 +46,7 @@ a.remove {
   margin: 0px;
 
   li {
+    height: 20px;
     background: #fff;
     list-style-type: none;
     padding: 0px;
@@ -44,7 +54,7 @@ a.remove {
     padding: 10px;
     border-bottom: 1px solid #ddd;
     color: #555;
-    font-size: 14px;
+    font-size: 15px;
   }
 }
 
