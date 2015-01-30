@@ -20,7 +20,10 @@ module.exports.build = function(subMenus, callback) {
         click: function() {
           for (var key2 in docs) {
             if (docs[key2].name == this.label) {
-              Project.changeCurrent(docs[key2]._id, function(err) {});
+              Project.changeCurrent(docs[key2]._id, function(err) {
+                lurch.current.name = docs[key2].name;
+                nwMenu.rebuild();
+              });
               break;
             }
           }

@@ -55,6 +55,7 @@ Project.findCurrent(function(err, project) {
   nwMenu = new Menu();
   nwMenu.addToTray();
   nwMenu.populate();
+  global.nwMenu = nwMenu;
 });
 global.lurch = lurch;
 
