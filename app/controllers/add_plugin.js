@@ -3,8 +3,13 @@ var Plugin = require('./lib/Plugin/Plugin.js');
 var pluginPath = null;
 
 // Drag n drop
-
 var holder = document.getElementById('plugin-dragdrop');
+dragndrop(holder, function(path) {
+  if (path) {
+    pluginPath = path;
+    $('#add-plugin').submit();
+  }
+});
 
 $('#add-plugin .path').change(function() {
   pluginPath = $(this).find('input[name="path"]').val();
