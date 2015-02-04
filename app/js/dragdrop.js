@@ -1,8 +1,8 @@
-var dragndrop = function(holder) {
+// Prevent default behavior when dropping files
+window.ondragover = function(e) { e.preventDefault(); return false; }
+window.ondrop = function(e) { e.preventDefault(); return false; }
 
-  // Prevent default behavior when dropping files
-  window.ondragover = function(e) { e.preventDefault(); return false; }
-  window.ondrop = function(e) { e.preventDefault(); return false; }
+var dragndrop = function(holder, cb) {
 
   // Change to 'copy' icon on drag over
   holder.ondragover = function (e) { e.dataTransfer.dropEffect = 'copy'; return false; };
@@ -19,10 +19,7 @@ var dragndrop = function(holder) {
 
     // Get file path
     var filePath = file.path;
-    console.log(file.path);
 
-    return false;
-
+    cb(filePath);
   }
-
 }
