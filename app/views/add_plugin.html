@@ -1,36 +1,8 @@
 <h1>Add plugin</h1>
+<div id="plugin-dragdrop">
+  <p>Drag & drop</p>
+  <p>or <a href="#">browse</a></p>
+</div>
 <form id="add-plugin">
-  <input name="path" type="file" nwdirectory />
-  <input name="add" type="submit" />
+  <input name="path" class="path" type="file" nwdirectory />
 </form>
-
-<script>
-  $(document).ready(function() {
-    var Plugin = require('./lib/Plugin/Plugin.js');
-
-    $('#add-plugin').submit(function(event) {
-      event.preventDefault();
-
-      // Get plugin path from input
-      var pluginPath = $(this).find('input[name="path"]').val();
-      // Create a new plugin object
-      var newPlugin = new Plugin(null, pluginPath);
-      // Get the plugins manifest name
-      newPlugin.manifestName(function(name) {
-        // Set the plugins name
-        newPlugin.setName(name);
-        // Move plugin folder to data path
-        newPlugin.moveToDataPath(function(err) {
-          if (!err) {
-            // If there is no error, well. Save it to db!
-            newPlugin.save(function(err, result) {
-              // Rebuild menu and load plugins view
-              nwMenu.rebuild();
-              $('#app').load('views/manage_plugins.html');
-            });
-          }
-        });
-      });
-    });
-  });
-</script>
