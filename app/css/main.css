@@ -6,7 +6,7 @@ body {
   background: transparent;
   padding-bottom: 50px;
   height: 100%;
-  overflow: hidden; }
+  min-height: 100%; }
 
 ul {
   list-style-type: none;
@@ -17,9 +17,33 @@ h1,
 h2 {
   display: block;
   background: #fff;
-  padding: 10px;
+  padding: 10px 0px 10px 0px;
   margin: 0px;
   font-size: 16px; }
+
+.main-content {
+  transition: transform .2s ease-in-out;
+  position: absolute;
+  z-index: 2;
+  background: #fff;
+  top: 30px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px; }
+  .main-content.minimize {
+    transform: scale(0.8);
+    position: absolute;
+    bottom: -2000px; }
+  .main-content.settings {
+    background: -webkit-linear-gradient(left top, #1A5A7D, #341A4A);
+    background-size: cover;
+    background-repeat: repeat;
+    position: absolute;
+    z-index: 1;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    top: 30px; }
 
 .frame {
   position: absolute;
@@ -32,7 +56,8 @@ h2 {
   left: 15px;
   right: 15px;
   bottom: 15px;
-  padding: 30px 15px 15px 15px; }
+  padding: 30px 15px 15px 15px;
+  overflow: hidden; }
 
 .frame-top {
   position: absolute;
@@ -79,6 +104,8 @@ h2 {
   width: 100%;
   height: 61px;
   background: #fff; }
+  .edit-add .main-nav {
+    display: none; }
   .main-nav ul {
     display: block;
     list-style-type: none;
@@ -115,6 +142,8 @@ h2 {
   left: 20px;
   right: 20px;
   bottom: 20px; }
+  .edit-add .footer {
+    display: none; }
 
 a.add-plugin {
   display: inline-block;
@@ -134,9 +163,10 @@ a.remove {
   width: 20px;
   height: 20px;
   background: #ce3636;
-  border-radius: 20px;
+  border-radius: 100%;
   float: right;
-  transition: all .1s ease-in-out;
+  transition: width .2s ease-in-out, height .2s ease-in-out;
+  transform-origin: left top;
   color: #fff;
   text-decoration: none;
   text-align: center; }
@@ -150,6 +180,12 @@ a.remove {
     margin: 3px 0px 0px 5px; }
   a.remove:hover {
     background: #a42e2e; }
+  a.remove.hide {
+    position: absolute;
+    top: -400px;
+    right: 0px;
+    width: 1000px;
+    height: 1000px; }
 
 #plugins {
   padding: 0px;
@@ -163,7 +199,9 @@ a.remove {
     padding: 10px;
     border-bottom: 1px solid #ddd;
     color: #555;
-    font-size: 15px; }
+    font-size: 15px;
+    position: relative;
+    overflow: hidden; }
 
 #project-plugins {
   background: #fff; }
@@ -172,6 +210,26 @@ a.remove {
     border-bottom: 1px solid #ddd; }
   #project-plugins input[type="checkbox"] {
     float: right; }
+
+#plugin-dragdrop {
+  width: 200px;
+  height: 200px;
+  border: 3px dashed #ddd;
+  border-radius: 10px;
+  margin: 0 auto;
+  font-size: 25px;
+  color: #999;
+  text-align: center;
+  padding-top: 50px;
+  box-sizing: border-box; }
+  #plugin-dragdrop p {
+    margin: 0px; }
+  #plugin-dragdrop a {
+    color: #1D83CE;
+    text-decoration: none; }
+
+#add-plugin input {
+  visibility: hidden; }
 
 a.add-project {
   display: inline-block;
@@ -226,55 +284,129 @@ a.add-project {
     line-height: 20px;
     margin-right: 10px; }
 
-.title-name {
-  color: #356D7E;
-  font-style: italic; }
+#project.show,
+#project-plugins.show {
+  display: block; }
 
+#project h1 {
+  font-size: 16px;
+  color: #888;
+  text-align: center;
+  margin: 10px 0px 0px 0px; }
+#project p {
+  font-size: 14px;
+  color: #aaa;
+  text-align: center;
+  margin: 0px 0px 15px 0px; }
 #project label {
   display: inline-block;
-  padding: 5px;
-  text-transform: uppercase;
-  background: #eee;
-  color: #888;
+  color: #1D83CE;
   border-radius: 5px;
-  font-size: 12px;
-  margin-right: 5px; }
+  font-size: 14px;
+  text-transform: uppercase;
+  padding: 0px 10px 0px 0px; }
 #project .input {
-  width: 100%;
+  width: auto;
   display: block;
   outline: 0px;
   border: none;
-  border-bottom: 1px solid #ddd;
-  padding: 10px;
+  padding: 15px 0px 5px 0px;
   background: #fff;
-  font-size: 14px; }
+  font-size: 14px;
+  color: #999;
+  border-bottom: 1px solid #ddd; }
+  #project .input.active {
+    color: #444;
+    border-bottom: 1px solid #1D83CE; }
 #project input[type="text"] {
   background: #fff;
   border: 0px;
   outline: 0px;
-  font-size: 12px; }
+  font-size: 12px;
+  padding: 5px 0px 5px 0px; }
 #project input[type="submit"] {
-  padding: 10px;
+  padding: 7px 15px 7px 15px;
   display: inline-block;
-  background: #ACCE44;
+  background: #609E26;
   color: #fff;
   border: 0px;
   text-align: left;
-  font-size: 14px;
-  cursor: pointer;
-  border-radius: 5px;
-  margin: 10px; }
-#project .delete-project {
-  padding: 10px;
-  display: inline-block;
-  background: #ddd;
-  color: #888;
-  border: 0px;
-  text-align: left;
-  font-size: 14px;
+  font-size: 11px;
+  text-transform: uppercase;
+  font-weight: bold;
   cursor: pointer;
   border-radius: 5px;
   margin: 10px 10px 10px 0px; }
+#project .delete-project {
+  padding: 7px 15px 7px 15px;
+  display: inline-block;
+  background: #DDD;
+  color: #888;
+  border: 0px;
+  text-align: left;
+  font-size: 11px;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 10px 10px 10px 0px; }
+#project #dragdrop-project {
+  background: #eee;
+  width: auto;
+  height: 120px;
+  border-top: 2px solid #ddd;
+  border-bottom: 2px solid #ddd; }
+  #project #dragdrop-project .lines {
+    height: 80px;
+    border: 3px dashed #ddd;
+    margin: 15px;
+    position: relative; }
+    #project #dragdrop-project .lines:after {
+      display: block;
+      content: "+";
+      position: absolute;
+      bottom: -15px;
+      right: -15px;
+      border-radius: 30px;
+      width: 30px;
+      height: 30px;
+      text-align: center;
+      color: #888;
+      font-weight: bold;
+      background: #fff;
+      box-shadow: 0px 1px 1px #aaa;
+      line-height: 28px; }
+    #project #dragdrop-project .lines.uploaded {
+      border: 3px dashed #609E26; }
+      #project #dragdrop-project .lines.uploaded:after {
+        background: #609E26;
+        color: #fff;
+        content: "\2713"; }
+#project #add-site {
+  padding: 20px; }
+#project h3 {
+  font-size: 16px;
+  text-align: center; }
+
+.project-menu {
+  display: block;
+  height: 40px;
+  background: #eee; }
+  .project-menu li {
+    display: inline; }
+  .project-menu a {
+    display: inline-block;
+    height: 40px;
+    background: transparent;
+    color: #999;
+    line-height: 40px;
+    font-size: 11px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0px 10px 0px 10px; }
+    .project-menu a.active {
+      background: #1D83CE;
+      color: #fff; }
 
 #tutorial {
   position: absolute;

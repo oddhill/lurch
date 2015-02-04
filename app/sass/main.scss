@@ -6,7 +6,7 @@ body {
   background: rgba(0,0,0,0);
   padding-bottom: 50px;
   height: 100%;
-  overflow: hidden;
+  min-height: 100%;
 }
 
 ul {
@@ -19,9 +19,38 @@ h1,
 h2 {
   display: block;
   background: #fff;
-  padding: 10px;
+  padding: 10px 0px 10px 0px;
   margin: 0px;
   font-size: 16px;
+}
+
+.main-content {
+  transition: transform .2s ease-in-out;
+  position: absolute;
+  z-index: 2;
+  background: #fff;
+  top: 30px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+
+  &.minimize {
+    transform: scale(0.8);
+    position: absolute;
+    bottom: -2000px;
+  }
+
+  &.settings {
+    background: -webkit-linear-gradient(left top, #1A5A7D, #341A4A);
+    background-size: cover;
+    background-repeat: repeat;
+    position: absolute;
+    z-index: 1;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    top: 30px;
+  }
 }
 
 .frame {
@@ -36,6 +65,8 @@ h2 {
   right: 15px;
   bottom: 15px;
   padding: 30px 15px 15px 15px;
+
+  overflow: hidden;
 }
 
 .frame-top {
@@ -96,6 +127,10 @@ h2 {
   height: 61px;
   background: #fff;
 
+  .edit-add & {
+    display: none;
+  }
+
   ul {
     display: block;
     list-style-type: none;
@@ -143,6 +178,10 @@ h2 {
   left: 20px;
   right: 20px;
   bottom: 20px;
+
+  .edit-add & {
+    display: none;
+  }
 }
 
 @import "plugins", "projects";

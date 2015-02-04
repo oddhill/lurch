@@ -64,32 +64,57 @@ a.add-project {
 }
 
 .title-name {
-  color: #356D7E;
-  font-style: italic;
+
+}
+
+#project,
+#project-plugins {
+
+  &.show {
+    display: block;
+  }
 }
 
 #project {
 
+  h1 {
+    font-size: 16px;
+    color: #888;
+    text-align: center;
+    margin: 10px 0px 0px 0px;
+  }
+
+  p {
+    font-size: 14px;
+    color: #aaa;
+    text-align: center;
+    margin: 0px 0px 15px 0px;
+  }
+
   label {
     display: inline-block;
-    padding: 5px;
-    text-transform: uppercase;
-    background: #eee;
-    color: #888;
+    color: #1D83CE;
     border-radius: 5px;
-    font-size: 12px;
-    margin-right: 5px;
+    font-size: 14px;
+    text-transform: uppercase;
+    padding: 0px 10px 0px 0px;
   }
 
   .input {
-    width: 100%;
+    width: auto;
     display: block;
     outline: 0px;
     border: none;
-    border-bottom: 1px solid #ddd;
-    padding: 10px;
+    padding: 15px 0px 5px 0px;
     background: #fff;
     font-size: 14px;
+    color: #999;
+    border-bottom: 1px solid #ddd;
+
+    &.active {
+      color: #444;
+      border-bottom: 1px solid #1D83CE;
+    }
   }
 
   input[type="text"] {
@@ -97,31 +122,114 @@ a.add-project {
     border: 0px;
     outline: 0px;
     font-size: 12px;
+    padding: 5px 0px 5px 0px;
   }
 
   input[type="submit"] {
-    padding: 10px;
+    padding: 7px 15px 7px 15px;
     display: inline-block;
-    background: #ACCE44;
+    background: #609E26;
     color: #fff;
     border: 0px;
     text-align: left;
-    font-size: 14px;
-    cursor: pointer;
-    border-radius: 5px;
-    margin: 10px;
-  }
-
-  .delete-project {
-    padding: 10px;
-    display: inline-block;
-    background: #ddd;
-    color: #888;
-    border: 0px;
-    text-align: left;
-    font-size: 14px;
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: bold;
     cursor: pointer;
     border-radius: 5px;
     margin: 10px 10px 10px 0px;
+  }
+
+  .delete-project {
+    padding: 7px 15px 7px 15px;
+    display: inline-block;
+    background: #DDD;
+    color: #888;
+    border: 0px;
+    text-align: left;
+    font-size: 11px;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 10px 10px 10px 0px;
+  }
+
+  #dragdrop-project {
+    background: #eee;
+    width: auto;
+    height: 120px;
+    border-top: 2px solid #ddd;
+    border-bottom: 2px solid #ddd;
+
+    .lines {
+      height: 80px;
+      border: 3px dashed #ddd;
+      margin: 15px;
+      position: relative;
+
+      &:after {
+        display: block;
+        content: "+";
+        position: absolute;
+        bottom: -15px;
+        right: -15px;
+        border-radius: 30px;
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        color: #888;
+        font-weight: bold;
+        background: #fff;
+        box-shadow: 0px 1px 1px #aaa;
+        line-height: 28px;
+      }
+
+      &.uploaded {
+        border: 3px dashed #609E26;
+
+        &:after {
+          background: #609E26;
+          color: #fff;
+          content: "\2713";
+        }
+      }
+    }
+  }
+
+  #add-site {
+    padding: 20px;
+  }
+
+  h3 {
+    font-size: 16px;
+    text-align: center;
+  }
+}
+
+.project-menu {
+  display: block;
+  height: 40px;
+  background: #eee;
+
+  li {
+    display: inline;
+  }
+
+  a {
+    display: inline-block;
+    height: 40px;
+    background: transparent;
+    color: #999;
+    line-height: 40px;
+    font-size: 11px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0px 10px 0px 10px;
+
+    &.active {
+      background: #1D83CE;
+      color: #fff;
+    }
   }
 }
