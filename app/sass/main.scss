@@ -184,5 +184,5 @@ h2 {
   }
 }
 
-@import "plugins", "projects";
+@import "plugins/plugins", "plugins/plugin-form", "projects/projects", "projects/project-form";
 @import "tutorial/tutorial";

@@ -1,0 +1,30 @@
+// Drag and drop
+#plugin-dragdrop {
+  width: 200px;
+  height: 200px;
+  border: 3px dashed #ddd;
+  border-radius: 10px;
+  margin: 0 auto;
+  font-size: 25px;
+  color: #999;
+  text-align: center;
+  padding-top: 50px;
+  box-sizing: border-box;
+
+  p {
+    margin: 0px;
+  }
+
+  a {
+    color: #1D83CE;
+    text-decoration: none;
+  }
+}
+
+// Add plugin form
+form#add-plugin {
+
+  input {
+    visibility: hidden;
+  }
+}

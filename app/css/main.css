@@ -159,34 +159,6 @@ a.add-plugin {
   a.add-plugin:hover {
     background: #ddd; }
 
-a.remove {
-  width: 20px;
-  height: 20px;
-  background: #ce3636;
-  border-radius: 100%;
-  float: right;
-  transition: width .2s ease-in-out, height .2s ease-in-out;
-  transform-origin: left top;
-  color: #fff;
-  text-decoration: none;
-  text-align: center; }
-  a.remove:after {
-    display: block;
-    content: " ";
-    width: 10px;
-    height: 16px;
-    background: url("../graphics/remove.svg") no-repeat;
-    background-size: contain;
-    margin: 3px 0px 0px 5px; }
-  a.remove:hover {
-    background: #a42e2e; }
-  a.remove.hide {
-    position: absolute;
-    top: -400px;
-    right: 0px;
-    width: 1000px;
-    height: 1000px; }
-
 #plugins {
   padding: 0px;
   margin: 0px; }
@@ -202,6 +174,33 @@ a.remove {
     font-size: 15px;
     position: relative;
     overflow: hidden; }
+  #plugins a.remove {
+    width: 20px;
+    height: 20px;
+    background: #ce3636;
+    border-radius: 100%;
+    float: right;
+    transition: width .2s ease-in-out, height .2s ease-in-out;
+    transform-origin: left top;
+    color: #fff;
+    text-decoration: none;
+    text-align: center; }
+    #plugins a.remove:after {
+      display: block;
+      content: " ";
+      width: 10px;
+      height: 16px;
+      background: url("../graphics/remove.svg") no-repeat;
+      background-size: contain;
+      margin: 3px 0px 0px 5px; }
+    #plugins a.remove:hover {
+      background: #a42e2e; }
+    #plugins a.remove.hide {
+      position: absolute;
+      top: -400px;
+      right: 0px;
+      width: 1000px;
+      height: 1000px; }
 
 #project-plugins {
   background: #fff; }
@@ -228,7 +227,7 @@ a.remove {
     color: #1D83CE;
     text-decoration: none; }
 
-#add-plugin input {
+form#add-plugin input {
   visibility: hidden; }
 
 a.add-project {
@@ -288,6 +287,26 @@ a.add-project {
 #project-plugins.show {
   display: block; }
 
+.project-menu {
+  display: block;
+  height: 40px;
+  background: #eee; }
+  .project-menu li {
+    display: inline; }
+  .project-menu a {
+    display: inline-block;
+    height: 40px;
+    background: transparent;
+    color: #999;
+    line-height: 40px;
+    font-size: 11px;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0px 10px 0px 10px; }
+    .project-menu a.active {
+      background: #1D83CE;
+      color: #fff; }
+
 #project h1 {
   font-size: 16px;
   color: #888;
@@ -298,6 +317,8 @@ a.add-project {
   color: #aaa;
   text-align: center;
   margin: 0px 0px 15px 0px; }
+#project form#add-site {
+  padding: 20px; }
 #project label {
   display: inline-block;
   color: #1D83CE;
@@ -350,18 +371,22 @@ a.add-project {
   cursor: pointer;
   border-radius: 5px;
   margin: 10px 10px 10px 0px; }
-#project #dragdrop-project {
+#project h3 {
+  font-size: 16px;
+  text-align: center; }
+
+#dragdrop-project {
   background: #eee;
   width: auto;
   height: 120px;
   border-top: 2px solid #ddd;
   border-bottom: 2px solid #ddd; }
-  #project #dragdrop-project .lines {
+  #dragdrop-project .lines {
     height: 80px;
     border: 3px dashed #ddd;
     margin: 15px;
     position: relative; }
-    #project #dragdrop-project .lines:after {
+    #dragdrop-project .lines:after {
       display: block;
       content: "+";
       position: absolute;
@@ -376,37 +401,12 @@ a.add-project {
       background: #fff;
       box-shadow: 0px 1px 1px #aaa;
       line-height: 28px; }
-    #project #dragdrop-project .lines.uploaded {
+    #dragdrop-project .lines.uploaded {
       border: 3px dashed #609E26; }
-      #project #dragdrop-project .lines.uploaded:after {
+      #dragdrop-project .lines.uploaded:after {
         background: #609E26;
         color: #fff;
         content: "\2713"; }
-#project #add-site {
-  padding: 20px; }
-#project h3 {
-  font-size: 16px;
-  text-align: center; }
-
-.project-menu {
-  display: block;
-  height: 40px;
-  background: #eee; }
-  .project-menu li {
-    display: inline; }
-  .project-menu a {
-    display: inline-block;
-    height: 40px;
-    background: transparent;
-    color: #999;
-    line-height: 40px;
-    font-size: 11px;
-    text-transform: uppercase;
-    text-decoration: none;
-    padding: 0px 10px 0px 10px; }
-    .project-menu a.active {
-      background: #1D83CE;
-      color: #fff; }
 
 #tutorial {
   position: absolute;
