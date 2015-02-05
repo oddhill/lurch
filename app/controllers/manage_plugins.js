@@ -13,16 +13,15 @@ Plugin.findAll(function(err, plugins) {
       var id = $(this).attr('data-id');
 
       Plugin.findById(id, function(err, plugin) {
-        //plugin.remove(function(err) {
-          //if (!err) {
+        plugin.remove(function(err) {
+          if (!err) {
             // Rebuild menu and reload plugins view
             nwMenu.rebuild();
 
             // Remove from list
-            $button.addClass('hide');
-            //$('#app').load('views/manage_plugins.html');
-          //}
-        //});
+            $('#app').load('views/manage_plugins.html');
+          }
+        });
       });
     });
   }
