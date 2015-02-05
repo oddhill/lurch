@@ -37,6 +37,36 @@
 // Add/edit a project
 #project {
 
+  // Icons
+  .icon {
+    display: block;
+    margin: 0 auto;
+    background: #FD6C6E;
+    width: 45px;
+    height: 45px;
+    border-radius: 45px;
+    font-family: "ionicons";
+    text-align: center;
+    line-height: 45px;
+    color: #fff;
+
+    &.db {
+      margin-top: 20px;
+
+      &:after {
+        content: "\f127";
+        font-size: 20px;
+      }
+    }
+
+    &.general {
+      &:after {
+        content: "\f27b";
+        font-size: 20px;
+      }
+    }
+  }
+
   // Title
   h1 {
     font-size: 16px;
@@ -59,12 +89,17 @@
 
   // Form labels
   label {
-    display: inline-block;
+    float: left;
     color: #1D83CE;
     border-radius: 5px;
     font-size: 14px;
     text-transform: uppercase;
-    padding: 0px 10px 0px 0px;
+    padding: 3px 10px 0px 0px;
+  }
+
+  span.fill {
+    display: block;
+    overflow: hidden;
   }
 
   // Input wrapper
@@ -83,21 +118,27 @@
       color: #444;
       border-bottom: 1px solid #1D83CE;
     }
+
+    &.two {
+      width: 49%;
+      display: inline-block;
+    }
   }
 
   // Input styling
-  input[type="text"] {
+  input[type="text"],
+  input[type="password"] {
     background: #fff;
     border: 0px;
     outline: 0px;
     font-size: 12px;
-    padding: 5px 0px 5px 0px;
+    padding: 5px 5px 5px 5px;
+    width: 100%;
   }
 
   input[type="submit"] {
-    padding: 7px 15px 7px 15px;
+    padding: 15px 25px 15px 25px;
     display: inline-block;
-    background: #609E26;
     color: #fff;
     border: 0px;
     text-align: left;
@@ -107,6 +148,10 @@
     cursor: pointer;
     border-radius: 5px;
     margin: 10px 10px 10px 0px;
+
+    &.add {
+      background: #609E26;
+    }
   }
 
   // Delete button
@@ -145,6 +190,10 @@
     border: 3px dashed #ddd;
     margin: 15px;
     position: relative;
+    text-align: center;
+    font-size: 24px;
+    color: #ddd;
+    line-height: 80px;
 
     &:after {
       display: block;
@@ -161,6 +210,16 @@
       background: #fff;
       box-shadow: 0px 1px 1px #aaa;
       line-height: 28px;
+      font-size: 16px;
+    }
+
+    &:hover {
+      cursor: pointer;
+
+      &:after {
+        background: #609E26;
+        color: #fff;
+      }
     }
 
     &.uploaded {

@@ -1,3 +1,5 @@
+@import "fonts";
+
 html,
 body {
   padding: 0px;
@@ -27,6 +29,7 @@ h2 {
 .main-content {
   transition: transform .2s ease-in-out;
   position: absolute;
+  overflow: hidden;
   z-index: 2;
   background: #fff;
   top: 30px;
@@ -186,3 +189,4 @@ h2 {
 
 @import "plugins/plugins", "plugins/plugin-form", "projects/projects", "projects/project-form";
 @import "tutorial/tutorial";
+@import "messages";

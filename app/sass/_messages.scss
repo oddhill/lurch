@@ -1,0 +1,90 @@
+.msg {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background: rgba(255,255,255,0.96);
+  z-index: 100000;
+  color: #31AA39;
+  font-size: 32px;
+  text-align: center;
+  padding-top: 100px;
+
+  &.success {
+
+    span.icon {
+      width: 100px;
+      height: 100px;
+      font-family: "ionicons";
+      font-size: 100px;
+      display: block;
+      margin: 0 auto;
+
+      &:after {
+        content: "\f3fe";
+      }
+    }
+  }
+
+  &.loading {
+
+    span.icon {
+      display: block;
+      width: 20px;
+      height: 24px;
+      border: 1px rgba(0,0,0,1) solid;
+      border-radius: 0px 0px 5px 5px;
+      position: relative;
+      margin: 36px auto;
+
+      &:after, &:before{
+        position: absolute;
+        content: "";
+      }
+
+      &:after{
+        width: 5px;
+        height: 12px;
+        border: 1px #000 solid;
+        border-left: none;
+        border-radius: 0px 20px 20px 0px;
+        left: 20px;
+      }
+
+      &:before{
+        width: 1px;
+        height: 6px;
+        background-color: rgba(0,0,0,1);
+        top: -10px;
+        left: 4px;
+        box-shadow: 5px 0px 0px 0px rgba(0,0,0,1),
+        5px -5px 0px 0px rgba(0,0,0,1),
+        10px 0px 0px 0px rgba(0,0,0,1);
+        -webkit-animation: steam 1s linear infinite alternate;
+        -moz-animation: steam 1s linear infinite alternate;
+        animation: steam 1s linear infinite alternate;
+      }
+    }
+  }
+
+  span.message {
+    color: #aaa;
+  }
+}
+
+
+@-webkit-keyframes steam{
+  0% { height: 0px; }
+  100% { height: 6px; }
+}
+
+@-moz-keyframes steam{
+  0% { height: 0px; }
+  100% { height: 6px; }
+}
+
+@keyframes steam{
+  0% { height: 0px; }
+  100% { height: 6px; }
+}

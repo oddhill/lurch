@@ -1,3 +1,9 @@
+@font-face {
+  font-family: "ionicons";
+  src: url("../fonts/ionicons.eot?v=2.0.0");
+  src: url("../fonts/ionicons.eot?v=2.0.0#iefix") format("embedded-opentype"), url("../fonts/ionicons.ttf?v=2.0.0") format("truetype"), url("../fonts/ionicons.woff?v=2.0.0") format("woff"), url("../fonts/ionicons.svg?v=2.0.0#Ionicons") format("svg");
+  font-weight: normal;
+  font-style: normal; }
 html,
 body {
   padding: 0px;
@@ -24,6 +30,7 @@ h2 {
 .main-content {
   transition: transform .2s ease-in-out;
   position: absolute;
+  overflow: hidden;
   z-index: 2;
   background: #fff;
   top: 30px;
@@ -307,6 +314,25 @@ a.add-project {
       background: #1D83CE;
       color: #fff; }
 
+#project .icon {
+  display: block;
+  margin: 0 auto;
+  background: #FD6C6E;
+  width: 45px;
+  height: 45px;
+  border-radius: 45px;
+  font-family: "ionicons";
+  text-align: center;
+  line-height: 45px;
+  color: #fff; }
+  #project .icon.db {
+    margin-top: 20px; }
+    #project .icon.db:after {
+      content: "\f127";
+      font-size: 20px; }
+  #project .icon.general:after {
+    content: "\f27b";
+    font-size: 20px; }
 #project h1 {
   font-size: 16px;
   color: #888;
@@ -320,12 +346,15 @@ a.add-project {
 #project form#add-site {
   padding: 20px; }
 #project label {
-  display: inline-block;
+  float: left;
   color: #1D83CE;
   border-radius: 5px;
   font-size: 14px;
   text-transform: uppercase;
-  padding: 0px 10px 0px 0px; }
+  padding: 3px 10px 0px 0px; }
+#project span.fill {
+  display: block;
+  overflow: hidden; }
 #project .input {
   width: auto;
   display: block;
@@ -339,16 +368,20 @@ a.add-project {
   #project .input.active {
     color: #444;
     border-bottom: 1px solid #1D83CE; }
-#project input[type="text"] {
+  #project .input.two {
+    width: 49%;
+    display: inline-block; }
+#project input[type="text"],
+#project input[type="password"] {
   background: #fff;
   border: 0px;
   outline: 0px;
   font-size: 12px;
-  padding: 5px 0px 5px 0px; }
+  padding: 5px 5px 5px 5px;
+  width: 100%; }
 #project input[type="submit"] {
-  padding: 7px 15px 7px 15px;
+  padding: 15px 25px 15px 25px;
   display: inline-block;
-  background: #609E26;
   color: #fff;
   border: 0px;
   text-align: left;
@@ -358,6 +391,8 @@ a.add-project {
   cursor: pointer;
   border-radius: 5px;
   margin: 10px 10px 10px 0px; }
+  #project input[type="submit"].add {
+    background: #609E26; }
 #project .delete-project {
   padding: 7px 15px 7px 15px;
   display: inline-block;
@@ -385,7 +420,11 @@ a.add-project {
     height: 80px;
     border: 3px dashed #ddd;
     margin: 15px;
-    position: relative; }
+    position: relative;
+    text-align: center;
+    font-size: 24px;
+    color: #ddd;
+    line-height: 80px; }
     #dragdrop-project .lines:after {
       display: block;
       content: "+";
@@ -400,7 +439,13 @@ a.add-project {
       font-weight: bold;
       background: #fff;
       box-shadow: 0px 1px 1px #aaa;
-      line-height: 28px; }
+      line-height: 28px;
+      font-size: 16px; }
+    #dragdrop-project .lines:hover {
+      cursor: pointer; }
+      #dragdrop-project .lines:hover:after {
+        background: #609E26;
+        color: #fff; }
     #dragdrop-project .lines.uploaded {
       border: 3px dashed #609E26; }
       #dragdrop-project .lines.uploaded:after {
@@ -527,3 +572,71 @@ a.add-project {
   opacity: 0.1; }
   .lurch-success.on {
     display: block; }
+
+.msg {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background: rgba(255, 255, 255, 0.96);
+  z-index: 100000;
+  color: #31AA39;
+  font-size: 32px;
+  text-align: center;
+  padding-top: 100px; }
+  .msg.success span.icon {
+    width: 100px;
+    height: 100px;
+    font-family: "ionicons";
+    font-size: 100px;
+    display: block;
+    margin: 0 auto; }
+    .msg.success span.icon:after {
+      content: "\f3fe"; }
+  .msg.loading span.icon {
+    display: block;
+    width: 20px;
+    height: 24px;
+    border: 1px black solid;
+    border-radius: 0px 0px 5px 5px;
+    position: relative;
+    margin: 36px auto; }
+    .msg.loading span.icon:after, .msg.loading span.icon:before {
+      position: absolute;
+      content: ""; }
+    .msg.loading span.icon:after {
+      width: 5px;
+      height: 12px;
+      border: 1px #000 solid;
+      border-left: none;
+      border-radius: 0px 20px 20px 0px;
+      left: 20px; }
+    .msg.loading span.icon:before {
+      width: 1px;
+      height: 6px;
+      background-color: black;
+      top: -10px;
+      left: 4px;
+      box-shadow: 5px 0px 0px 0px black, 5px -5px 0px 0px black, 10px 0px 0px 0px black;
+      -webkit-animation: steam 1s linear infinite alternate;
+      -moz-animation: steam 1s linear infinite alternate;
+      animation: steam 1s linear infinite alternate; }
+  .msg span.message {
+    color: #aaa; }
+
+@-webkit-keyframes steam {
+  0% {
+    height: 0px; }
+  100% {
+    height: 6px; } }
+@-moz-keyframes steam {
+  0% {
+    height: 0px; }
+  100% {
+    height: 6px; } }
+@keyframes steam {
+  0% {
+    height: 0px; }
+  100% {
+    height: 6px; } }
