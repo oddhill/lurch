@@ -136,6 +136,10 @@
     width: 100%;
   }
 
+  input[type="file"] {
+    display: none;
+  }
+
   input[type="submit"] {
     padding: 15px 25px 15px 25px;
     display: inline-block;

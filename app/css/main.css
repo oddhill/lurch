@@ -379,6 +379,8 @@ a.add-project {
   font-size: 12px;
   padding: 5px 5px 5px 5px;
   width: 100%; }
+#project input[type="file"] {
+  display: none; }
 #project input[type="submit"] {
   padding: 15px 25px 15px 25px;
   display: inline-block;
