@@ -1,11 +1,20 @@
-function Project(name, path, plugins, current, id, db) {
+function Project(name, path, plugins, current, id, db, remote) {
   this.name = name;
   this.path = path;
   this.plugins = plugins;
   this.current = current;
   this.id = id;
   this.db = db;
+  this.remote = remote;
 }
+
+Project.prototype.getRemote = function(callback) {
+  callback(this.remote);
+};
+
+Project.prototype.setRemote = function(remote) {
+  this.remote = remote;
+};
 
 Project.prototype.getDb = function(callback) {
   callback(this.db);
@@ -40,7 +49,7 @@ Project.prototype.setPlugins = function(plugins) {
 };
 
 Project.prototype.save = function(callback) {
-  db.projects.update({ _id: this.id }, { name: this.name, path: this.path, plugins: this.plugins, current: this.current, db: this.db }, { upsert: true }, function(err) {
+  db.projects.update({ _id: this.id }, { name: this.name, path: this.path, plugins: this.plugins, current: this.current, db: this.db, remote: this.remote }, { upsert: true }, function(err) {
     callback(err);
   });
 };

@@ -21,7 +21,7 @@ $('#add-site').submit(function(event) {
     password: $(this).find('input[name="db-password"]').val()
   };
 
-  var newProject = new Project(name, path, [], false, null, db);
+  var newProject = new Project(name, path, [], false, null, db, remotePath);
   newProject.save(function(err) {
     if (!err) {
       // Rebuild menu
