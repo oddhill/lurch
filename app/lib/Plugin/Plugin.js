@@ -55,10 +55,10 @@ Plugin.prototype.save = function(callback) {
 Plugin.prototype.remove = function(callback) {
   var self = this;
 
-  db.plugins.remove({ _id: this.id }, function(err) {
+  db.plugins.remove({ _id: self.id }, function(err) {
     if (err) return callback(err);
     // Remove plugin from projects
-    db.projects.update({}, { $pull: { plugins: { id: this.id } } }, { multi: true }, function(err) {
+    db.projects.update({}, { $pull: { plugins: { id: self.id } } }, { multi: true }, function(err) {
       if (err) return callback(err);
       // Remove plugin folder from data path
       _removeFiles(self.path, function(err) {
