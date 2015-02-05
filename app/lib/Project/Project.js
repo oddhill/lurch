@@ -1,10 +1,19 @@
-function Project(name, path, plugins, current, id) {
+function Project(name, path, plugins, current, id, db) {
   this.name = name;
   this.path = path;
   this.plugins = plugins;
   this.current = current;
   this.id = id;
+  this.db = db;
 }
+
+Project.prototype.getDb = function(callback) {
+  callback(this.db);
+};
+
+Project.prototype.setDb = function(db) {
+  this.db = db;
+};
 
 Project.prototype.getName = function(callback) {
   callback(this.name);
@@ -31,7 +40,7 @@ Project.prototype.setPlugins = function(plugins) {
 };
 
 Project.prototype.save = function(callback) {
-  db.projects.update({ _id: this.id }, { name: this.name, path: this.path, plugins: this.plugins, current: this.current }, { upsert: true }, function(err) {
+  db.projects.update({ _id: this.id }, { name: this.name, path: this.path, plugins: this.plugins, current: this.current, db: this.db }, { upsert: true }, function(err) {
     callback(err);
   });
 };
