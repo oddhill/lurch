@@ -1,16 +1,48 @@
-<h1>Add project</h1>
 <div id="project">
+  <h1>Add project</h1>
+  <p>Drag and drop the root of your project!</p>
+  <div id="dragdrop-project">
+    <div class="lines">
+      Drag 'n Drop
+    </div>
+  </div>
   <form id="add-site">
+    <input name="path" type="file" nwdirectory />
+    <span class="icon general"></span>
+    <h3>General settings</h3>
     <div class="input">
-      <label for="name">Namn</label>
-      <input name="name" type="text" />
+      <label for="name">Name</label>
+      <span class="fill"><input name="name" type="text" /></span>
     </div>
     <div class="input">
-      <label>Path</label>
-      <input name="path" type="file" nwdirectory />
+      <label for="remote">Remote path</label>
+      <span class="fill"><input name="remote" type="text" /></span>
     </div>
 
-    <input name="add" type="submit">
+    <span class="icon db"></span>
+    <h3>Database settings</h3>
+    <div class="input">
+      <label for="db-name">Database</label>
+      <span class="fill"><input name="db-name" type="text" /></span>
+    </div>
+    <div class="input two">
+      <label for="db-host">Host</label>
+      <span class="fill"><input name="db-host" class="two" type="text" /></span>
+    </div>
+    <div class="input two">
+      <label for="db-port">Port</label>
+      <span class="fill"><input name="db-port" class="two" type="text" /></span>
+    </div>
+    <div class="input">
+      <label for="db-username">Username</label>
+      <span class="fill"><input name="db-username" type="text" /></span>
+    </div>
+    <div class="input">
+      <label for="db-password">Password</label>
+      <span class="fill"><input name="db-password" type="password" /></span>
+    </div>
+
+    <input name="add" class="add" type="submit" value="Add">
   </form>
 </div>
 
