@@ -1,8 +1,22 @@
 var Project = require('./lib/Project/Project.js');
 
+// Go back link
+$('#add-site .cancel').click(function(e) {
+  e.preventDefault();
+  $('body').removeClass('edit-add');
+  $('#app').load('views/manage_projects.html');
+});
+
 // File dialog when click
 $('#dragdrop-project').on('click', function() {
   $('input[name=path]').click();
+});
+
+$('#add-site input[type="text"]').on('focus', function() {
+  $(this).parents('.input').addClass('active');
+});
+$('#add-site input[type="text"]').on('blur', function() {
+  $(this).parents('.input').removeClass('active');
 });
 
 $('#add-site').submit(function(event) {
