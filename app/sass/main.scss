@@ -6,7 +6,6 @@ body {
   margin: 0px;
   font-family: 'Source Sans Pro', sans-serif;
   background: rgba(0,0,0,0);
-  padding-bottom: 50px;
   height: 100%;
   min-height: 100%;
 }
@@ -27,18 +26,40 @@ h2 {
 }
 
 .main-content {
-  transition: transform .2s ease-in-out;
+  -webkit-transition: transform .1s ease-in, bottom .1s ease-in;
   position: absolute;
-  overflow: hidden;
+  overflow-y: scroll;
+  overflow-x: hidden;
   z-index: 2;
-  background: #fff;
+  background: rgba(255,255,255,1);
+  border-radius: 0px 0px 5px 5px;
   top: 30px;
   left: 0px;
   right: 0px;
   bottom: 0px;
+  -webkit-backface-visibility: hidden;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track  {
+    background: transparent;
+    border-radius: 6px;
+  }
+
+  &::-webkit-scrollbar-track-piece  {
+    background: transparent;
+    border-radius: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0,0,0,0.2);
+    border-radius: 6px;
+  }
 
   &.minimize {
-    transform: scale(0.8);
+    -webkit-transform: scale(0.8);
     position: absolute;
     bottom: -2000px;
   }
@@ -53,6 +74,27 @@ h2 {
     left: 0px;
     right: 0px;
     top: 30px;
+    color: #fff;
+    padding: 20px;
+
+    h2 {
+      color: #fff;
+      text-align: center;
+      background: transparent;
+    }
+
+    p {
+      padding: 0px;
+      margin: 10px 0px 10px 0px;
+
+      label {
+        text-transform: uppercase;
+      }
+
+      span {
+
+      }
+    }
   }
 }
 
@@ -190,3 +232,4 @@ h2 {
 @import "plugins/plugins", "plugins/plugin-form", "projects/projects", "projects/project-form";
 @import "tutorial/tutorial";
 @import "messages";
+@import "settings";

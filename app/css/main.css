@@ -10,7 +10,6 @@ body {
   margin: 0px;
   font-family: 'Source Sans Pro', sans-serif;
   background: transparent;
-  padding-bottom: 50px;
   height: 100%;
   min-height: 100%; }
 
@@ -28,17 +27,31 @@ h2 {
   font-size: 16px; }
 
 .main-content {
-  transition: transform .2s ease-in-out;
+  -webkit-transition: transform .1s ease-in, bottom .1s ease-in;
   position: absolute;
-  overflow: hidden;
+  overflow-y: scroll;
+  overflow-x: hidden;
   z-index: 2;
-  background: #fff;
+  background: white;
+  border-radius: 0px 0px 5px 5px;
   top: 30px;
   left: 0px;
   right: 0px;
-  bottom: 0px; }
+  bottom: 0px;
+  -webkit-backface-visibility: hidden; }
+  .main-content::-webkit-scrollbar {
+    width: 10px; }
+  .main-content::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 6px; }
+  .main-content::-webkit-scrollbar-track-piece {
+    background: transparent;
+    border-radius: 6px; }
+  .main-content::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 6px; }
   .main-content.minimize {
-    transform: scale(0.8);
+    -webkit-transform: scale(0.8);
     position: absolute;
     bottom: -2000px; }
   .main-content.settings {
@@ -50,7 +63,18 @@ h2 {
     bottom: 0px;
     left: 0px;
     right: 0px;
-    top: 30px; }
+    top: 30px;
+    color: #fff;
+    padding: 20px; }
+    .main-content.settings h2 {
+      color: #fff;
+      text-align: center;
+      background: transparent; }
+    .main-content.settings p {
+      padding: 0px;
+      margin: 10px 0px 10px 0px; }
+      .main-content.settings p label {
+        text-transform: uppercase; }
 
 .frame {
   position: absolute;
@@ -317,14 +341,14 @@ a.add-project {
 #project .icon {
   display: block;
   margin: 0 auto;
-  background: #FD6C6E;
+  border: 2px solid #91A1A8;
   width: 45px;
   height: 45px;
   border-radius: 45px;
   font-family: "ionicons";
   text-align: center;
   line-height: 45px;
-  color: #fff; }
+  color: #91A1A8; }
   #project .icon.db {
     margin-top: 20px; }
     #project .icon.db:after {
@@ -642,3 +666,19 @@ a.add-project {
     height: 0px; }
   100% {
     height: 6px; } }
+.footer a.settings {
+  display: block;
+  background: #eee;
+  width: 30px;
+  height: 30px;
+  border-radius: 30px;
+  font-family: "ionicons";
+  float: right;
+  font-size: 18px;
+  color: #777;
+  text-align: center;
+  line-height: 30px;
+  text-decoration: none;
+  margin: 5px 5px 0px 0px; }
+  .footer a.settings:after {
+    content: "\f4a6"; }

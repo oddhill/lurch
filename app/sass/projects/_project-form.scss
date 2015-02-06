@@ -41,14 +41,14 @@
   .icon {
     display: block;
     margin: 0 auto;
-    background: #FD6C6E;
+    border: 2px solid #91A1A8;
     width: 45px;
     height: 45px;
     border-radius: 45px;
     font-family: "ionicons";
     text-align: center;
     line-height: 45px;
-    color: #fff;
+    color: #91A1A8;
 
     &.db {
       margin-top: 20px;

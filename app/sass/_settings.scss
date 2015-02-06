@@ -1,0 +1,19 @@
+.footer a.settings {
+  display: block;
+  background: #eee;
+  width: 30px;
+  height: 30px;
+  border-radius: 30px;
+  font-family: "ionicons";
+  float: right;
+  font-size: 18px;
+  color: #777;
+  text-align: center;
+  line-height: 30px;
+  text-decoration: none;
+  margin: 5px 5px 0px 0px;
+
+  &:after {
+    content: "\f4a6";
+  }
+}
