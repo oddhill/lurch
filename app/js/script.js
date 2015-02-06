@@ -27,4 +27,23 @@ $(document).ready(function() {
     $(this).toggleClass('active');
   });
 
+  // Settings click event
+  $('.footer .settings').on('click', function(e) {
+    e.preventDefault();
+
+    var close = false;
+
+    // Show settings
+    $('.main-content.main').addClass('minimize');
+
+    // Close handler
+    $('.main-content.main.minimize').on('click', function(e) {
+      e.preventDefault();
+      if (close) {
+        $(this).removeClass('minimize');
+        $(this).off(e);
+      }
+      close = true;
+    });
+  });
 });
