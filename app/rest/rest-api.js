@@ -40,7 +40,7 @@ module.exports.init = function() {
 
   // Get current project
   app.get('/project/current', function(req, res) {
-    db.sites.findOne({ current: true }, function(error, project) {
+    db.projects.findOne({ current: true }, function(error, project) {
       res.json(project);
       res.end();
     });
@@ -48,7 +48,7 @@ module.exports.init = function() {
 
   // Get project
   app.get('/project/get/:id', function(req, res) {
-    db.sites.findOne({ _id: req.param('id') }, function(error, project) {
+    db.projects.findOne({ _id: req.param('id') }, function(error, project) {
       res.json(project);
       res.end();
     });
@@ -56,7 +56,7 @@ module.exports.init = function() {
 
   // Get all projects
   app.get('/projects/get', function(req, res) {
-    db.sites.find({}, function(error, projects) {
+    db.projects.find({}, function(error, projects) {
       res.json(projects);
       res.end();
     });
@@ -82,7 +82,7 @@ module.exports.init = function() {
 
   // Change current project
   app.post('/project/change/:id', function(req, res) {
-    db.sites.findOne({ _id: req.param('id') }, function(error, project) {
+    db.projects.findOne({ _id: req.param('id') }, function(error, project) {
       projects.changeCurrent(lurch, project);
       res.json(project);
       res.end();
@@ -92,7 +92,7 @@ module.exports.init = function() {
   // Run plugin
   app.post('/plugin/run/:id', function(req, res) {
     db.plugins.find({ _id: req.param('id') }, function(error, plugin) {
-      db.sites.findOne({ current: true }, function(error, project) {
+      db.projects.findOne({ current: true }, function(error, project) {
         for (var p in project.plugins) {
           if (project.plugins[p].id == req.param('id')) {
             plugins.runPlugin(plugin[0].path);
@@ -111,7 +111,7 @@ module.exports.init = function() {
 
   // Delete a project
   app.delete('/project/delete/:id', function(req, res) {
-    db.sites.remove({ _id: req.param('id') }, {}, function() {
+    db.projects.remove({ _id: req.param('id') }, {}, function() {
       res.json({"success": true});
       res.end();
     });
