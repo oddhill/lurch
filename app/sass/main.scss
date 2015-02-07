@@ -76,25 +76,6 @@ h2 {
     top: 30px;
     color: #fff;
     padding: 20px;
-
-    h2 {
-      color: #fff;
-      text-align: center;
-      background: transparent;
-    }
-
-    p {
-      padding: 0px;
-      margin: 10px 0px 10px 0px;
-
-      label {
-        text-transform: uppercase;
-      }
-
-      span {
-
-      }
-    }
   }
 }
 
@@ -219,10 +200,10 @@ h2 {
   display: block;
   width: auto;
   height: 40px;
-  position: fixed;
-  left: 20px;
-  right: 20px;
-  bottom: 20px;
+  position: absolute;
+  left: 10px;
+  right: 0px;
+  bottom: 10px;
 
   .edit-add & {
     display: none;

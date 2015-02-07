@@ -3,6 +3,7 @@
   background: #eee;
   width: 30px;
   height: 30px;
+  padding: 2px;
   border-radius: 30px;
   font-family: "ionicons";
   float: right;
@@ -11,9 +12,46 @@
   text-align: center;
   line-height: 30px;
   text-decoration: none;
-  margin: 5px 5px 0px 0px;
+  margin: 4px 5px 0px 0px;
 
   &:after {
     content: "\f4a6";
+  }
+}
+
+.main-content.settings {
+
+  label {
+    background: #fff;
+    padding: 5px;
+    color: #1A5A7D;
+    text-transform: uppercase;
+  }
+
+  span {
+    float: right;
+  }
+
+  input {
+    width: 200px;
+    float: right;
+    border: 0px;
+    border-bottom: 1px solid #fff;
+    background: none;
+    outline: 0px;
+    color: #fff;
+    padding: 5px;
+    font-size: 14px;
+  }
+
+  h2 {
+    color: #fff;
+    text-align: center;
+    background: transparent;
+  }
+
+  p {
+    padding: 5px;
+    margin: 10px 0px 10px 0px;
   }
 }

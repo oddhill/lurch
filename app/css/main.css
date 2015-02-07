@@ -66,15 +66,6 @@ h2 {
     top: 30px;
     color: #fff;
     padding: 20px; }
-    .main-content.settings h2 {
-      color: #fff;
-      text-align: center;
-      background: transparent; }
-    .main-content.settings p {
-      padding: 0px;
-      margin: 10px 0px 10px 0px; }
-      .main-content.settings p label {
-        text-transform: uppercase; }
 
 .frame {
   position: absolute;
@@ -169,10 +160,10 @@ h2 {
   display: block;
   width: auto;
   height: 40px;
-  position: fixed;
-  left: 20px;
-  right: 20px;
-  bottom: 20px; }
+  position: absolute;
+  left: 10px;
+  right: 0px;
+  bottom: 10px; }
   .edit-add .footer {
     display: none; }
 
@@ -671,6 +662,7 @@ a.add-project {
   background: #eee;
   width: 30px;
   height: 30px;
+  padding: 2px;
   border-radius: 30px;
   font-family: "ionicons";
   float: right;
@@ -679,6 +671,31 @@ a.add-project {
   text-align: center;
   line-height: 30px;
   text-decoration: none;
-  margin: 5px 5px 0px 0px; }
+  margin: 4px 5px 0px 0px; }
   .footer a.settings:after {
     content: "\f4a6"; }
+
+.main-content.settings label {
+  background: #fff;
+  padding: 5px;
+  color: #1A5A7D;
+  text-transform: uppercase; }
+.main-content.settings span {
+  float: right; }
+.main-content.settings input {
+  width: 200px;
+  float: right;
+  border: 0px;
+  border-bottom: 1px solid #fff;
+  background: none;
+  outline: 0px;
+  color: #fff;
+  padding: 5px;
+  font-size: 14px; }
+.main-content.settings h2 {
+  color: #fff;
+  text-align: center;
+  background: transparent; }
+.main-content.settings p {
+  padding: 5px;
+  margin: 10px 0px 10px 0px; }
