@@ -1,20 +1,49 @@
 <h1>Edit <span class="title-name"></span></h1>
 
-<ul class="project-menu">
-  <li><a href="#" class="active">Settings</a></li>
-  <li><a href="#">Plugins</a></li>
-</ul>
-
 <div id="project" class="show">
+  <div id="dragdrop-project">
+    <div class="lines">
+      Drag 'n Drop
+    </div>
+  </div>
+
+  <ul class="project-menu">
+    <li><a href="#" class="active">Settings</a></li>
+    <li><a href="#">Plugins</a></li>
+  </ul>
+
   <form id="change-project">
+    <input name="path" type="file" nwdirectory />
+    <h3 class="general">General settings</h3>
     <div class="input">
-      <label>Name</label>
-      <input type="text" name="name" />
+      <label for="name">Name</label>
+      <span class="fill"><input name="name" type="text" /></span>
     </div>
     <div class="input">
-      <label>Path</label>
-      <span class="path"></span>
-      <!--<input type="file" name="path" nwdirectory />-->
+      <label for="remote">Remote path</label>
+      <span class="fill"><input name="remote" type="text" /></span>
+    </div>
+
+    <h3 class="db">Database settings</h3>
+    <div class="input">
+      <label for="db-name">Database</label>
+      <span class="fill"><input name="db-name" type="text" /></span>
+    </div>
+    <div class="input two">
+      <label for="db-host">Host</label>
+      <span class="fill"><input name="db-host" class="two" type="text" /></span>
+    </div>
+    <div class="input two">
+      <label for="db-port">Port</label>
+      <span class="fill"><input name="db-port" class="two" type="text" /></span>
+    </div>
+    <div class="input">
+      <label for="db-username">Username</label>
+      <span class="fill"><input name="db-username" type="text" /></span>
+    </div>
+    <div class="input">
+      <label for="db-password">Password</label>
+      <span class="fill"><input name="db-password" type="password" /></span>
     </div>
 
     <input type="submit" value="Save" />
@@ -23,9 +52,7 @@
 </div>
 
 <div id="project-plugins">
-  <ul>
-
-  </ul>
+  <ul></ul>
 </div>
 
 <!-- Include controllers -->
