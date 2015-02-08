@@ -27,19 +27,27 @@ $('#add-plugin').submit(function(event) {
   // Create a new plugin object
   var newPlugin = new Plugin(null, pluginPath);
   // Get the plugins manifest name
-  newPlugin.manifestName(function(name) {
-    // Set the plugins name
-    newPlugin.setName(name);
-    // Move plugin folder to data path
-    newPlugin.moveToDataPath(function(err) {
-      if (!err) {
-        // If there is no error, well. Save it to db!
-        newPlugin.save(function(err, result) {
-          // Rebuild menu and load plugins view
-          nwMenu.rebuild();
-          $('#app').load('views/manage_plugins.html');
-        });
-      }
-    });
+  newPlugin.manifestName(function(name, err) {
+    if (!err) {
+      // Set the plugins name
+      newPlugin.setName(name);
+      // Move plugin folder to data path
+      newPlugin.moveToDataPath(function(err) {
+        if (!err) {
+          // If there is no error, well. Save it to db!
+          newPlugin.save(function(err, result) {
+            // Rebuild menu and load plugins view
+            nwMenu.rebuild();
+            //$('#app').load('views/manage_plugins.html');
+            $('.add-plugin-wrapper').addClass('success');
+          });
+        } else {
+          $('.add-plugin-wrapper').addClass('fail');
+        }
+      });
+    }
+    else {
+      $('.add-plugin-wrapper').addClass('fail');
+    }
   });
 });
