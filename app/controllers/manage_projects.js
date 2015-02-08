@@ -14,8 +14,3 @@ Project.findAll(function(err, projects) {
   });
 
 });
-
-// Add new project
-$('a.add-project').click(function() {
-  $('#app').load('views/add_project.html');
-});

@@ -26,10 +26,3 @@ Plugin.findAll(function(err, plugins) {
     });
   }
 });
-
-// Add-plugin
-$('a.add-plugin').click(function() {
-  $.get('views/add_plugin.html', function(data) {
-    $('body .frame').prepend(data);
-  });
-});
