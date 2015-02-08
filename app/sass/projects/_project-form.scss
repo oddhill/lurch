@@ -18,7 +18,7 @@
 
   a {
     display: block;
-    width: 205px;
+    width: 160px;
     float: left;
     height: 40px;
     background: transparent;
@@ -114,21 +114,31 @@
     display: none;
   }
 
-  input[type="submit"] {
-    padding: 15px 25px 15px 25px;
+  input[type="submit"],
+  input[type="button"] {
     display: inline-block;
-    color: #fff;
+    width: auto;
+    padding: 10px 20px 10px 20px;
+    background: #eee;
+    color: #888;
+    font-size: 12px;
+    text-decoration: none;
+    transition: background .2s ease-in-out;
+    border-radius: 50px;
+    margin-left: 5px;
     border: 0px;
-    text-align: left;
-    font-size: 11px;
-    text-transform: uppercase;
-    font-weight: bold;
+    margin: 10px 0px 0px 0px;
+    outline: 0px;
     cursor: pointer;
-    border-radius: 5px;
-    margin: 10px 10px 10px 0px;
 
     &.add {
       background: #609E26;
+      color: #fff;
+    }
+
+    &.delete {
+      background: #CC4D4D;
+      color: #fff;
     }
   }
 

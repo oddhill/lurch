@@ -38,9 +38,9 @@ h2 {
   overflow-x: hidden;
   z-index: 2;
   background: white;
-  border-radius: 0px 0px 5px 5px;
+  border-radius: 0px 0px 5px 0px;
   top: 30px;
-  left: 0px;
+  left: 60px;
   right: 0px;
   bottom: 0px;
   -webkit-backface-visibility: hidden; }
@@ -66,7 +66,7 @@ h2 {
     position: absolute;
     z-index: 1;
     bottom: 0px;
-    left: 0px;
+    left: 60px;
     right: 0px;
     top: 30px;
     color: #fff;
@@ -74,16 +74,16 @@ h2 {
 
 .frame {
   position: absolute;
-  background: #fff;
+  background: transparent;
   width: auto;
   height: auto;
   border-radius: 5px;
-  box-shadow: 0px 0px 15px #555;
+  box-shadow: 0px 0px 15px #222;
   top: 15px;
   left: 15px;
   right: 15px;
   bottom: 15px;
-  padding: 30px 15px 15px 15px;
+  padding: 30px 15px 15px 80px;
   overflow: hidden; }
 
 .frame-top {
@@ -97,27 +97,6 @@ h2 {
   -webkit-app-region: drag;
   background: #eee;
   border-radius: 5px 5px 0px 0px; }
-  .frame-top .actions {
-    position: absolute;
-    top: 5px;
-    left: 7px; }
-    .frame-top .actions button {
-      display: inline-block;
-      width: 12px;
-      height: 12px;
-      border-radius: 12px;
-      -webkit-appearance: none;
-      border: 0px;
-      outline: 0px;
-      padding: 0px;
-      margin: 0px; }
-    .frame-top .actions .close {
-      background: #ff5f57;
-      border: 1px solid #e2463f;
-      margin-right: 3px; }
-    .frame-top .actions .minimize {
-      background: #ffbd2e;
-      border: 1px solid #e1a116; }
   .frame-top h1 {
     font-size: 11px;
     color: #999;
@@ -127,39 +106,74 @@ h2 {
     text-align: center;
     background: none; }
 
+.actions {
+  position: absolute;
+  top: 5px;
+  left: 7px; }
+  .actions button {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 12px;
+    -webkit-appearance: none;
+    border: 0px;
+    outline: 0px;
+    padding: 0px;
+    margin: 0px; }
+  .actions .close {
+    background: #ff5f57;
+    border: 1px solid #e2463f;
+    margin-right: 3px; }
+  .actions .minimize {
+    background: #ffbd2e;
+    border: 1px solid #e1a116; }
+
+aside.aside {
+  background: #222d37;
+  position: absolute;
+  top: 30px;
+  bottom: 0px;
+  left: 0px;
+  z-index: 200;
+  border-radius: 0px 0px 0px 5px;
+  overflow: hidden; }
+
 .main-nav {
-  width: 100%;
-  height: 61px;
-  background: #fff; }
-  .edit-add .main-nav {
-    display: none; }
+  width: 60px; }
   .main-nav ul {
     display: block;
     list-style-type: none;
     padding: 0px;
     margin: 0px; }
   .main-nav li {
-    width: 50%;
-    float: left; }
+    display: block;
+    position: relative; }
   .main-nav a {
     display: block;
-    color: #888;
+    color: rgba(255, 255, 255, 0.2);
     text-align: center;
     text-decoration: none;
     text-transform: uppercase;
-    font-size: 14px;
-    line-height: 60px;
+    font-size: 32px;
     transition: background .1s ease-in-out;
-    border-bottom: 1px solid #eee; }
+    font-family: "ionicons";
+    padding: 18px 0px 15px 0px; }
     .main-nav a:hover, .main-nav a.active {
-      border-bottom: 1px solid #1D83CE;
-      color: #1D83CE; }
+      color: #fff;
+      background: rgba(255, 255, 255, 0.05); }
     .main-nav a span {
-      padding: 1px 8px 1px 8px;
-      background: #ddd;
-      color: #888;
-      border-radius: 10px;
-      margin-left: 5px; }
+      display: none;
+      width: 15px;
+      height: 15px;
+      background: #000;
+      color: #fff;
+      border-radius: 100%;
+      font-size: 10px;
+      position: absolute;
+      top: 10px;
+      right: 5px;
+      line-height: 15px;
+      border: 2px solid #3D414E; }
 
 .footer {
   display: block;
@@ -421,7 +435,7 @@ a.add-project {
     display: inline; }
   .project-menu a {
     display: block;
-    width: 205px;
+    width: 160px;
     float: left;
     height: 40px;
     background: transparent;
@@ -485,20 +499,30 @@ a.add-project {
   width: 100%; }
 #project input[type="file"] {
   display: none; }
-#project input[type="submit"] {
-  padding: 15px 25px 15px 25px;
+#project input[type="submit"],
+#project input[type="button"] {
   display: inline-block;
-  color: #fff;
+  width: auto;
+  padding: 10px 20px 10px 20px;
+  background: #eee;
+  color: #888;
+  font-size: 12px;
+  text-decoration: none;
+  transition: background .2s ease-in-out;
+  border-radius: 50px;
+  margin-left: 5px;
   border: 0px;
-  text-align: left;
-  font-size: 11px;
-  text-transform: uppercase;
-  font-weight: bold;
-  cursor: pointer;
-  border-radius: 5px;
-  margin: 10px 10px 10px 0px; }
-  #project input[type="submit"].add {
-    background: #609E26; }
+  margin: 10px 0px 0px 0px;
+  outline: 0px;
+  cursor: pointer; }
+  #project input[type="submit"].add,
+  #project input[type="button"].add {
+    background: #609E26;
+    color: #fff; }
+  #project input[type="submit"].delete,
+  #project input[type="button"].delete {
+    background: #CC4D4D;
+    color: #fff; }
 #project .delete-project {
   padding: 7px 15px 7px 15px;
   display: inline-block;
