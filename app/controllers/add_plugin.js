@@ -21,6 +21,11 @@ $('#plugin-dragdrop a').on('click', function(e) {
   $('#add-plugin input[name="path"]').click();
 });
 
+// Close
+$('.add-plugin-wrapper .close').on('click', function() {
+  $('.add-plugin-wrapper').remove();
+});
+
 $('#add-plugin').submit(function(event) {
   event.preventDefault();
 
