@@ -37,29 +37,29 @@ a.add-plugin {
 
   // Remove plugin button
   a.remove {
-    width: 20px;
-    height: 20px;
-    background: #ce3636;
-    border-radius: 100%;
-    float: right;
+    width: 40px;
     transition: width .2s ease-in-out, height .2s ease-in-out;
     transform-origin: left top;
-    color: #fff;
+    color: #ddd;
     text-decoration: none;
+    text-align: center;
+    font-family: "ionicons";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    line-height: 40px;
     text-align: center;
 
     &:after {
-      display: block;
-      content: " ";
-      width: 10px;
-      height: 16px;
-      background: url('../graphics/remove.svg') no-repeat;
-      background-size: contain;
-      margin: 3px 0px 0px 5px;
+      font-size: 18px;
+      content: "\f405";
     }
 
     &:hover {
-      background: #a42e2e;
+      transition: background .2s ease-in-out;
+      background: #ce3636;
+      color: #fff;
     }
 
     &.hide {
