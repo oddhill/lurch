@@ -17,17 +17,32 @@
       </div>
       <h1>Lurch</h1>
     </div>
-    <nav class="main-nav">
-      <ul>
-        <li><a href="#" class="projects">Projects <span class="projects-calc">0</span></a></li>
-        <li><a href="#" class="plugins">Plugins <span class="plugins-calc">0</span></a></li>
-      </ul>
-    </nav>
-    <div id="app"></div>
-    <footer class="footer">
-      <a href="#" class="add-project">Add project</a>
-      <a href="#" class="add-plugin">Add plugin</a>
-    </footer>
+    <div class="main-content settings">
+      <h2>Settings</h2>
+      <p>
+        <label>API-key:</label><span class="key"></span>
+      </p>
+      <p>
+        <label>Callback URL:</label><input type="text" name="callbackurl" />
+      </p>
+      <p>
+        <label>Version:</label><span>1.0.0-beta</span>
+      </p>
+    </div>
+    <div class="main-content main">
+      <nav class="main-nav">
+        <ul>
+          <li><a href="#" class="projects active">Projects <span class="projects-calc">0</span></a></li>
+          <li><a href="#" class="plugins">Plugins <span class="plugins-calc">0</span></a></li>
+        </ul>
+      </nav>
+      <div id="app"></div>
+      <footer class="footer">
+        <a href="#" class="add-project">Add project</a>
+        <a href="#" class="add-plugin">Add plugin</a>
+        <a href="#" class="settings"></a>
+      </footer>
+    </div>
   </div>
   <script src="http:////ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script src="assets/bower_components/owl-carousel/owl-carousel/owl.carousel.js"></script>
@@ -38,6 +53,5 @@
   <script src="js/tutorial.js"></script>
   <script src="js/frame-actions.js"></script>
   <script src="testing.js"></script>
-
 </body>
 </html>
