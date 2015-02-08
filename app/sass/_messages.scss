@@ -27,6 +27,22 @@
     }
   }
 
+  &.fail {
+
+    span.icon {
+      width: 100px;
+      height: 100px;
+      font-family: "ionicons";
+      font-size: 100px;
+      display: block;
+      margin: 0 auto;
+
+      &:after {
+        content: "\f405";
+      }
+    }
+  }
+
   &.loading {
 
     span.icon {
