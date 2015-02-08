@@ -10,6 +10,9 @@ $('#add-site .cancel').click(function(e) {
 // File dialog when click
 $('#dragdrop-project').on('click', function() {
   $('input[name=path]').click();
+
+  // Make sure the window does not loose focus
+  global.nwWindow.focus();
 });
 
 $('#add-site input[type="text"]').on('focus', function() {

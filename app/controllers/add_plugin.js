@@ -19,6 +19,9 @@ $('#add-plugin .path').change(function() {
 $('#plugin-dragdrop a').on('click', function(e) {
   e.preventDefault();
   $('#add-plugin input[name="path"]').click();
+
+  // Make sure the window does not loose focus
+  global.nwWindow.focus();
 });
 
 // Close
