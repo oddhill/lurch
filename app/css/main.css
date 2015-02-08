@@ -1,3 +1,8 @@
+@-webkit-keyframes bouncedelay {
+  0%, 80%, 100% {
+    -webkit-transform: scale(0); }
+  40% {
+    -webkit-transform: scale(1); } }
 @font-face {
   font-family: "ionicons";
   src: url("../fonts/ionicons.eot?v=2.0.0");
@@ -238,7 +243,7 @@ a.add-plugin {
   left: 0px;
   right: 0px;
   bottom: 0px;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.95);
   z-index: 1000; }
   .add-plugin-wrapper .close {
     width: 40px;
@@ -259,7 +264,7 @@ a.add-plugin {
     width: 200px;
     height: 50px;
     position: absolute;
-    top: 180px;
+    top: 170px;
     left: 50%;
     margin-left: -100px;
     text-align: center; }
@@ -277,18 +282,6 @@ a.add-plugin {
     .add-plugin-wrapper .status .circle-2 {
       -webkit-animation-delay: -0.16s;
       animation-delay: -0.16s; }
-@-webkit-keyframes bouncedelay {
-  0%, 80%, 100% {
-    -webkit-transform: scale(0); }
-  40% {
-    -webkit-transform: scale(1); } }
-@keyframes bouncedelay {
-  0%, 80%, 100% {
-    transform: scale(0);
-    -webkit-transform: scale(0); }
-  40% {
-    transform: scale(1);
-    -webkit-transform: scale(1); } }
   .add-plugin-wrapper.success .status .circle {
     -webkit-animation-play-state: paused; }
   .add-plugin-wrapper.success .status .circle-1,
@@ -328,7 +321,7 @@ a.add-plugin {
     font-family: "ionicons";
     font-size: 80px;
     line-height: 80px;
-    color: #31AA39; }
+    color: #E83017; }
     .add-plugin-wrapper.fail .status .circle-2:after {
       content: "\f405"; }
 
