@@ -26,9 +26,22 @@ Plugin.prototype.getName = function(callback) {
 
 Plugin.prototype.manifestName = function(callback) {
   var manifestPath = this.path + '/package.json';
-  var manifest = require(manifestPath);
 
-  callback(manifest.name);
+  var err = false;
+  fs.exists(manifestPath, function(exists) {
+    if (!exists) {
+      err = true;
+      callback('', err);
+    }
+    else {
+      var manifest = require(manifestPath);
+      if (!manifest.name) {
+        err = true;
+      }
+
+      callback(manifest.name, err);
+    }
+  });
 };
 
 Plugin.findById = function(id, callback) {
