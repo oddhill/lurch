@@ -23,7 +23,7 @@ a.add-project {
 
   li {
     position: relative;
-    height: 20px;
+    height: 30px;
     background: #fff;
     list-style-type: none;
     margin: 0px;
@@ -36,6 +36,12 @@ a.add-project {
       background: #f2f2f2;
       color: #1D83CE;
     }
+  }
+
+  span.path {
+    display: block;
+    font-size: 12px;
+    color: #aaa;
   }
 
   // Edit link
@@ -54,7 +60,9 @@ a.add-project {
   // Plugins counter
   .plugins-count {
     display: block;
-    float: right;
+    position: absolute;
+    right: 0px;
+    top: 16px;
     width: 20px;
     height: 20px;
     background: #1D83CE;
