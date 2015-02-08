@@ -29,5 +29,7 @@ Plugin.findAll(function(err, plugins) {
 
 // Add-plugin
 $('a.add-plugin').click(function() {
-  $('#app').load('views/add_plugin.html');
+  $.get('views/add_plugin.html', function(data) {
+    $('body .frame').prepend(data);
+  });
 });

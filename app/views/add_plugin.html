@@ -1,11 +1,17 @@
-<h1>Add plugin</h1>
-<div id="plugin-dragdrop">
-  <p>Drag & drop</p>
-  <p>or <a href="#">browse</a></p>
-</div>
-<form id="add-plugin">
-  <input name="path" class="path" type="file" nwdirectory />
-</form>
+<div class="add-plugin-wrapper">
+  <div id="plugin-dragdrop">
+    <div class="status">
+      <span class="circle circle-1"></span>
+      <span class="circle circle-2"></span>
+      <span class="circle circle-3"></span>
+    </div>
+    <p>Drag and drop the plugin folder</p>
+    <p>or <a href="#">browse</a></p>
+  </div>
+  <form id="add-plugin">
+    <input name="path" class="path" type="file" nwdirectory />
+  </form>
 
-<!-- Include controller -->
-<script src="controllers/add_plugin.js"></script>
+  <!-- Include controller -->
+  <script src="controllers/add_plugin.js"></script>
+</div>
