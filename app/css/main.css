@@ -240,6 +240,21 @@ a.add-plugin {
   bottom: 0px;
   background: rgba(255, 255, 255, 0.9);
   z-index: 1000; }
+  .add-plugin-wrapper .close {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    font-size: 40px;
+    color: #ddd;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-family: "ionicons"; }
+    .add-plugin-wrapper .close:hover {
+      color: #555;
+      cursor: pointer; }
+    .add-plugin-wrapper .close:after {
+      content: "\f406"; }
   .add-plugin-wrapper .status {
     width: 200px;
     height: 50px;
