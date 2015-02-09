@@ -43,3 +43,31 @@ Example:
 var status = { success: true, message: 'Success!' };
 callback(status);
 ```
+
+## Plugin menu
+Create a menu for your plugin. (A submenu in the tray menu). Example beneath.
+```Javascript
+module.exports.menu = function(callback) {
+  var menuItems = [];
+
+  // Add menu items
+  menuItems.push({
+    label: 'Label 1',
+    click: function() {
+      menuHandler(this);
+    }
+  });
+
+  menuItems.push({
+    label: 'Label 2',
+    click: function() {
+      menuHandler(this);
+    }
+  });
+
+  callback(menuItems);
+};
+```
+Important, the function needs to be named `menu`.
+An entry in package.json is also needed.
+`{ "menu": true }`
