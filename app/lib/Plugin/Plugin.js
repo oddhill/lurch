@@ -54,7 +54,12 @@ Plugin.findById = function(id, callback) {
 Plugin.findAll = function(callback) {
   db.plugins.find({}, {}, function(err, docs) {
     if (err) return callback(err);
-    callback(null, docs);
+
+    var plugins = [];
+    for (var key in docs) {
+      plugins.push(new Plugin(docs[key].name, docs[key].path, docs[key]._id));
+    }
+    callback(null, plugins);
   });
 };
 
