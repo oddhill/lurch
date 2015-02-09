@@ -75,19 +75,28 @@ module.exports.build = function(subMenus) {
           label: plugins[key].name
         });
 
-        item.on('click', function() {
-          for (var id in subMenus.plugins.items) {
-            if (subMenus.plugins.items[id] == this) {
-              Plugin.findById(plugins[id]._id, function(err, plugin) {
-                if (!err) {
-                  plugin.run();
+        plugins[key].hasMenu(function(status) {
+          if (status) {
+            plugins[key].getMenu(function(pluginMenu) {
+              item.submenu = pluginMenu;
+            });
+          }
+          else {
+            item.on('click', function() {
+              for (var id in subMenus.plugins.items) {
+                if (subMenus.plugins.items[id] == this) {
+                  Plugin.findById(plugins[id]._id, function(err, plugin) {
+                    if (!err) {
+                      plugin.run();
+                    }
+                  });
                 }
-              });
-            }
+              }
+            });
           }
         });
 
-        if (projectEnabledPlugins !== null && projectEnabledPlugins.indexOf(plugins[key]._id) > -1) {
+        if (projectEnabledPlugins !== null && projectEnabledPlugins.indexOf(plugins[key].id) > -1) {
           subMenus.plugins.append(item);
         }
       }
