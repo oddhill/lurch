@@ -158,4 +158,51 @@ Plugin.prototype.run = function() {
   });
 }
 
+/**
+ * Check if plugin has a menu
+ */
+Plugin.prototype.hasMenu = function(callback) {
+  var manifestPath = this.path + '/package.json';
+
+  fs.exists(manifestPath, function(exists) {
+    if (!exists) {
+      callback(false);
+    }
+    else {
+      var manifest = require(manifestPath);
+      if (manifest.menu) {
+        callback(true);
+      }
+    }
+  });
+
+  callback(false);
+}
+
+/**
+ * Get menu items from plugin
+ */
+Plugin.prototype.getMenu = function(callback) {
+  var self = this;
+
+  // Get plugin functions
+  var pluginInfo = require(self.path + '/package.json');
+  var plugin = require(self.path + '/' + pluginInfo.main);
+
+  var menu = new gui.Menu();
+
+  // Get menu items from plugin
+  plugin.menu(function(items) {
+    for (var item in items) {
+      menu.append(new gui.MenuItem({
+        type: 'normal',
+        label: items[item].label,
+        click: items[item].click
+      }));
+    }
+  });
+
+  callback(menu);
+}
+
 module.exports = Plugin;

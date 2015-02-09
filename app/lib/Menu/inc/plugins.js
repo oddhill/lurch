@@ -31,14 +31,23 @@ module.exports.buildMostUsedMenu = function(menu) {
         }
 
         Plugin.findById(mostUsed[key].id, function(error, plugin) {
-          menu.insert(new gui.MenuItem({
+          var menuItem = new gui.MenuItem({
             type: 'normal',
             label: plugin.name,
             click: function() {
               plugin.run();
             }
-          }), 0);
+          });
 
+          plugin.hasMenu(function(status) {
+            if (status) {
+              plugin.getMenu(function(pluginMenu) {
+                menuItem.submenu = pluginMenu;
+              });
+            }
+          });
+
+          menu.insert(menuItem, 0);
         });
       }
     }
