@@ -129,7 +129,7 @@ h2 {
     border: 1px solid #e1a116; }
 
 aside.aside {
-  background: #222d37;
+  background: #2B333E;
   position: absolute;
   top: 30px;
   bottom: 0px;
@@ -180,9 +180,9 @@ aside.aside {
   width: auto;
   height: 40px;
   position: absolute;
-  left: 10px;
+  left: 5px;
   right: 0px;
-  bottom: 10px; }
+  bottom: 5px; }
   .edit-add .footer {
     display: none; }
 
@@ -423,9 +423,12 @@ a.add-project {
     line-height: 20px;
     margin-right: 10px; }
 
-#project.show,
-#project-plugins.show {
-  display: block; }
+#project,
+#project-plugins {
+  display: none; }
+  #project.show,
+  #project-plugins.show {
+    display: block; }
 
 .project-menu {
   display: block;
@@ -543,24 +546,6 @@ a.add-project {
   border-bottom: 2px solid #59697D;
   color: #575E63;
   position: relative; }
-  #project h3:before {
-    display: block;
-    position: absolute;
-    right: 10px;
-    top: 5px;
-    margin: 0 auto;
-    font-family: "ionicons";
-    line-height: 30px;
-    color: #91A1A8;
-    font-weight: normal; }
-  #project h3.db {
-    margin-top: 15px; }
-    #project h3.db:before {
-      content: "\f3ec";
-      font-size: 25px; }
-  #project h3.general:before {
-    content: "\f27b";
-    font-size: 20px; }
 
 #dragdrop-project {
   background: #eee;
@@ -814,8 +799,7 @@ a.add-project {
   color: #777;
   text-align: center;
   line-height: 30px;
-  text-decoration: none;
-  margin: 4px 5px 0px 0px; }
+  text-decoration: none; }
   .footer a.settings:after {
     content: "\f4a6"; }
 

@@ -1,6 +1,7 @@
 // Navigation between settings and plugins
 #project,
 #project-plugins {
+  display: none;
 
   &.show {
     display: block;
@@ -166,35 +167,6 @@
     border-bottom: 2px solid #59697D;
     color: #575E63;
     position: relative;
-
-    &:before {
-      display: block;
-      position: absolute;
-      right: 10px;
-      top: 5px;
-      margin: 0 auto;
-      font-family: "ionicons";
-      line-height: 30px;
-      color: #91A1A8;
-      font-weight: normal;
-    }
-
-    &.db {
-      margin-top: 15px;
-
-      &:before {
-        content: "\f3ec";
-        font-size: 25px;
-      }
-    }
-
-    &.general {
-
-      &:before {
-        content: "\f27b";
-        font-size: 20px;
-      }
-    }
   }
 }
 
