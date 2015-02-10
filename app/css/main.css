@@ -423,10 +423,10 @@ a.add-project {
     line-height: 20px;
     margin-right: 10px; }
 
-#project,
+.edit-project,
 #project-plugins {
   display: none; }
-  #project.show,
+  .edit-project.show,
   #project-plugins.show {
     display: block; }
 
@@ -811,7 +811,7 @@ a.add-project {
 .main-content.settings span {
   float: right; }
 .main-content.settings input {
-  width: 200px;
+  width: 160px;
   float: right;
   border: 0px;
   border-bottom: 1px solid #fff;

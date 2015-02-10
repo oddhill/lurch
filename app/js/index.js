@@ -25,12 +25,14 @@
       $('#app').load('views/manage_projects.html');
       $('.main-nav a').removeClass('active');
       $(this).toggleClass('active');
+      $('body').removeClass('edit-add');
     });
 
     $('.main-nav .plugins').click(function() {
       $('#app').load('views/manage_plugins.html');
       $('.main-nav a').removeClass('active');
       $(this).toggleClass('active');
+      $('body').removeClass('edit-add');
     });
 
     // Settings click event
