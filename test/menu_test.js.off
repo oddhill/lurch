@@ -1,0 +1,33 @@
+var assert = require('assert');
+
+var lib_menu = require('../app/lib/menu.js');
+
+describe('Menu', function() {
+
+  before(function() {
+    lib_menu.populate();
+  });
+
+  describe('Populate menu', function() {
+
+    it('menu should not be null', function() {
+      assert.notEqual(global.menu.items.length, 0);
+    });
+
+  });
+
+  describe('Destroy menu', function() {
+
+    it('should have destroy method', function() {
+      assert.equal(typeof lib_menu.destroy, 'function');
+    });
+
+    it('should remove all menu items', function() {
+      lib_menu.destroy(function() {
+        assert.equal(global.menu.items.length, 0);
+      });
+    });
+
+  });
+
+});
