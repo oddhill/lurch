@@ -3,7 +3,8 @@ var Plugin = require('./lib/Plugin/Plugin.js');
 Plugin.findAll(function(err, plugins) {
   if (!err) {
     for (var key in plugins) {
-      $('#plugins').append('<li>' + plugins[key].name + '<span class="id">' + plugins[key]._id + '</span>' + '<a class="remove" href="#" data-id="' + plugins[key]._id + '"></a></li>');
+      console.log(plugins[key]);
+      $('#plugins').append('<li>' + plugins[key].name + '<span class="id">' + plugins[key].id + '</span>' + '<a class="remove" href="#" data-id="' + plugins[key]._id + '"></a></li>');
     }
 
     // Remove plugin
