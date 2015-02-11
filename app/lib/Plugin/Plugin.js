@@ -64,14 +64,18 @@ Plugin.findAll = function(callback) {
 };
 
 Plugin.prototype.save = function(callback) {
-  db.plugins.update({ _id: this.id }, { name: this.name, path: this.path }, { upsert: true }, function(err, result) {
+  db.plugins.update({ _id: this.id }, { name: this.name, path: this.path }, { upsert: true }, function(err, result, savedPlugin) {
     if (err) return callback(err);
-    callback(null, result);
+    callback(null, result, savedPlugin);
   });
 };
 
 Plugin.prototype.remove = function(callback) {
   var self = this;
+
+  if (self.id == null) {
+    callback("Id can't be null");
+  }
 
   db.plugins.remove({ _id: self.id }, function(err) {
     if (err) return callback(err);

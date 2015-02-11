@@ -49,8 +49,8 @@ Project.prototype.setPlugins = function(plugins) {
 };
 
 Project.prototype.save = function(callback) {
-  db.projects.update({ _id: this.id }, { name: this.name, path: this.path, plugins: this.plugins, current: this.current, db: this.db, remote: this.remote }, { upsert: true }, function(err) {
-    callback(err);
+  db.projects.update({ _id: this.id }, { name: this.name, path: this.path, plugins: this.plugins, current: this.current, db: this.db, remote: this.remote }, { upsert: true }, function(err, result, savedProject) {
+    callback(err, result, savedProject);
   });
 };
 
