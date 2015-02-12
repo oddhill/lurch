@@ -71,5 +71,12 @@
     // Load rest token to settings page
     $('.main-content.settings .key').html(localStorage.restToken);
 
+    // Settings saving handler
+    Settings.save();
+
+    // Frame actions handlers
+    FrameActions.close();
+    FrameActions.minimize();
+
   });
 })();
