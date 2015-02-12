@@ -25,9 +25,12 @@
     "rimraf": "^2.2.8"
   },
   "devDependencies": {
+    "expect": "^1.6.0",
     "grunt": "latest",
     "grunt-contrib-sass": "latest",
     "grunt-contrib-watch": "latest",
-    "grunt-node-webkit-builder": "^0.2.3"
+    "grunt-node-webkit-builder": "^0.2.3",
+    "loca": "^1.0.1",
+    "mocha": "^2.1.0"
   }
 }
