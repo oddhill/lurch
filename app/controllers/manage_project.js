@@ -35,7 +35,7 @@ Project.findById(projectEditId, function(err, project) {
         }
       }
 
-      $('#project-plugins ul').append('<li>' + plugins[key].name + '<span class="checkbox"><input type="checkbox" data-id="' + plugins[key]._id + '"' + checked + ' /></span></li>');
+      $('#project-plugins ul').append('<li>' + plugins[key].name + '<span class="checkbox"><input type="checkbox" data-id="' + plugins[key].id + '"' + checked + ' /></span></li>');
     }
 
     // Edit db on change
