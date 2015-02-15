@@ -1,6 +1,5 @@
-<ul id="plugins">
-
-</ul>
-
-<!-- Include controllers -->
-<script src="controllers/manage_plugins.js"></script>
+<section ng-controller="PluginListCtrl">
+  <ul id="plugins" ng-repeat="plugin in plugins">
+    <plugin-list-item></plugin-list-item>
+  </ul>
+</section>
