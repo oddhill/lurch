@@ -14,6 +14,7 @@
 <script src="ng-factories/PluginFactory.js"></script>
 <script src="ng-controllers/PluginListCtrl.js"></script>
 <script src="ng-controllers/ProjectListCtrl.js"></script>
+<script src="ng-controllers/AsideNavCtrl.js"></script>
 <script>
 angular.element(document.getElementsByTagName('head')).append(angular.element('<base href="' + window.location.pathname + '" />'));
 </script>
@@ -21,14 +22,7 @@ angular.element(document.getElementsByTagName('head')).append(angular.element('<
 <body>
   <div id="tutorial"></div>
   <div class="frame">
-    <aside class="aside">
-      <nav class="main-nav">
-        <ul>
-          <li><a href="#" class="projects active">&#xf3ed;<span class="projects-calc">0</span></a></li>
-          <li><a href="plugins" class="plugins">&#xf415;<span class="plugins-calc">0</span></a></li>
-        </ul>
-      </nav>
-    </aside>
+    <ng-include src="'views/aside-nav.html'"></ng-include>
     <div class="frame-top">
       <div class="actions">
         <button class="close"></button>
