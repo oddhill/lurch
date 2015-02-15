@@ -1,5 +1,5 @@
-<ul id="projects">
-</ul>
-
-<!-- Include controller -->
-<script src="controllers/manage_projects.js"></script>
+<section ng-controller="ProjectListCtrl">
+  <ul id="projects" ng-repeat="project in projects">
+    <project-list-item></project-list-item>
+  </ul>
+</section>
