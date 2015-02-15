@@ -1,4 +1,4 @@
-lurchApp.controller('PluginListCtrl', function ($scope, Plugin) {
+lurchApp.controller('PluginListCtrl', ['$scope', 'Plugin', function ($scope, Plugin) {
 
   // Get all plugins
   Plugin.get().then(function(plugins) {
@@ -17,4 +17,4 @@ lurchApp.controller('PluginListCtrl', function ($scope, Plugin) {
     });
   };
 
-});
+}]);
