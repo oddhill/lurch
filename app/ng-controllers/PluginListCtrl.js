@@ -17,4 +17,17 @@ lurchApp.controller('PluginListCtrl', ['$scope', 'Plugin', function ($scope, Plu
     });
   };
 
+  // Add a plugin
+  $scope.add = function () {
+    Plugin.add().then(function(success, newPlugin) {
+      if (success) {
+        // Rebuild menu
+        nwMenu.rebuild();
+
+        // Add plugin to scope
+        $scope.plugins.push(newPlugin);
+      }
+    });
+  };
+
 }]);

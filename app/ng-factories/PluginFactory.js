@@ -3,7 +3,9 @@ lurchApp.factory('Plugin', function($q) {
   // Load Plugin helper class
   var Plugin = require('./lib/Plugin/Plugin.js');
 
-  // Function to get plugins
+  /**
+   * Function to get plugins
+   */
   var get = function() {
     var deferred = $q.defer();
 
@@ -15,7 +17,9 @@ lurchApp.factory('Plugin', function($q) {
     return deferred.promise;
   };
 
-  // Remove a plugin
+  /**
+   * Remove a plugin
+   */
   var remove = function (id) {
     var deferred = $q.defer();
 
@@ -30,9 +34,47 @@ lurchApp.factory('Plugin', function($q) {
     return deferred.promise;
   };
 
+  /**
+   * Add a plugin
+   */
+  var add = function(pluginPath) {
+    var deferred = $q.defer();
+
+    // Status var
+    var success = false;
+
+    // Create a new plugin object
+    var newPlugin = new Plugin(null, pluginPath);
+    // Get the plugins manifest name
+    newPlugin.manifestName(function(name, err) {
+      if (!err) {
+        // Set the plugins name
+        newPlugin.setName(name);
+        // Move plugin folder to data path
+        newPlugin.moveToDataPath(function(err) {
+          if (!err) {
+            // If there is no error, well. Save it to db!
+            newPlugin.save(function(err, result, savedPlugin) {
+              success = true;
+              deferred.resolve(success, savedPlugin);
+            });
+          } else {
+            deferred.resolve(success);
+          }
+        });
+      }
+      else {
+        deferred.resolve(success);
+      }
+    });
+
+    return deferred.promise;
+  };
+
   return {
     get: get,
-    remove: remove
+    remove: remove,
+    add: add
   };
 
 });

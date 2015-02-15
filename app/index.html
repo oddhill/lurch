@@ -13,6 +13,7 @@
 
 <script src="ng-directives/pluginListItem.js"></script>
 <script src="ng-directives/projectListItem.js"></script>
+<script src="ng-directives/dragDrop.js"></script>
 
 <script src="ng-factories/PluginFactory.js"></script>
 <script src="ng-factories/ProjectFactory.js"></script>
@@ -26,6 +27,7 @@ angular.element(document.getElementsByTagName('head')).append(angular.element('<
 </head>
 <body>
   <div id="tutorial"></div>
+  <ng-include src="'views/add_plugin.html'"></ng-include>
   <div class="frame">
     <ng-include src="'views/aside-nav.html'"></ng-include>
     <div class="frame-top">
