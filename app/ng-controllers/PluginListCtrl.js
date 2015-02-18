@@ -12,7 +12,8 @@ lurchApp.controller('PluginListCtrl', ['$scope', '$rootScope', 'Plugin', functio
       nwMenu.rebuild();
 
       // Remove from plugins view
-      var index = _.find($scope.plugins, function(obj) { return obj.id == id; });
+      var plugin = _.find($scope.plugins, function(obj) { return obj.id == id; });
+      var index = $scope.plugins.indexOf(plugin);
       $scope.plugins.splice(index, 1);
     });
   };
