@@ -56,15 +56,15 @@ lurchApp.factory('Plugin', function($q) {
             // If there is no error, well. Save it to db!
             newPlugin.save(function(err, result, savedPlugin) {
               success = true;
-              deferred.resolve(success, savedPlugin);
+              deferred.resolve({success: success, plugin: savedPlugin});
             });
           } else {
-            deferred.resolve(success);
+            deferred.resolve({success: success});
           }
         });
       }
       else {
-        deferred.resolve(success);
+        deferred.resolve({success: success});
       }
     });
 

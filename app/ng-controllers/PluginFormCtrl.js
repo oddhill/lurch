@@ -1,13 +1,13 @@
-lurchApp.controller('PluginFormCtrl', ['$scope', 'Plugin', function ($scope, Plugin) {
+lurchApp.controller('PluginFormCtrl', ['$scope', '$rootScope', 'Plugin', function ($scope, $rootScope, Plugin) {
   // Add a plugin
   $scope.add = function () {
-    Plugin.add($scope.droppedPluginPath).then(function(success, newPlugin) {
-      if (success) {
+    Plugin.add($scope.newPluginPath).then(function(data) {
+      if (data.success) {
         // Rebuild menu
         nwMenu.rebuild();
 
-        // Add plugin to scope
-        $scope.plugins.push(newPlugin);
+        // Emit 'pluginAdded' event
+        $rootScope.$emit('pluginAdded', data.plugin);
       }
     });
   };
