@@ -342,7 +342,7 @@ a.add-plugin {
     .add-plugin-wrapper.fail .status .circle-2:after {
       content: "\f405"; }
 
-#plugin-dragdrop {
+.plugin-dragdrop {
   width: 400px;
   height: 470px;
   border-radius: 10px;
@@ -355,9 +355,9 @@ a.add-plugin {
   box-sizing: border-box;
   border-radius: 5px;
   font-weight: 300; }
-  #plugin-dragdrop p {
+  .plugin-dragdrop p {
     margin: 0px; }
-  #plugin-dragdrop a {
+  .plugin-dragdrop a {
     color: #1D83CE;
     text-decoration: none; }
 

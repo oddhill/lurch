@@ -24,14 +24,15 @@
 <script src="ng-controllers/PluginFormCtrl.js"></script>
 <script src="ng-controllers/ProjectListCtrl.js"></script>
 <script src="ng-controllers/AsideNavCtrl.js"></script>
+<script src="ng-controllers/IndexCtrl.js"></script>
 <script>
 angular.element(document.getElementsByTagName('head')).append(angular.element('<base href="' + window.location.pathname + '" />'));
 </script>
 </head>
-<body>
+<body ng-controller="IndexCtrl">
   <div id="tutorial"></div>
-  <ng-include src="'views/add_plugin.html'"></ng-include>
   <div class="frame">
+    <ng-include src="'views/add_plugin.html'"></ng-include>
     <ng-include src="'views/aside-nav.html'"></ng-include>
     <div class="frame-top">
       <div class="actions">
@@ -56,7 +57,7 @@ angular.element(document.getElementsByTagName('head')).append(angular.element('<
       <div id="app" ng-view></div>
       <footer class="footer">
         <a href="#" class="add-project">Add project</a>
-        <a href="#" class="add-plugin">Add plugin</a>
+        <a href="#" ng-click="showPluginForm()" class="add-plugin">Add plugin</a>
         <a href="#" class="settings"></a>
       </footer>
     </div>

@@ -1,18 +1,18 @@
-<section ng-controller="PluginFormCtrl" ng-show="showAddPlugin">
+<section ng-show="pluginForm">
   <div class="add-plugin-wrapper">
-    <div class="close" ng-click=""></div>
-    <div id="plugin-dragdrop">
-      <div class="status">
-        <span class="circle circle-1"></span>
-        <span class="circle circle-2"></span>
-        <span class="circle circle-3"></span>
-      </div>
-      <p>Drag and drop the plugin folder</p>
-      <p>or <a href="#">browse</a></p>
+    <div class="close" ng-click="hidePluginForm()"></div>
+      <form ng-controller="PluginFormCtrl" id="add-plugin" name="addPlugin" ng-submit="add()">
+        <drag-drop-plugin>
+          <div class="status">
+            <span class="circle circle-1"></span>
+            <span class="circle circle-2"></span>
+            <span class="circle circle-3"></span>
+          </div>
+          <p>Drag and drop the plugin folder</p>
+          <p>or <a href="#">browse</a></p>
+        </drag-drop-plugin>
+        <input name="path" class="path" type="file" nwdirectory />
+      </form>
     </div>
-    <form id="add-plugin" name="addPlugin" ng-submit="add()">
-      <drag-drop style="width: 100px;height: 100px;display:block;border: 2px solid blue;z-index: 9999999;"></drag-drop>
-      <input name="path" class="path" type="file" nwdirectory />
-    </form>
   </div>
 </section>
