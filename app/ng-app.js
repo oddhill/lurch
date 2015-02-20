@@ -8,8 +8,11 @@ lurchApp.config(['$routeProvider', '$locationProvider', function($routeProvider,
     .when('/projects', {
       templateUrl: 'views/manage_projects.html'
     })
-    .when('/projects/:pluginId', {
+    .when('/projects/:projectId', {
       templateUrl: 'views/manage_project.html'
+    })
+    .when('/add-project', {
+      templateUrl: 'views/add_project.html'
     });
 
   $locationProvider.html5Mode(true);

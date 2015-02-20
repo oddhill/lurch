@@ -70,7 +70,7 @@ Project.changeCurrent = function(id, callback) {
 Project.findById = function(id, callback) {
   db.projects.findOne({ _id: id }, {}, function(err, result) {
     if (err) return callback(err);
-    callback(null, new Project(result.name, result.path, result.plugins, result.current, result._id));
+    callback(null, new Project(result.name, result.path, result.plugins, result.current, result._id, result.db, result.remote));
   });
 };
 
