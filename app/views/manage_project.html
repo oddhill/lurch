@@ -9,11 +9,14 @@
   <div id="project" class="edit-project show">
     <form id="change-project" ng-controller="ProjectFormCtrl" ng-submit="save()">
 
-      <div id="dragdrop-project">
+      <drag-drop-project>
         <div class="lines">
-          Drag 'n Drop
+          {{project.path}}
+          <span ng-if="!project.path">
+            Drag 'n Drop
+          </span>
         </div>
-      </div>
+      </drag-drop-project>
 
       <input name="path" type="file" nwdirectory />
       <h3 class="general">General settings</h3>
@@ -49,7 +52,7 @@
       </div>
 
       <input type="submit" class="add" value="Save" />
-      <input type="button" class="delete" value="Delete" />
+      <input type="button" class="delete" value="Remove" ng-click="remove()" />
     </form>
   </div>
 

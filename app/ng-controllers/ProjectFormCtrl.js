@@ -25,6 +25,18 @@ lurchApp.controller('ProjectFormCtrl', ['$scope', '$routeParams', '$location', '
     });
   };
 
+  // Remove project
+  $scope.remove = function () {
+    // Remove from db
+    $scope.project.remove(function(err) {
+      if (!err) {
+        // Redirect
+        $location.path('/projects');
+        $scope.$apply();
+      }
+    });
+  };
+
   // Add a new project
   $scope.add = function () {
     Project.add($scope.project).then(function() {
