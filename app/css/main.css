@@ -547,13 +547,13 @@ a.add-project {
   color: #575E63;
   position: relative; }
 
-#dragdrop-project {
+.project-dragdrop {
   background: #eee;
   width: auto;
   height: 120px;
   border-top: 2px solid #ddd;
   border-bottom: 2px solid #ddd; }
-  #dragdrop-project .lines {
+  .project-dragdrop .lines {
     height: 80px;
     border: 3px dashed #ddd;
     margin: 15px;
@@ -562,7 +562,7 @@ a.add-project {
     font-size: 24px;
     color: #ddd;
     line-height: 80px; }
-    #dragdrop-project .lines:after {
+    .project-dragdrop .lines:after {
       display: block;
       content: "+";
       position: absolute;
@@ -578,14 +578,14 @@ a.add-project {
       box-shadow: 0px 1px 1px #aaa;
       line-height: 28px;
       font-size: 16px; }
-    #dragdrop-project .lines:hover {
+    .project-dragdrop .lines:hover {
       cursor: pointer; }
-      #dragdrop-project .lines:hover:after {
+      .project-dragdrop .lines:hover:after {
         background: #609E26;
         color: #fff; }
-    #dragdrop-project .lines.uploaded {
+    .project-dragdrop .lines.uploaded {
       border: 3px dashed #609E26; }
-      #dragdrop-project .lines.uploaded:after {
+      .project-dragdrop .lines.uploaded:after {
         background: #609E26;
         color: #fff;
         content: "\2713"; }

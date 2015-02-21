@@ -1,12 +1,15 @@
 <div id="project">
   <h1>Add project</h1>
   <p>Start off by dragging the root folder of you project!</p>
-  <div id="dragdrop-project">
-    <div class="lines">
-      Drag 'n Drop
-    </div>
-  </div>
   <form id="add-site" ng-controller="ProjectFormCtrl" ng-submit="add()">
+    <drag-drop-project>
+      <div class="lines">
+        {{project.path}}
+        <span ng-if="!project.path">
+          Drag 'n Drop
+        </span>
+      </div>
+    </drag-drop-project>
     <input name="path" type="file" nwdirectory />
     <h3 class="general">General settings</h3>
     <div class="input">
