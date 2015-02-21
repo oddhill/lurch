@@ -3,7 +3,7 @@ lurchApp.factory('Project', function($q) {
   // Load Plugin helper class
   var Project = require('./lib/Project/Project.js');
 
-  // Function to get plugins
+  // Function to get projects
   var get = function (id) {
     var deferred = $q.defer();
 
@@ -23,7 +23,22 @@ lurchApp.factory('Project', function($q) {
     return deferred.promise;
   };
 
+  // Add a new project
+  var add = function (project) {
+    var deferred = $q.defer();
+
+    var newProject = new Project(project.name, project.path, [], false, null, project.db, project.remote);
+    newProject.save(function(err) {
+      if (!err) {
+        deferred.resolve();
+      }
+    });
+
+    return deferred.promise;
+  };
+
   return {
-    get: get
+    get: get,
+    add: add
   };
 });

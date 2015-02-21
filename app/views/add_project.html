@@ -6,44 +6,41 @@
       Drag 'n Drop
     </div>
   </div>
-  <form id="add-site">
+  <form id="add-site" ng-controller="ProjectFormCtrl" ng-submit="add()">
     <input name="path" type="file" nwdirectory />
     <h3 class="general">General settings</h3>
     <div class="input">
       <label for="name">Name</label>
-      <span class="fill"><input name="name" type="text" /></span>
+      <span class="fill"><input name="name" type="text" ng-model="project.name" /></span>
     </div>
     <div class="input">
       <label for="remote">Remote path</label>
-      <span class="fill"><input name="remote" type="text" /></span>
+      <span class="fill"><input name="remote" type="text" ng-model="project.remote" /></span>
     </div>
 
     <h3 class="db">Database settings</h3>
     <div class="input">
       <label for="db-name">Database</label>
-      <span class="fill"><input name="db-name" type="text" /></span>
+      <span class="fill"><input name="db-name" type="text" ng-model="project.db.name" /></span>
     </div>
     <div class="input two">
       <label for="db-host">Host</label>
-      <span class="fill"><input name="db-host" class="two" type="text" /></span>
+      <span class="fill"><input name="db-host" class="two" type="text" ng-model="project.db.host" /></span>
     </div>
     <div class="input two">
       <label for="db-port">Port</label>
-      <span class="fill"><input name="db-port" class="two" type="text" /></span>
+      <span class="fill"><input name="db-port" class="two" type="text" ng-model="project.db.port" /></span>
     </div>
     <div class="input">
       <label for="db-username">Username</label>
-      <span class="fill"><input name="db-username" type="text" /></span>
+      <span class="fill"><input name="db-username" type="text" ng-model="project.db.username" /></span>
     </div>
     <div class="input">
       <label for="db-password">Password</label>
-      <span class="fill"><input name="db-password" type="password" /></span>
+      <span class="fill"><input name="db-password" type="password" ng-model="project.db.password" /></span>
     </div>
 
     <input name="add" class="add" type="submit" value="Add">
     <input name="cancel" class="cancel" type="button" value="Cancel" />
   </form>
 </div>
-
-<!-- Include controller -->
-<script src="controllers/add_project.js"></script>
