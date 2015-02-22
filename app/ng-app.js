@@ -1,6 +1,6 @@
 var lurchApp = angular.module('lurchApp', ['ngRoute']);
 
-lurchApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+lurchApp.config(['$routeProvider', '$locationProvider', '$compileProvider', function($routeProvider, $locationProvider, $compileProvider) {
   $routeProvider
     .when('/plugins', {
       templateUrl: 'views/manage_plugins.html'
@@ -16,4 +16,5 @@ lurchApp.config(['$routeProvider', '$locationProvider', function($routeProvider,
     });
 
   $locationProvider.html5Mode(true);
+  $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|chrome-extension|app):/);
 }]);
