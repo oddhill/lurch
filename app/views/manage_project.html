@@ -9,7 +9,7 @@
   <div id="project" class="edit-project show">
     <form id="change-project" ng-controller="ProjectFormCtrl" ng-submit="save()">
 
-      <drag-drop-project>
+      <drag-drop-project ng-click="browse()">
         <div class="lines">
           {{project.path}}
           <span ng-if="!project.path">
@@ -18,7 +18,7 @@
         </div>
       </drag-drop-project>
 
-      <input name="path" type="file" nwdirectory />
+      <input name="path" id="path" type="file" onchange="angular.element(this).scope().updatePath(angular.element(this))" nwdirectory />
       <h3 class="general">General settings</h3>
       <div class="input">
         <label for="name">Name</label>

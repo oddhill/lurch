@@ -45,4 +45,16 @@ lurchApp.controller('ProjectFormCtrl', ['$scope', '$routeParams', '$location', '
     });
   };
 
+  // Browse project
+  $scope.browse = function () {
+    var browsePath = angular.element(document.getElementById('path'));
+    browsePath.click();
+  };
+
+  // Update project path
+  $scope.updatePath = function (elem) {
+    $scope.project.path = elem.val();
+    $scope.$apply();
+  };
+
 }]);
