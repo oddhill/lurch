@@ -29,19 +29,20 @@
 <script src="ng-controllers/ProjectListCtrl.js"></script>
 <script src="ng-controllers/AsideNavCtrl.js"></script>
 <script src="ng-controllers/IndexCtrl.js"></script>
+<script src="ng-controllers/FrameCtrl.js"></script>
 <script>
 angular.element(document.getElementsByTagName('head')).append(angular.element('<base href="' + window.location.pathname + '" />'));
 </script>
 </head>
 <body ng-controller="IndexCtrl">
   <div id="tutorial"></div>
-  <div class="frame">
-    <ng-include src="'views/add_plugin.html'"></ng-include>
+  <div class="frame" ng-controller="FrameCtrl">
+    <ng-include src="'views/add-plugin.html'"></ng-include>
     <ng-include src="'views/aside-nav.html'"></ng-include>
     <div class="frame-top">
       <div class="actions">
-        <button class="close"></button>
-        <button class="minimize"></button>
+        <button class="close" ng-click="close()"></button>
+        <button class="minimize" ng-click="minimize()"></button>
       </div>
       <h1>Lurch</h1>
     </div>
