@@ -1,7 +1,7 @@
 {
   "name": "Lurch",
   "version": "1.0.0-alpha.0",
-  "main": "index.html",
+  "main": "app://lurch/index.html",
   "node-main": "node-main.js",
   "window": {
     "show": false,
