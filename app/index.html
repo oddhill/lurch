@@ -30,6 +30,7 @@
 <script src="ng-controllers/AsideNavCtrl.js"></script>
 <script src="ng-controllers/IndexCtrl.js"></script>
 <script src="ng-controllers/FrameCtrl.js"></script>
+<script src="ng-controllers/SettingsFormCtrl.js"></script>
 <script>
 angular.element(document.getElementsByTagName('head')).append(angular.element('<base href="' + window.location.pathname + '" />'));
 </script>
@@ -47,16 +48,7 @@ angular.element(document.getElementsByTagName('head')).append(angular.element('<
       <h1>Lurch</h1>
     </div>
     <div class="main-content settings">
-      <h2>Settings</h2>
-      <p>
-        <label>API-key:</label><span class="key">{{restToken}}</span>
-      </p>
-      <p>
-        <label>Callback URL:</label><input type="text" class="callback" name="callbackurl" />
-      </p>
-      <p>
-        <label>Version:</label><span>1.0.0-beta</span>
-      </p>
+      <ng-include src="'views/settings.html'"></ng-include>
     </div>
     <div class="main-content main" ng-class="minimizeMain" ng-click="hideSettings()">
       <div id="app" ng-view></div>
@@ -67,9 +59,6 @@ angular.element(document.getElementsByTagName('head')).append(angular.element('<
   <script src="main.js"></script>
   <script src="js/update.js"></script>
   <script src="js/tutorial.js"></script>
-  <script src="js/frame-actions.js"></script>
-  <script src="js/settings.js"></script>
-  <script src="js/index.js"></script>
   <script src="testing.js"></script>
 </body>
 </html>
