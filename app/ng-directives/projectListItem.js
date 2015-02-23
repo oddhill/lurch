@@ -3,6 +3,6 @@ lurchApp.directive('projectListItem', function() {
     restrict: 'E',
     replace: true,
     transclude: false,
-    templateUrl: 'ng-templates/projectListItem.html'
+    templateUrl: 'templates/projectListItem.html'
   };
 });

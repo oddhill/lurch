@@ -3,6 +3,6 @@ lurchApp.directive('pluginListItem', function() {
     restrict: 'E',
     replace: true,
     transclude: false,
-    templateUrl: 'ng-templates/pluginListItem.html'
+    templateUrl: 'templates/pluginListItem.html'
   };
 });
