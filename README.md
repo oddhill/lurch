@@ -9,12 +9,9 @@ Lurch is an node-webkit based helper tool for web developers.
 
 
 
-###Lurch uses a number of open source projects.
+###Built on top of [nw.js](https://github.com/nwjs/nw.js)
 
-[node-webkit](https://github.com/rogerwang/node-webkit)     
-[nedb](https://github.com/louischatriot/nedb)     
-[osx-notifier](https://github.com/chbrown/osx-notifier)     
-
+Lurch uses nw.js and is written in Javascript.
 
 ###Docs & How to's
 
@@ -29,8 +26,7 @@ Lurch is an node-webkit based helper tool for web developers.
 [lurch-revert-all-features](https://github.com/ErikJohansson93/lurch-revert-all-features)       
 
 ###Downloads
-Pre-releases
-[v1.0.0-alpha.0](http://icepick.xn--q9jyb4c/lurch/latest/build)
+Beta download will be available soon.
 
 ###License
 
