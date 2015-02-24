@@ -57,4 +57,19 @@ lurchApp.controller('ProjectFormCtrl', ['$scope', '$routeParams', '$location', '
     $scope.$apply();
   };
 
+  // Tabs
+  $scope.tabs = {};
+  $scope.tabs.settings = true;
+  $scope.tabs.plugins = false;
+
+  // Set tab
+  $scope.setTab = function (tab) {
+    for (var i in $scope.tabs) {
+      $scope.tabs[i] = false;
+      if (i == tab) {
+        $scope.tabs[i] = true;
+      }
+    }
+  };
+
 }]);

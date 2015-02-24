@@ -1,13 +1,3 @@
-// Navigation between settings and plugins
-.edit-project,
-#project-plugins {
-  display: none;
-
-  &.show {
-    display: block;
-  }
-}
-
 .project-menu {
   display: block;
   height: 40px;

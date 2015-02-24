@@ -1,13 +1,14 @@
 <section>
-  <h1>Edit <span class="title-name"></span></h1>
+  <form id="change-project" ng-controller="ProjectFormCtrl" ng-submit="save()">
+
+  <h1>Edit {{project.name}}</h1>
 
   <ul class="project-menu">
-    <li><a href="#" class="active">Settings</a></li>
-    <li><a href="#">Plugins</a></li>
+    <li><a href="#" ng-click="setTab('settings')" ng-class="{active: tabs.settings}">Settings</a></li>
+    <li><a href="#" ng-click="setTab('plugins')" ng-class="{active: tabs.plugins}">Plugins</a></li>
   </ul>
 
-  <div id="project" class="edit-project show">
-    <form id="change-project" ng-controller="ProjectFormCtrl" ng-submit="save()">
+  <div id="project" class="edit-project" ng-show="tabs.settings">
 
       <drag-drop-project ng-click="browse()">
         <div class="lines">
@@ -53,10 +54,10 @@
 
       <input type="submit" class="add" value="Save" />
       <input type="button" class="delete" value="Remove" ng-click="remove()" />
-    </form>
   </div>
 
-  <div id="project-plugins">
+  <div id="project-plugins" ng-show="tabs.plugins">
     <ul></ul>
   </div>
+  </form>
 </section>
