@@ -57,7 +57,9 @@
   </div>
 
   <div id="project-plugins" ng-show="tabs.plugins">
-    <ul></ul>
+    <ul ng-repeat="plugin in plugins">
+      <li>{{plugin.name}}<input type="checkbox" ng-model="plugin.active" ng-change="savePlugins(plugin)" /></li>
+    </ul>
   </div>
   </form>
 </section>
