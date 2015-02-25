@@ -1,6 +1,7 @@
-lurchApp.controller('ProjectFormCtrl', ['$scope', '$routeParams', '$location', 'Project', function ($scope, $routeParams, $location, Project) {
+lurchApp.controller('ProjectFormCtrl', ['$scope', '$routeParams', '$location', 'Project', 'Plugin', function ($scope, $routeParams, $location, Project, Plugin) {
 
   $scope.project = {};
+  $scope.plugins = {};
 
   // Current project id
   var editId = $routeParams.projectId;
@@ -12,6 +13,22 @@ lurchApp.controller('ProjectFormCtrl', ['$scope', '$routeParams', '$location', '
       $scope.project = project;
     });
   }
+
+  // Load plugins
+  Plugin.get().then(function(plugins) {
+    $scope.plugins = plugins;
+
+    for (var plugin in $scope.plugins) {
+      if (_.findWhere($scope.project.plugins, { id: $scope.plugins[plugin].id })) {
+        $scope.plugins[plugin].active = true;
+      }
+    }
+  });
+
+  // Save project plugin
+  $scope.savePlugins = function (plugin) {
+    Project.updatePlugins(plugin.active, $scope.project, plugin.id);
+  };
 
   // Save a project
   $scope.save = function () {
