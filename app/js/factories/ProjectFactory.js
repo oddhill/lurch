@@ -37,8 +37,28 @@ lurchApp.factory('Project', function($q) {
     return deferred.promise;
   };
 
+  // Update project plugins
+  var updatePlugins = function (add, project, pid) {
+    // Remove or add plugin from project
+    if (add) {
+      project.plugins.push({ id: pid, used: 0 });
+    }
+    else {
+      for (var i = 0; i < project.plugins.length; i++) {
+        if (project.plugins[i].id === pid) {
+          project.plugins.splice(i, 1);
+          break;
+        }
+      }
+    }
+
+    // Save to db
+    project.save(function(err) {});
+  };
+
   return {
     get: get,
-    add: add
+    add: add,
+    updatePlugins: updatePlugins
   };
 });
