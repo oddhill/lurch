@@ -3,9 +3,10 @@ lurchApp.directive('dragDropPlugin', ['DragDrop', function (DragDrop) {
     restrict: 'AE',
     replace: true,
     transclude: true,
-    template: '<div class="plugin-dragdrop" ng-transclude></div>',
+    template: '<div class="plugin-dragdrop" id="plugin-drag-drop" ng-transclude></div>',
     link: function(scope, element, attrs) {
-      DragDrop.init(element, function (path) {
+      var holder = document.getElementById('plugin-drag-drop');
+      DragDrop.init(holder, function (path) {
         scope.newPluginPath = path;
 
         // Trigger the form

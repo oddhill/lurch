@@ -3,9 +3,10 @@ lurchApp.directive('dragDropProject', ['DragDrop', function (DragDrop) {
     restrict: 'AE',
     replace: true,
     transclude: true,
-    template: '<div class="project-dragdrop" ng-transclude></div>',
+    template: '<div class="project-dragdrop" id="project-drag-drop" ng-transclude></div>',
     link: function(scope, element, attrs) {
-      DragDrop.init(element, function (path) {
+      var holder = document.getElementById('project-drag-drop');
+      DragDrop.init(holder, function (path) {
         scope.project.path = path;
         scope.$apply();
       });

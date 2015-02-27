@@ -1,22 +1,24 @@
 lurchApp.service('DragDrop', [function () {
-  this.init = function (element, callback) {
+  this.init = function (holder, callback) {
+    // Prevent default behavior when dropping files
+    window.ondragover = function(e) { e.preventDefault(); return false; }
+    window.ondrop = function(e) { e.preventDefault(); return false; }
+
     // Change to 'copy' icon on drag over
-    element.bind('dragover', function(e) {
+    holder.ondragover = function(e) {
       e.dataTransfer.dropEffect = 'copy';
       return false;
-    });
+    };
 
     // Let the fun begin, get path of dropped item
-    element.bind('drop', function(e) {
+    holder.ondrop = function(e) {
       e.preventDefault();
-
-      this.className += ' active';
 
       // Get the file
       var file = e.dataTransfer.files[0];
 
       // Return the file path
       callback(file.path);
-    });
+    };
   };
 }]);
