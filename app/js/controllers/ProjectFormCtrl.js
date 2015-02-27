@@ -1,4 +1,4 @@
-lurchApp.controller('ProjectFormCtrl', ['$scope', '$routeParams', '$location', 'Project', 'Plugin', function ($scope, $routeParams, $location, Project, Plugin) {
+lurchApp.controller('ProjectFormCtrl', ['$scope', '$routeParams', '$location', '$timeout', 'Project', 'Plugin', function ($scope, $routeParams, $location, $timeout, Project, Plugin) {
 
   $scope.project = {};
   $scope.plugins = {};
@@ -64,8 +64,11 @@ lurchApp.controller('ProjectFormCtrl', ['$scope', '$routeParams', '$location', '
 
   // Browse project
   $scope.browse = function () {
-    var browsePath = angular.element(document.getElementById('path'));
-    browsePath.click();
+    var browsePath = document.getElementById('path');
+    $timeout(function() {
+      browsePath.click();
+      global.nwWindow.focus();
+    });
   };
 
   // Update project path
