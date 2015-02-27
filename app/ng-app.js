@@ -13,6 +13,9 @@ lurchApp.config(['$routeProvider', '$locationProvider', '$compileProvider', func
     })
     .when('/add-project', {
       templateUrl: 'views/add-project.html'
+    })
+    .otherwise({
+      redirectTo: '/projects'
     });
 
   $locationProvider.html5Mode(true);
