@@ -1,4 +1,4 @@
-lurchApp.controller('IndexCtrl', ['$scope', '$timeout', function ($scope, $timeout) {
+lurchApp.controller('IndexCtrl', ['$scope', '$rootScope', '$timeout', function ($scope, $rootScope, $timeout) {
   $scope.pluginForm = false;
   $scope.allowSettingsClose = false;
 
@@ -14,6 +14,11 @@ lurchApp.controller('IndexCtrl', ['$scope', '$timeout', function ($scope, $timeo
   $scope.hidePluginForm = function () {
     $scope.pluginForm = false;
   };
+
+  // Hide plugin form after adding one
+  $rootScope.$on('pluginAdded', function (event, plugin) {
+    $scope.pluginForm = false;
+  });
 
   // Show settings
   $scope.showSettings = function () {

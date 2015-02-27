@@ -1,4 +1,4 @@
-lurchApp.controller('PluginFormCtrl', ['$scope', '$rootScope', 'Plugin', function ($scope, $rootScope, Plugin) {
+lurchApp.controller('PluginFormCtrl', ['$scope', '$rootScope', '$location', '$timeout', 'Plugin', function ($scope, $rootScope, $location, $timeout, Plugin) {
   // Add a plugin
   $scope.add = function () {
     Plugin.add($scope.newPluginPath).then(function(data) {
@@ -8,6 +8,12 @@ lurchApp.controller('PluginFormCtrl', ['$scope', '$rootScope', 'Plugin', functio
 
         // Emit 'pluginAdded' event
         $rootScope.$emit('pluginAdded', data.plugin);
+
+        // Redirect
+        $timeout(function() {
+          $location.path('/plugins');
+          $scope.$apply();
+        });
       }
     });
   };
