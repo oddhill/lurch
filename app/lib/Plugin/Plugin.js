@@ -1,6 +1,7 @@
 var fs = require('fs');
 var ncp = require('ncp');
 var rimraf = require('rimraf');
+var request = require('request');
 
 function Plugin(name, path, id) {
   this.name = name;
