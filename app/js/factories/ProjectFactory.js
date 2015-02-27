@@ -30,6 +30,7 @@ lurchApp.factory('Project', function($q) {
     var newProject = new Project(project.name, project.path, [], false, null, project.db, project.remote);
     newProject.save(function(err) {
       if (!err) {
+        nwMenu.rebuild();
         deferred.resolve();
       }
     });
@@ -53,7 +54,9 @@ lurchApp.factory('Project', function($q) {
     }
 
     // Save to db
-    project.save(function(err) {});
+    project.save(function(err) {
+      nwMenu.rebuild();
+    });
   };
 
   return {

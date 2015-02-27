@@ -26,6 +26,7 @@ lurchApp.factory('Plugin', function($q) {
     Plugin.findById(id, function(err, plugin) {
       plugin.remove(function(err) {
         if (!err) {
+          nwMenu.rebuild();
           deferred.resolve();
         }
       });
@@ -56,6 +57,7 @@ lurchApp.factory('Plugin', function($q) {
             // If there is no error, well. Save it to db!
             newPlugin.save(function(err, result, savedPlugin) {
               success = true;
+              nwMenu.rebuild();
               deferred.resolve({success: success, plugin: savedPlugin});
             });
           } else {
