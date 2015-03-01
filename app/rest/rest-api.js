@@ -13,8 +13,8 @@ module.exports.setToken = function() {
 
 module.exports.init = function() {
   // Load libs
-  var projects = require('../lib/projects.js');
-  var plugins = require('../lib/plugins.js');
+  //var projects = require('../lib/projects.js');
+  var Plugin = require('../lib/Plugin/Plugin.js');
 
   // Load express
   var express = require('express'),
@@ -95,7 +95,11 @@ module.exports.init = function() {
       db.projects.findOne({ current: true }, function(error, project) {
         for (var p in project.plugins) {
           if (project.plugins[p].id == req.param('id')) {
-            plugins.runPlugin(plugin[0].path);
+            Plugin.findById(project.plugins[p].id, function(err, pluginToRun) {
+              if (!err) {
+                pluginToRun.run();
+              }
+            });
             res.json({"success": true});
             res.end();
             return;
