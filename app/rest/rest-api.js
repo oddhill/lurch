@@ -48,7 +48,7 @@ module.exports.init = function() {
 
   // Get project
   app.get('/project/get/:id', function(req, res) {
-    db.projects.findOne({ _id: req.param('id') }, function(error, project) {
+    db.projects.findOne({ _id: req.params.id }, function(error, project) {
       res.json(project);
       res.end();
     });
@@ -64,7 +64,7 @@ module.exports.init = function() {
 
   // Get plugin
   app.get('/plugin/get/:id', function(req, res) {
-    db.plugins.findOne({ _id: req.param('id') }, function(error, plugin) {
+    db.plugins.findOne({ _id: req.params.id }, function(error, plugin) {
       res.json(plugin);
       res.end();
     });
@@ -82,7 +82,7 @@ module.exports.init = function() {
 
   // Change current project
   app.post('/project/change/:id', function(req, res) {
-    db.projects.findOne({ _id: req.param('id') }, function(error, project) {
+    db.projects.findOne({ _id: req.params.id }, function(error, project) {
       Project.changeCurrent(project._id, function() {
         if (!err) {
           res.json(project);
@@ -94,10 +94,10 @@ module.exports.init = function() {
 
   // Run plugin
   app.post('/plugin/run/:id', function(req, res) {
-    db.plugins.find({ _id: req.param('id') }, function(error, plugin) {
+    db.plugins.find({ _id: req.params.id }, function(error, plugin) {
       db.projects.findOne({ current: true }, function(error, project) {
         for (var p in project.plugins) {
-          if (project.plugins[p].id == req.param('id')) {
+          if (project.plugins[p].id == req.params.id) {
             Plugin.findById(project.plugins[p].id, function(err, pluginToRun) {
               if (!err) {
                 pluginToRun.run();
@@ -118,7 +118,7 @@ module.exports.init = function() {
 
   // Delete a project
   app.delete('/project/delete/:id', function(req, res) {
-    db.projects.remove({ _id: req.param('id') }, {}, function() {
+    db.projects.remove({ _id: req.params.id }, {}, function() {
       res.json({"success": true});
       res.end();
     });
@@ -126,7 +126,7 @@ module.exports.init = function() {
 
   // Delete a plugin
   app.delete('/plugin/delete/:id', function(req, res) {
-    db.plugins.remove({ _id: req.param('id') }, {}, function() {
+    db.plugins.remove({ _id: req.params.id }, {}, function() {
       res.json({"success": true});
       res.end();
     });
