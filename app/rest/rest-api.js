@@ -13,7 +13,7 @@ module.exports.setToken = function() {
 
 module.exports.init = function() {
   // Load libs
-  //var projects = require('../lib/projects.js');
+  var Project = require('../lib/Project/Project.js');
   var Plugin = require('../lib/Plugin/Plugin.js');
 
   // Load express
@@ -83,9 +83,12 @@ module.exports.init = function() {
   // Change current project
   app.post('/project/change/:id', function(req, res) {
     db.projects.findOne({ _id: req.param('id') }, function(error, project) {
-      projects.changeCurrent(lurch, project);
-      res.json(project);
-      res.end();
+      Project.changeCurrent(project._id, function() {
+        if (!err) {
+          res.json(project);
+        }
+        res.end();
+      });
     });
   });
 
