@@ -1,8 +1,9 @@
 {
   "name": "Lurch",
-  "version": "1.0.0-alpha.0",
+  "version": "1.0.0-beta.0",
   "main": "app://lurch/index.html",
   "node-main": "node-main.js",
+  "manifestUrl": "https://raw.githubusercontent.com/oddhill/lurch/master/app/package.json",
   "window": {
     "show": false,
     "toolbar": false,
