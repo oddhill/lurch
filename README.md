@@ -8,7 +8,6 @@ Lurch is an node-webkit based helper tool for web developers.
 - You can easily add or remove different projects and plugins.
 
 
-
 ###Built on top of [nw.js](https://github.com/nwjs/nw.js)
 
 Lurch uses nw.js and is written in Javascript.
@@ -26,7 +25,21 @@ Lurch uses nw.js and is written in Javascript.
 [lurch-revert-all-features](https://github.com/ErikJohansson93/lurch-revert-all-features)       
 
 ###Downloads
-Beta download will be available soon.
+Beta released, use at your own risk!     
+[Lurch v.1.0.0-beta.0](https://github.com/oddhill/lurch/releases/download/v1.0.0-beta.0/lurch-v1-0-0-beta-0.zip)     
+Unzip and move to Applications folder.
+
+###Roadmap
+- GUI improvements, there is a lot to be done here.
+- Make Lurch more stable in general.
+- Make Lurch play nicely with Android wear devices ([progress](https://github.com/jenslind/lurch-android)).
+- Improve docs
+- Improve REST-API
+
+###Node API helper lib
+A node.js helper lib to communicate with lurch rest api.
+It's pretty poorly written though. :)
+https://github.com/jenslind/node-lurch
 
 ###License
 
