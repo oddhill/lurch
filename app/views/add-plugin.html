@@ -9,9 +9,9 @@
             <span class="circle circle-3"></span>
           </div>
           <p>Drag and drop the plugin folder</p>
-          <p>or <a href="#">browse</a></p>
+          <p>or <a href="#" ng-click="browse()">browse</a></p>
         </drag-drop-plugin>
-        <input name="path" class="path" type="file" nwdirectory />
+        <input name="path" id="plugin-path" class="path" type="file" onchange="angular.element(this).scope().add()" nwdirectory />
       </form>
     </div>
   </div>
