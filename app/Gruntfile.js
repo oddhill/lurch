@@ -7,6 +7,7 @@ module.exports = function(grunt) {
       options: {
         platforms: ['osx'],
         buildDir: '../builds',
+        cacheDir: '../cache'
       },
       src: ['./**/*'],
     },
