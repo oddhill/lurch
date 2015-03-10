@@ -1,9 +1,14 @@
 {
   "name": "Lurch",
-  "version": "1.0.0-beta.0",
+  "version": "1.0.0-beta.1",
   "main": "app://lurch/index.html",
   "node-main": "node-main.js",
   "manifestUrl": "https://raw.githubusercontent.com/oddhill/lurch/master/app/package.json",
+  "packages": {
+    "mac": {
+      "url": "https://github.com/oddhill/lurch/releases/download/v1.0.0-beta.1/lurch-v1-0-0-beta-1.zip"
+    }
+  },
   "window": {
     "show": false,
     "toolbar": false,
