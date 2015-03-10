@@ -14,8 +14,8 @@ Lurch uses nw.js and is written in Javascript.
 
 ###Docs & How to's
 
-[Plugin how to](https://github.com/oddhill/lurch/blob/master/docs/plugin-how-to.md)     
-[Plugin Docs](https://github.com/oddhill/lurch/blob/master/docs/plugin-API.md)     
+[Plugin how to](https://github.com/oddhill/lurch/blob/master/docs/Plugin/plugin-how-to.md)     
+[Plugin Docs](https://github.com/oddhill/lurch/blob/master/docs/Plugin/plugin-API.md)     
 [Example plugin](https://github.com/oddhill/lurch/blob/master/docs/examples/example-1.js)     
 
 ###Example plugins
