@@ -208,7 +208,8 @@ aside.aside {
       background: rgba(255,255,255,0.05);
     }
 
-    span {
+    span.plugins-calc,
+    span.projects-calc {
       display: none;
       width: 15px;
       height: 15px;
@@ -221,6 +222,13 @@ aside.aside {
       right: 5px;
       line-height: 15px;
       border: 2px solid #3D414E;
+    }
+
+    span.help {
+      display: block;
+      font-size: 9px;
+      text-transform: uppercase;
+      margin-top: 5px;
     }
   }
 }

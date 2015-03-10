@@ -161,7 +161,8 @@ aside.aside {
     .main-nav a:hover, .main-nav a.active {
       color: #fff;
       background: rgba(255, 255, 255, 0.05); }
-    .main-nav a span {
+    .main-nav a span.plugins-calc,
+    .main-nav a span.projects-calc {
       display: none;
       width: 15px;
       height: 15px;
@@ -174,6 +175,11 @@ aside.aside {
       right: 5px;
       line-height: 15px;
       border: 2px solid #3D414E; }
+    .main-nav a span.help {
+      display: block;
+      font-size: 9px;
+      text-transform: uppercase;
+      margin-top: 5px; }
 
 .footer {
   display: block;
