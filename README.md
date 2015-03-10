@@ -25,9 +25,16 @@ Lurch uses nw.js and is written in Javascript.
 [lurch-revert-all-features](https://github.com/ErikJohansson93/lurch-revert-all-features)       
 
 ###Downloads
-Beta released, use at your own risk!     
-[Lurch v.1.0.0-beta.0](https://github.com/oddhill/lurch/releases/download/v1.0.0-beta.0/lurch-v1-0-0-beta-0.zip)     
-Unzip and move to Applications folder.
+####[Lurch v.1.0.0-beta.1](https://github.com/oddhill/lurch/releases/download/v1.0.0-beta.1/lurch-v1-0-0-beta-1.zip)
+**Changelog:**
+- Fixed the huge file size.
+- Fixed help text on sidebar menu
+- Fixed browse plugins
+
+
+Unzip and move to Applications folder.      
+
+See full [changelog](https://github.com/oddhill/lurch/blob/master/CHANGELOG.md).     
 
 ###Roadmap
 - GUI improvements, there is a lot to be done here.
