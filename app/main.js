@@ -62,6 +62,11 @@ global.lurch = lurch;
 // Set REST token if not set
 require('./rest/rest-api.js').setToken();
 
+// Set plugin callback to an empty string
+if (localStorage.pluginCallback === 'undefined' || !localStorage.pluginCallback) {
+  localStorage.pluginCallback = '';
+}
+
 // Hide window on close
 nwWindow.on('close', function() {
   this.setShowInTaskbar(false);
