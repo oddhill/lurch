@@ -36,20 +36,19 @@ angular.element(document.getElementsByTagName('head')).append(angular.element('<
 </script>
 </head>
 <body ng-controller="IndexCtrl">
-  <div id="tutorial"></div>
+  <div class="frame-top">
+    <div class="actions">
+      <button class="close" ng-click="close()"></button>
+      <button class="minimize" ng-click="minimize()"></button>
+    </div>
+    <h1>Lurch</h1>
+  </div>
   <div class="frame" ng-controller="FrameCtrl">
-    <ng-include src="'views/add-plugin.html'"></ng-include>
+    <!--<ng-include src="'views/add-plugin.html'"></ng-include>-->
     <ng-include src="'views/aside-nav.html'"></ng-include>
-    <div class="frame-top">
-      <div class="actions">
-        <button class="close" ng-click="close()"></button>
-        <button class="minimize" ng-click="minimize()"></button>
-      </div>
-      <h1>Lurch</h1>
-    </div>
-    <div class="main-content settings">
+    <!--<div class="main-content settings">
       <ng-include src="'views/settings.html'"></ng-include>
-    </div>
+    </div>-->
     <div class="main-content main" ng-class="minimizeMain" ng-click="hideSettings()">
       <div id="app" ng-view></div>
     </div>
@@ -57,7 +56,5 @@ angular.element(document.getElementsByTagName('head')).append(angular.element('<
   <script src="assets/bower_components/owl-carousel/owl-carousel/owl.carousel.js"></script>
   <script src="main.js"></script>
   <script src="update.js"></script>
-  <script src="tutorial.js"></script>
-  <script src="testing.js"></script>
 </body>
 </html>

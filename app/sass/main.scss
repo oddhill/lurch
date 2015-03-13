@@ -1,0 +1,22 @@
+// Colors
+$white: #fff;
+$dark-blue: #232831;
+$dark-blue-2: #272c36;
+$action-red: #fff;
+$action-yellow: #fff;
+
+// Vars
+$background-light: $white;
+$background-dark: $dark-blue;
+$background-top: $dark-blue-2;
+
+$top-height: 45px;
+$aside-width: 85px;
+
+html,
+body {
+  padding: 0px;
+  margin: 0px;
+}
+
+@import "frame", "layouts/aside", "layouts/content";

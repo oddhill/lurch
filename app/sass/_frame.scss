@@ -1,0 +1,52 @@
+/**
+ * 
+ * Contains window/frame styling.
+ */
+
+// The main frame
+.frame {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  top: $top-height;
+  background: $background-light;
+}
+
+.frame-top {
+	height: 45px;
+  background: $background-top;
+  text-align: center;
+  border-radius: 10px 0px 10px 0px;
+
+  // Frame title
+  h1 {
+    font-size: 14px;
+    color: $white;
+  }
+
+  // Frame action-buttons
+  .actions {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+
+    button {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 100%;
+      outline: 0;
+      border: 0;
+      -webkit-appearance: none;
+    }
+
+    .close {
+      background: $action-red;
+    }
+
+    .minimize {
+      background: $action-yellow;
+    }
+  }
+}
