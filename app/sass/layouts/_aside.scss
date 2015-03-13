@@ -4,4 +4,35 @@
   bottom: 0px;
   top: 0px;
   background: $background-dark;
+  border-radius: 0 0 0 5px;
+
+  nav {
+
+  }
+
+  ul {
+  	list-style-type: none;
+  	padding: 0px;
+  	margin: 0px;
+  }
+
+  li a {
+  	display: block;
+  	height: 50px;
+  	border-bottom: 1px solid #fff;
+  	padding: 20px 0 20px 0;
+  }
+
+  .plugins {
+  	background: url('../graphics/plugins.svg') center center no-repeat;
+  }
+
+  .projects {
+  	background: url('../graphics/projects.svg') center center no-repeat;
+  }
+
+  .plugins-calc,
+  .projects-calc {
+  	display: none;
+  }
 }

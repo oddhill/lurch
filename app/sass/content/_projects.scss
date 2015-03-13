@@ -1,0 +1,51 @@
+#projects {
+  list-style-type: none;
+  padding: 10px;
+  margin: 0px;
+
+  li {
+    border-bottom: 1px solid #ddd;
+    position: relative;
+    height: 50px;
+    padding: 5px 0 5px 0;
+  }
+
+  a.edit {
+    text-decoration: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    color: #555555;
+  }
+
+  .name {
+    font-weight: bold;
+    font-size: 14px;
+  }
+
+  .path {
+    display: block;
+    color: #007cbc;
+    padding-top: 5px;
+    font-weight: bold;
+    font-size: 12px;
+  }
+
+  .plugins-count {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background: #cfcfcf;
+    border-radius: 100%;
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 2px #aaaaaa;
+    font-size: 12px;
+    line-height: 20px;
+    font-weight: bold;
+  }
+}

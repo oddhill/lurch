@@ -1,7 +1,8 @@
 html,
 body {
   padding: 0px;
-  margin: 0px; }
+  margin: 0px;
+  font-family: 'Open Sans', sans-serif; }
 
 /**
  * 
@@ -19,7 +20,7 @@ body {
   height: 45px;
   background: #272c36;
   text-align: center;
-  border-radius: 10px 0px 10px 0px; }
+  border-radius: 5px 5px 0px 0px; }
   .frame-top h1 {
     font-size: 14px;
     color: #fff; }
@@ -45,10 +46,69 @@ body {
   position: absolute;
   bottom: 0px;
   top: 0px;
-  background: #232831; }
+  background: #232831;
+  border-radius: 0 0 0 5px; }
+  .aside ul {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px; }
+  .aside li a {
+    display: block;
+    height: 50px;
+    border-bottom: 1px solid #fff;
+    padding: 20px 0 20px 0; }
+  .aside .plugins {
+    background: url("../graphics/plugins.svg") center center no-repeat; }
+  .aside .projects {
+    background: url("../graphics/projects.svg") center center no-repeat; }
+  .aside .plugins-calc,
+  .aside .projects-calc {
+    display: none; }
 
 .main-content.main {
   width: auto;
   height: auto;
   overflow: hidden;
-  padding-left: 85px; }
+  padding-left: 85px;
+  border-radius: 0 0 5px 5px; }
+
+#projects {
+  list-style-type: none;
+  padding: 10px;
+  margin: 0px; }
+  #projects li {
+    border-bottom: 1px solid #ddd;
+    position: relative;
+    height: 50px;
+    padding: 5px 0 5px 0; }
+  #projects a.edit {
+    text-decoration: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    color: #555555; }
+  #projects .name {
+    font-weight: bold;
+    font-size: 14px; }
+  #projects .path {
+    display: block;
+    color: #007cbc;
+    padding-top: 5px;
+    font-weight: bold;
+    font-size: 12px; }
+  #projects .plugins-count {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background: #cfcfcf;
+    border-radius: 100%;
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 2px #aaaaaa;
+    font-size: 12px;
+    line-height: 20px;
+    font-weight: bold; }

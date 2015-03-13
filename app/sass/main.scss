@@ -17,6 +17,7 @@ html,
 body {
   padding: 0px;
   margin: 0px;
+  font-family: 'Open Sans', sans-serif;
 }
 
-@import "frame", "layouts/aside", "layouts/content";
+@import "frame", "layouts/aside", "layouts/content", "content/projects";
