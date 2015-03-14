@@ -13,8 +13,8 @@
     "show": false,
     "toolbar": false,
     "frame": false,
-    "width": 450,
-    "height": 550,
+    "width": 600,
+    "height": 440,
     "resizable": false,
     "show_in_taskbar": true,
     "transparent": true
