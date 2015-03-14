@@ -1,6 +1,8 @@
 <section ng-controller="PluginListCtrl">
-  <ul id="plugins" ng-repeat="plugin in plugins">
-    <plugin-list-item></plugin-list-item>
+  <header class="plugins-header">
+    <a href="#" ng-click="showPluginForm()" class="add-plugin">Add plugin</a>
+  </header>
+  <ul id="plugins">
+    <plugin-list-item ng-repeat="plugin in plugins"></plugin-list-item>
   </ul>
 </section>
-<ng-include src="'views/footer.html'"></ng-include>

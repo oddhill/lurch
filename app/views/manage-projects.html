@@ -1,6 +1,8 @@
 <section ng-controller="ProjectListCtrl">
-  <ul id="projects" ng-repeat="project in projects">
-    <project-list-item></project-list-item>
+  <header class="projects-header">
+    <a href="add-project" class="add-project">Add</a>
+  </header>
+  <ul id="projects">
+    <project-list-item ng-repeat="project in projects"></project-list-item>
   </ul>
 </section>
-<ng-include src="'views/footer.html'"></ng-include>
