@@ -19,16 +19,24 @@
   li a {
   	display: block;
   	height: 50px;
-  	border-bottom: 1px solid #fff;
+  	border-bottom: 1px solid #333a46;
   	padding: 20px 0 20px 0;
   }
 
   .plugins {
   	background: url('../graphics/plugins.svg') center center no-repeat;
+
+    &:hover {
+      background: url('../graphics/plugins.svg') center center no-repeat rgba(255,255,255,0.02);
+    }
   }
 
   .projects {
   	background: url('../graphics/projects.svg') center center no-repeat;
+
+    &:hover {
+      background: url('../graphics/projects.svg') center center no-repeat rgba(255,255,255,0.02);
+    }
   }
 
   .plugins-calc,

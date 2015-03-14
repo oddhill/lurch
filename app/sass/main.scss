@@ -2,22 +2,37 @@
 $white: #fff;
 $dark-blue: #232831;
 $dark-blue-2: #272c36;
-$action-red: #fff;
-$action-yellow: #fff;
+$action-red: #FF5955;
+$action-yellow: #FFBD51;
+$green: #6eb559;
 
 // Vars
 $background-light: $white;
 $background-dark: $dark-blue;
 $background-top: $dark-blue-2;
 
-$top-height: 45px;
+$top-height: 50px;
 $aside-width: 85px;
 
 html,
 body {
-  padding: 0px;
-  margin: 0px;
+  padding: 0;
+  margin: 0;
   font-family: 'Open Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+
+  &:after {
+  	position: absolute;
+  	display: block;
+  	content: '';
+  	top: 10px;
+  	left: 10px;
+  	right: 10px;
+  	bottom: 10px;
+  	box-shadow: 0 0px 10px #333;
+  	border-radius: 5px;
+    z-index: -1;
+  }
 }
 
-@import "frame", "layouts/aside", "layouts/content", "content/projects";
+@import "frame", "layouts/aside", "layouts/content", "content/projects", "content/plugins";

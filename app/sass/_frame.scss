@@ -6,30 +6,36 @@
 // The main frame
 .frame {
   position: absolute;
-  left: 0px;
-  right: 0px;
-  bottom: 0px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
   top: $top-height;
   background: $background-light;
+  border-radius: 0 0 5px 5px;
 }
 
 .frame-top {
-	height: 45px;
+	height: $top-height;
   background: $background-top;
   text-align: center;
   border-radius: 5px 5px 0px 0px;
+  -webkit-app-region: drag;
+  margin: 0 10px 0 10px;
 
   // Frame title
   h1 {
     font-size: 14px;
     color: $white;
+    -webkit-font-smoothing: antialiased;
+    text-shadow: 1px 1px #000;
+    padding-top: 10px;
   }
 
   // Frame action-buttons
   .actions {
     position: absolute;
-    left: 10px;
-    top: 10px;
+    left: 22px;
+    top: 18px;
 
     button {
       display: inline-block;
@@ -39,6 +45,7 @@
       outline: 0;
       border: 0;
       -webkit-appearance: none;
+      padding: 0px;
     }
 
     .close {

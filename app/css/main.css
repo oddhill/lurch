@@ -1,8 +1,21 @@
 html,
 body {
-  padding: 0px;
-  margin: 0px;
-  font-family: 'Open Sans', sans-serif; }
+  padding: 0;
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  -webkit-font-smoothing: antialiased; }
+  html:after,
+  body:after {
+    position: absolute;
+    display: block;
+    content: '';
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    box-shadow: 0 0px 10px #333;
+    border-radius: 5px;
+    z-index: -1; }
 
 /**
  * 
@@ -10,24 +23,30 @@ body {
  */
 .frame {
   position: absolute;
-  left: 0px;
-  right: 0px;
-  bottom: 0px;
-  top: 45px;
-  background: #fff; }
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  top: 50px;
+  background: #fff;
+  border-radius: 0 0 5px 5px; }
 
 .frame-top {
-  height: 45px;
+  height: 50px;
   background: #272c36;
   text-align: center;
-  border-radius: 5px 5px 0px 0px; }
+  border-radius: 5px 5px 0px 0px;
+  -webkit-app-region: drag;
+  margin: 0 10px 0 10px; }
   .frame-top h1 {
     font-size: 14px;
-    color: #fff; }
+    color: #fff;
+    -webkit-font-smoothing: antialiased;
+    text-shadow: 1px 1px #000;
+    padding-top: 10px; }
   .frame-top .actions {
     position: absolute;
-    left: 10px;
-    top: 10px; }
+    left: 22px;
+    top: 18px; }
     .frame-top .actions button {
       display: inline-block;
       width: 12px;
@@ -35,11 +54,12 @@ body {
       border-radius: 100%;
       outline: 0;
       border: 0;
-      -webkit-appearance: none; }
+      -webkit-appearance: none;
+      padding: 0px; }
     .frame-top .actions .close {
-      background: #fff; }
+      background: #FF5955; }
     .frame-top .actions .minimize {
-      background: #fff; }
+      background: #FFBD51; }
 
 .aside {
   width: 85px;
@@ -55,12 +75,16 @@ body {
   .aside li a {
     display: block;
     height: 50px;
-    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid #333a46;
     padding: 20px 0 20px 0; }
   .aside .plugins {
     background: url("../graphics/plugins.svg") center center no-repeat; }
+    .aside .plugins:hover {
+      background: url("../graphics/plugins.svg") center center no-repeat rgba(255, 255, 255, 0.02); }
   .aside .projects {
     background: url("../graphics/projects.svg") center center no-repeat; }
+    .aside .projects:hover {
+      background: url("../graphics/projects.svg") center center no-repeat rgba(255, 255, 255, 0.02); }
   .aside .plugins-calc,
   .aside .projects-calc {
     display: none; }
@@ -112,3 +136,71 @@ body {
     font-size: 12px;
     line-height: 20px;
     font-weight: bold; }
+
+.projects-header {
+  height: 45px;
+  border-bottom: 1px solid #aaa; }
+  .projects-header a {
+    background: #6eb559;
+    color: #fff;
+    display: block;
+    padding: 5px 10px 5px 10px;
+    margin: 10px;
+    float: right;
+    font-size: 12px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    text-shadow: 1px 1px #589147;
+    -webkit-font-smoothing: antialiased; }
+
+#plugins {
+  list-style-type: none;
+  padding: 10px;
+  margin: 0px; }
+  #plugins li {
+    border-bottom: 1px solid #ddd;
+    position: relative;
+    height: 50px;
+    padding: 5px 0 5px 0; }
+  #plugins .name {
+    font-weight: bold;
+    font-size: 14px;
+    color: #555555; }
+  #plugins .id {
+    display: block;
+    color: #007cbc;
+    padding-top: 5px;
+    font-weight: bold;
+    font-size: 12px; }
+  #plugins .remove {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background: #cfcfcf;
+    border-radius: 100%;
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 2px #aaaaaa;
+    font-size: 12px;
+    line-height: 20px;
+    font-weight: bold; }
+
+.plugins-header {
+  height: 45px;
+  border-bottom: 1px solid #aaa; }
+  .plugins-header a {
+    background: #6eb559;
+    color: #fff;
+    display: block;
+    padding: 5px 10px 5px 10px;
+    margin: 10px;
+    float: right;
+    font-size: 12px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    text-shadow: 1px 1px #589147;
+    -webkit-font-smoothing: antialiased; }
